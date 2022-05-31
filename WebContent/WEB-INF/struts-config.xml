@@ -1,0 +1,2720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN" "http://struts.apache.org/dtds/struts-config_1_2.dtd">
+
+<struts-config>
+	<data-sources />
+
+	<form-beans>
+		<!-- Login Form -->
+		<form-bean name="loginValidation" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="userId" type="java.lang.String" />
+			<form-property name="password" type="java.lang.String" />
+		</form-bean>
+		<!-- End Of Login Form -->
+		<!-- Change Password Form -->
+		<form-bean name="changePassword" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="userId" type="java.lang.String" />
+			<form-property name="oldPassword" type="java.lang.String" />
+			<form-property name="newPassword" type="java.lang.String" />
+			<form-property name="confirmPassword" type="java.lang.String" />
+		</form-bean>
+		<!-- End Of Change Password Form -->
+		<!-- Trust Type Form -->
+		<form-bean name="TrustTypeForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="trustCd" type="java.lang.String" />
+			<form-property name="trustType" type="java.lang.String" initial="" />
+			<form-property name="description" type="java.lang.String" />
+		</form-bean>
+		<!--End Of Trust Type Form -->
+		<!-- Security Category Form -->
+		<form-bean name="SecurityCategoryForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="categoryCd" type="java.lang.String" />
+			<form-property name="categoryId" type="java.lang.String" initial="" />
+			<form-property name="description" type="java.lang.String" />
+			<form-property name="openingbal" type="java.lang.String" />
+			<form-property name="investinterest" type="java.lang.String" />
+			<form-property name="investbaseamt" type="java.lang.String" />
+		</form-bean>
+		<!--End Of Security Category Form -->
+		<!-- Arrangers Form -->
+		<form-bean name="ArrangersForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+			<form-property name="arrangerCd" type="java.lang.String" />
+			<form-property name="arrangerName" type="java.lang.String" />
+			<form-property name="categoryCd" type="java.lang.String" />
+			<form-property name="categoryId" type="java.lang.String[]" initial="" />
+			<form-property name="regOffAddr" type="java.lang.String" />
+			<form-property name="regPhoneNo" type="java.lang.String" />
+			<form-property name="regFaxNo" type="java.lang.String" />
+			<form-property name="delhiOffAddr" type="java.lang.String" />
+			<form-property name="delhiOffPhNo" type="java.lang.String" />
+			<form-property name="delhiOffFaxNo" type="java.lang.String" />
+			<form-property name="nameOfHeadOfDelhiOff" type="java.lang.String" />
+		    <form-property name="categoryIds" type="java.lang.String" initial="" />
+			<form-property name="delhiHeadOffMobileNo" type="java.lang.String" />
+			<form-property name="delhiHeadOffPhNo" type="java.lang.String" />
+			<form-property name="pramotorname" type="java.lang.String" />
+			<form-property name="pramotorContactNo" type="java.lang.String" />
+			<form-property name="pramotorEmail" type="java.lang.String" />
+			<form-property name="networthAmount" type="java.lang.String" />
+			<form-property name="networthAsOn" type="java.lang.String" />
+			<form-property name="email" type="java.lang.String" />
+			<form-property name="regwithsebi" type="java.lang.String" />
+			<form-property name="sebivaliddate" type="java.lang.String" />
+			<form-property name="regwithbse" type="java.lang.String" />
+			<form-property name="bsevaliddate" type="java.lang.String" />
+			<form-property name="regwithnse" type="java.lang.String" />
+			<form-property name="nsevaliddate" type="java.lang.String" />
+			<form-property name="regwithrbi" type="java.lang.String" />
+			<form-property name="rbivaliddate" type="java.lang.String" />
+			<form-property name="remarks" type="java.lang.String" />
+			<form-property name="status" type="java.lang.String" />
+			<form-property name="categorylist" type="java.util.ArrayList" />
+			<form-property name="reportType" type="java.lang.String" />
+		</form-bean>
+		<!-- End Of Arrangers Form -->
+		
+		<!-- Ratio Form  -->
+		  <form-bean name="RatioForm" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="ratioCd" type="java.lang.String" />
+			<form-property name="validFrom" type="java.lang.String" />
+			<form-property name="validTo" type="java.lang.String" />
+			<form-property name="categoryId" type="java.lang.String" />
+			<form-property name="categoryCd" type="java.lang.String" />
+			<form-property name="percentage" type="java.lang.String" />
+			<form-property name="ratioList" type="java.util.ArrayList" />
+			<form-property name="catList" type="java.util.ArrayList" />
+		</form-bean>
+		<!-- End of Ratio Form  -->
+		<!-- InvestmentMade Form-->
+		<form-bean name="InvestMadeForm" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="investmentMadeCd" type="java.lang.String"/>
+		<form-property name="trustType" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		<form-property name="invAmount" type="java.lang.String"/>
+		<form-property name="asOnDate" type="java.lang.String"/>
+		<form-property name="deleteRecord" type="java.lang.String"/>
+		</form-bean>
+		<!-- End of InvestmentMade Form-->
+		<!-- InvestmentProposal Form --> 
+     <form-bean name="InvestmentProposalForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="proposalCD" type="java.lang.String" />
+      <form-property name="refNo" type="java.lang.String"/>
+      <form-property name="trustType" type="java.lang.String" />
+      <form-property name="amountInv" type="java.lang.String"/>
+      <form-property name="securityCat" type="java.lang.String" />
+      <form-property name="approve" type="java.lang.String"/>
+      <form-property name="remarks" type="java.lang.String" />
+      <form-property name="approveDate" type="java.lang.String" />
+      <form-property name="uploadexcel" type="org.apache.struts.upload.FormFile" />
+      <form-property name="uploadexcelfile" type="java.lang.String"/>
+      <form-property name="marketType" type="java.lang.String"/>
+      <form-property name="subject" type="java.lang.String" />
+      <form-property name="proposaldate" type="java.lang.String"/>
+      <form-property name="approvalRemarks" type="java.lang.String" />
+       <form-property name="flags" type="java.lang.String" />
+       <form-property name="edit" type="java.lang.String" />
+       <form-property name="updatedFlag" type="java.lang.String"/>
+       <form-property name="securityName" type="java.lang.String"/>
+     </form-bean>
+      <!-- End of InvestmentProposal Form --> 
+		<!-- Request For Quotation -->
+		<form-bean name="QuotationRequest" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="proposalRefNo" type="java.lang.String"/>
+		<form-property name="trustType" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		<form-property name="surplusFund" type="java.lang.String"/>
+		<form-property name="marketType" type="java.lang.String"/>
+		<form-property name="marketTypedef" type="java.lang.String"/>
+		<form-property name="arrangers" type="java.lang.String[]"/>
+		<form-property name="approved" type="java.lang.String"/>
+		<form-property name="remarks" type="java.lang.String"/>
+		<form-property name="formateRemarks" type="java.lang.String"/>
+		<form-property name="attachmenttoSelected" type="java.lang.String"/>
+		<form-property name="quotationRequestCd" type="java.lang.String"/>
+		<form-property name="letterNo" type="java.lang.String"/>
+		<form-property name="securityName" type="java.lang.String"/>
+		<form-property name="minimumQuantum" type="java.lang.String"/>
+		<form-property name="quotationAddress" type="java.lang.String"/>
+		<form-property name="notes" type="java.lang.String[]"/>
+		<form-property name="quotationDate" type="java.lang.String"/>
+		<form-property name="quotationTime" type="java.lang.String"/>
+		<form-property name="validDate" type="java.lang.String"/>
+		<form-property name="validTime" type="java.lang.String"/>
+		<form-property name="openDate" type="java.lang.String"/>
+		<form-property name="openTime" type="java.lang.String"/>
+		<form-property name="nameoftheTender" type="java.lang.String"/>
+		<form-property name="addressoftheTender" type="java.lang.String"/>
+		<form-property name="telephoneNo" type="java.lang.String"/>
+		<form-property name="faxNo" type="java.lang.String"/>
+		<form-property name="contactPerson" type="java.lang.String"/>
+		<form-property name="status" type="java.lang.String"/>
+		<form-property name="deliveryRequestedin" type="java.lang.String"/>
+		<form-property name="accountNo" type="java.lang.String"/>
+		<form-property name="investmentFaceValue" type="java.lang.String"/>
+		<form-property name="faceValue" type="java.lang.String"/>
+		<form-property name="numberOfUnits" type="java.lang.String"/>
+		<form-property name="purchaseOption" type="java.lang.String"/>
+		<form-property name="premiumPaid" type="java.lang.String"/>
+		<form-property name="purchasePrice" type="java.lang.String"/>
+		<form-property name="maturityDate" type="java.lang.String"/>
+		<form-property name="securityFullName" type="java.lang.String"/>
+		<form-property name="interestRate" type="java.lang.String"/>
+		<form-property name="interestDate" type="java.lang.String"/>
+		<form-property name="tenure" type="java.lang.String"/>
+		<form-property name="priceoffered" type="java.lang.String"/>
+		<form-property name="modeOfPaymentRemarks" type="java.lang.String"/>
+		<form-property name="paymentThroughRemarks" type="java.lang.String"/>
+		<form-property name="fromPeriod" type="java.lang.String"/>
+		<form-property name="toPeriod" type="java.lang.String"/>
+		</form-bean>
+		<!-- End of Request For Quotation-->
+		<!-- Form filling-->
+		<form-bean name="FormFilling" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="proposalRefNo" type="java.lang.String"/>
+		<form-property name="marketTypedef" type="java.lang.String"/>
+		<form-property name="amountInwords" type="java.lang.String"/>
+		<form-property name="trustType" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		<form-property name="marketType" type="java.lang.String"/>
+		<form-property name="securityName" type="java.lang.String"/>
+		<form-property name="noofBonds" type="java.lang.String"/>
+		<form-property name="investAmt" type="java.lang.String"/>
+		<form-property name="statueoftaxOption" type="java.lang.String"/>
+		<form-property name="nameofApplicant" type="java.lang.String"/>
+		<form-property name="panno" type="java.lang.String"/>
+		<form-property name="mailingAddress" type="java.lang.String"/>
+		<form-property name="contactPerson" type="java.lang.String"/>
+		<form-property name="contactNumber" type="java.lang.String"/>
+		<form-property name="formCd" type="java.lang.String"/>
+		<form-property name="flags" type="java.lang.String"/>
+		<form-property name="approveDate" type="java.lang.String"/>
+		<form-property name="approvalRemarks" type="java.lang.String"/>
+		<form-property name="edit" type="java.lang.String"/>
+		<form-property name="faxNumber" type="java.lang.String"/>
+		<form-property name="arrangerDate" type="java.lang.String"/>
+		<form-property name="auctionDate" type="java.lang.String"/>
+		<form-property name="uploadDocument" type="org.apache.struts.upload.FormFile"/>
+		<form-property name="extName" type="java.lang.String"/>
+		<form-property name="updatedFlag" type="java.lang.String"/>
+		<form-property name="accountNo" type="java.lang.String"/>
+		<form-property name="partyName" type="java.lang.String" />
+		<form-property name="partyContactNo" type="java.lang.String" />
+		<form-property name="partyAddress" type="java.lang.String" />
+		<form-property name="pname" type="java.lang.String" />
+		<form-property name="pid" type="java.lang.String" />
+		<form-property name="clientId" type="java.lang.String" />
+		<form-property name="totalAmount" type="java.lang.String"/>
+		</form-bean>
+		
+		<!-- end of formfilling-->
+		
+		
+		
+		<!-- letter to Bank-->
+		<form-bean name="LettertoBank" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="bankCd" type="java.lang.String"/>
+		<form-property name="letterNo" type="java.lang.String"/>
+		<form-property name="refNo" type="java.lang.String"/>
+		<form-property name="bankDate" type="java.lang.String"/>
+		<form-property name="beneficiaryName" type="java.lang.String"/>
+		<form-property name="creditAccountNo" type="java.lang.String"/>
+		<form-property name="accountNo" type="java.lang.String"/>
+		<form-property name="centerLocation" type="java.lang.String"/>
+		<form-property name="bankName" type="java.lang.String"/>
+		<form-property name="branchName" type="java.lang.String"/>
+		<form-property name="accountType" type="java.lang.String"/>
+		<form-property name="remitanceAmt" type="java.lang.String"/>
+		<form-property name="remarks" type="java.lang.String"/>
+		<form-property name="trustType" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		<form-property name="marketTypedef" type="java.lang.String"/>
+		<form-property name="marketType" type="java.lang.String"/>
+		<form-property name="amountInv" type="java.lang.String"/>
+		<form-property name="securityName" type="java.lang.String"/>
+		<form-property name=" bankAddress" type="java.lang.String"/>
+		<form-property name="accountTypedef" type="java.lang.String"/>
+		<form-property name="ifscCode" type="java.lang.String"/>
+		<form-property name="leftSign" type="java.lang.String"/>
+		<form-property name="rightSign" type="java.lang.String"/>
+		<form-property name="sglAccountNo" type="java.lang.String"/>
+		<form-property name="sellerRefNo" type="java.lang.String"/>
+		<form-property name="dealDate" type="java.lang.String"/>
+		<form-property name="settlementDate" type="java.lang.String"/>
+		<form-property name="faceValue" type="java.lang.String"/>
+		<form-property name="offeredPrice" type="java.lang.String"/>
+		<form-property name="principalAmount" type="java.lang.String"/>
+		<form-property name="noofdays" type="java.lang.String"/>
+		<form-property name="paymentValue" type="java.lang.String"/>
+		<form-property name="accuredInterestAmount" type="java.lang.String"/>
+		<form-property name="settlementAmount" type="java.lang.String"/>
+		<form-property name="proposalSecurity" type="java.lang.String"/>
+		<form-property name="securityFullName" type="java.lang.String"/>
+		</form-bean>
+			
+		<!-- End of Letter to Bank-->
+		<!-- CONFIRMATIONCOMPANY-->
+		<form-bean name="confirmationcompany" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="confirm" type="java.lang.String"/>
+		<form-property name="letterNo" type="java.lang.String"/>
+		<form-property name="companyCd" type="java.lang.String"/>
+		<form-property name="remarks" type="java.lang.String"/>
+		<form-property name="dealDate" type="java.lang.String"/>
+		<form-property name="settlementDate" type="java.lang.String"/>
+		<form-property name="maturityDate" type="java.lang.String"/>
+		<form-property name="cuponRate" type="java.lang.String"/>
+		<form-property name="premiumPaid" type="java.lang.String"/>
+		<form-property name="faceValue" type="java.lang.String"/>
+		<form-property name="purchaseOption" type="java.lang.String"/>
+		<form-property name="offeredPrice" type="java.lang.String"/>
+		<form-property name="ytmValue" type="java.lang.String"/>
+		<form-property name="callOption" type="java.lang.String"/>
+		<form-property name="modeOfInterest" type="java.lang.String"/>
+		<form-property name="interestDate" type="java.lang.String"/>
+		<form-property name="interestDate1" type="java.lang.String"/>
+		<form-property name="purchasePrice" type="java.lang.String"/>
+		<form-property name="refNo" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		<form-property name="marketType" type="java.lang.String"/>
+		<form-property name="marketTypedef" type="java.lang.String"/>
+		<form-property name="amountInv" type="java.lang.String"/>
+		<form-property name="noofBonds" type="java.lang.String"/>
+		<form-property name="trustType" type="java.lang.String"/>
+		<form-property name="callDate" type="java.lang.String"/>
+		<form-property name="flags" type="java.lang.String"/>
+		<form-property name="approveDate" type="java.lang.String"/>
+		<form-property name="approvalRemarks" type="java.lang.String"/>
+		<form-property name="edit" type="java.lang.String"/>
+		<form-property name="updatedFlag" type="java.lang.String"/>
+		<form-property name="mode" type="java.lang.String"/>
+		<form-property  name="interestMonth" type="java.lang.String"/>
+		<form-property name="interestMonth1" type="java.lang.String"/>
+		<form-property name="refnoSecurity" type="java.lang.String"/>
+		<form-property name="remainingAmtInv" type="java.lang.String"/>
+		<form-property name="confirmationRemarks" type="java.lang.String"/>
+		<form-property name="confirmationDate" type="java.lang.String"/>
+		
+		
+			
+		</form-bean>
+		
+		<!-- End of confirmationcompany-->
+		
+		
+		<!-- investmentregister-->
+		<form-bean name="investmentregister" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="registerCd" type="java.lang.String"/>
+		<form-property name="letterNo" type="java.lang.String"/>
+		<form-property name="securityName" type="java.lang.String"/>
+		
+		<form-property name="refNo" type="java.lang.String"/>
+		<form-property name="trustType" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		
+		<form-property name="marketType" type="java.lang.String"/>
+		
+		
+		
+		<form-property name="interestMonth" type="java.lang.String"/>
+		
+		<form-property name="interestMonth1" type="java.lang.String"/>
+		<form-property name="remarks" type="java.lang.String"/>
+		
+		
+		
+		<form-property name="ISIN" type="java.lang.String"/>
+		<form-property name="amountInv" type="java.lang.String"/>
+		<form-property name="noofBonds" type="java.lang.String"/>
+		<form-property name="confirm" type="java.lang.String"/>
+		
+		<form-property name="dealDate" type="java.lang.String"/>
+		<form-property name="settlementDate" type="java.lang.String"/>
+		<form-property name="maturityDate" type="java.lang.String"/>
+		
+		<form-property name="cuponRate" type="java.lang.String"/>
+		<form-property name="premiumPaid" type="java.lang.String"/>
+		<form-property name="faceValue" type="java.lang.String"/>
+		<form-property name="purchaseOption" type="java.lang.String"/>
+		
+		<form-property name="offeredPrice" type="java.lang.String"/>
+		<form-property name="ytmValue" type="java.lang.String"/>
+		<form-property name="callOption" type="java.lang.String"/>
+		
+		<form-property name="callDate" type="java.lang.String"/>
+		<form-property name="modeOfInterest" type="java.lang.String"/>
+		<form-property name="interestDate" type="java.lang.String"/>
+		
+		<form-property name="interestDate1" type="java.lang.String"/>
+		<form-property name="purchasePrice" type="java.lang.String"/>
+		<form-property name="acceptence" type="java.lang.String"/>
+		<form-property name="investdate" type="java.lang.String"/>
+		<form-property name="securityFullName" type="java.lang.String"/>
+		<form-property name="accuredInterestAmount" type="java.lang.String"/>
+		<form-property name="arrangerName" type="java.lang.String"/>
+		<form-property name="incentivePayable" type="java.lang.String"/>
+		<form-property name="incentivetext" type="java.lang.String"/>
+		
+		</form-bean>
+		<!--  End of investmentRegister-->
+		
+		
+		<!-- Generate Bank letter Form-->
+		<form-bean name="GenerateBankLetter" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="letterNo" type="java.lang.String"/>
+		<form-property name="bankLetterNo" type="java.lang.String"/>
+		<form-property name="dealDate" type="java.lang.String" />
+		<form-property name="settlementDate" type="java.lang.String" />
+		<form-property name="bankName" type="java.lang.String" />
+		<form-property name="accountNo" type="java.lang.String" />
+		<form-property name="quotationCd" type="java.lang.String" />
+		<form-property name="rate" type="java.lang.String" />
+		<form-property name="noofDays" type="java.lang.String" />
+		<form-property name="accuredAmount" type="java.lang.String" />
+		<form-property name="faceValue" type="java.lang.String" />
+		<form-property name="purchaseOption" type="java.lang.String" />
+		<form-property name="premiumPaid" type="java.lang.String" />
+		<form-property name="investmentFaceValue" type="java.lang.String" />
+		<form-property name="numberOfUnits" type="java.lang.String" />
+		<form-property name="purchasePrice" type="java.lang.String" />
+		<form-property name="maturityDate" type="java.lang.String" />
+		<form-property name="totalConsideration" type="java.lang.String" />
+		<form-property name="priceoffered" type="java.lang.String" />
+		<form-property name="investmentMode" type="java.lang.String"/>
+		<form-property name="interestRate" type="java.lang.String"/>
+		<form-property name="interestDate" type="java.lang.String"/>
+		<form-property name="interestDate1" type="java.lang.String"/>
+		<form-property  name="interestMonth" type="java.lang.String"/>
+		<form-property name="interestMonth1" type="java.lang.String"/>
+		<form-property name="principleAmt" type="java.lang.String"/>
+		<form-property name="ytm" type="java.lang.String"/>
+		<form-property name="benificiaryBankName" type="java.lang.String"/>
+		<form-property name="benificiaryBranch" type="java.lang.String"/>
+		<form-property name="accountType" type="java.lang.String"/>
+		<form-property name="ifscCode" type="java.lang.String"/>
+		<form-property name="leftSign" type="java.lang.String"/>
+		<form-property name="rightSign" type="java.lang.String"/>
+		<form-property name="creditAccountNo" type="java.lang.String"/>
+		<form-property name="beneficiaryName" type="java.lang.String"/>
+		<form-property name="remarks" type="java.lang.String"/>
+		
+		
+		</form-bean>
+		<!-- End of Generate Bank Letter-->
+		<!--  Quotation -->
+		<form-bean name="QuotationForm" type="org.apache.struts.validator.DynaValidatorForm">		
+		<form-property name="quotationCd" type="java.lang.String"/>
+		<form-property name="proposalRefNo" type="java.lang.String"/>
+		<form-property name="letterNo" type="java.lang.String"/>
+		<form-property name="trustName" type="java.lang.String"/>
+		<form-property name="securityCategory" type="java.lang.String"/>
+		<form-property name="arranger" type="java.lang.String"/>
+		<form-property name="arrangerCd" type="java.lang.String"/>
+		<form-property name="securityName" type="java.lang.String"/>
+		<form-property name="disIncNo" type="java.lang.String"/>
+		<form-property name="rating" type="java.lang.String"/>
+		<form-property name="faceValue" type="java.lang.String"/>
+		<form-property name="numberOfUnits" type="java.lang.String"/>
+		<form-property name="investmentFaceValue" type="java.lang.String"/>
+		<form-property name="premiumPaid" type="java.lang.String"/>
+		<form-property name="interestRate" type="java.lang.String"/>
+		<form-property name="interestDate" type="java.lang.String"/>
+		<form-property name="ytm" type="java.lang.String"/>
+		<form-property name="directIncentive" type="java.lang.String"/>
+		<form-property name="brokerIncentive" type="java.lang.String"/>
+		<form-property name="maturityDate" type="java.lang.String"/>
+		<form-property name="callOption" type="java.lang.String"/>
+		<form-property name="redemptionDate" type="java.lang.String"/>
+		<form-property name="investmentType" type="java.lang.String"/>
+		<form-property name="investmentMode" type="java.lang.String"/>
+		<form-property name="guarenteeType" type="java.lang.String"/>
+		<form-property name="purchasePrice" type="java.lang.String"/>
+		<form-property name="brokerName" type="java.lang.String"/>
+		<form-property name="brokerAddress" type="java.lang.String"/>
+		<form-property name="remarks" type="java.lang.String"/>
+		<form-property name="status" type="java.lang.String"/>
+		<form-property name="opendate" type="java.lang.String"/>
+		<form-property name="investmentdate" type="java.lang.String"/>
+		<form-property name="registrardetails" type="java.lang.String"/>
+		<form-property name="investtype" type="java.lang.String"/>
+		<form-property name="callopt" type="java.lang.String"/>
+		<form-property name="investmode" type="java.lang.String"/>
+		<form-property name="guarantee" type="java.lang.String"/>
+		<form-property name="dematno" type="java.lang.String"/>
+		<form-property name="exist" type="java.lang.String"/>
+		<form-property name="new" type="java.lang.String" />
+		<form-property name="sNo" type="java.lang.String" />
+		<form-property name="securityCd" type="java.lang.String"/>
+		<form-property name="purchaseOption" type="java.lang.String"/>
+		<form-property name="ytmmaturity" type="java.lang.String"/>
+		<form-property name="ytmcall" type="java.lang.String"/>
+		<form-property name="closingDate" type="java.lang.String"/>
+		<form-property name="tenure" type="java.lang.String"/>
+		<form-property name="minApp" type="java.lang.String"/>
+		<form-property name="eligpftrust" type="java.lang.String"/>
+		<form-property name="cmpFlag" type="java.lang.String"/>
+		<form-property name="slFlag" type="java.lang.String"/>
+		<form-property name="priceoffered" type="java.lang.String"/>
+		<form-property name="interestDate1" type="java.lang.String"/>
+		<form-property  name="interestMonth" type="java.lang.String"/>
+		<form-property name="interestMonth1" type="java.lang.String"/>
+		<form-property name="dealDate" type="java.lang.String"/>
+		<form-property name="settlementDate" type="java.lang.String"/>
+		<form-property name="investdate" type="java.lang.String"/>
+		<form-property name="settlementAmount" type="java.lang.String"/>
+		<form-property name="amountInv" type="java.lang.String"/>
+		<form-property name="approveDate" type="java.lang.String"/>
+		<form-property name="approvalRemarks" type="java.lang.String"  />
+		<form-property name="edit" type="java.lang.String"/>
+		<form-property name="updatedFlag" type="java.lang.String"/>
+		</form-bean>
+		<!-- End of  Quotation-->
+		<!-- YTM Verification Form --> 
+     	<form-bean name="YTMVerificationForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+     	<form-property name="letterNo" type="java.lang.String" />
+      	<form-property name="ytmVerified" type="java.lang.String" />
+      	<form-property name="quotationCd" type="java.lang.String" />
+      	<form-property name="ytmflag" type="java.lang.String" />
+      	
+      	</form-bean>
+      	<!-- End of YTM Verification Form --> 
+      	<!-- Party Amount Details Form -->
+      	<form-bean name="PartyAmountTypeForm" type="org.apache.struts.validator.DynaValidatorForm">
+      	<form-property name="emppartycode" type="java.lang.String"/>
+      	<form-property name="credit" type="java.lang.String"/>
+      	<form-property name="accounthead" type="java.lang.String"/>
+      	<form-property name="voucherno" type="java.lang.String"/>
+      	<form-property name="rowid" type="java.lang.String"/>
+      	<form-property name="amounttype" type="java.lang.String"/>
+      	<form-property name="securityName" type="java.lang.String"/>
+      	<form-property name="amountdate" type="java.lang.String"/>
+      	<form-property name="achieveDetails" type="java.lang.String[]"/>
+      	</form-bean>
+		<!-- User Form -->
+		 <form-bean name="User" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="userId" type="java.lang.String"  />
+			<form-property name="employeeId" type="java.lang.String" />
+			<form-property name="userType" type="java.lang.String" />
+			<form-property name="profileType" type="java.lang.String" />
+			<form-property name="unit" type="java.lang.String" />
+			<form-property name="status" type="java.lang.String" />
+			<form-property name="modules" type="java.lang.String[]" />
+			<form-property name="email" type="java.lang.String" />
+			<form-property name="userName" type="java.lang.String" />
+			<form-property name="displayName" type="java.lang.String" />
+			<form-property name="expireDate" type="java.lang.String" />
+			<form-property name="roleCd" type="java.lang.String" />
+			<form-property name="moduleNames" type="java.lang.String" />
+			<form-property name="esignatory" type="org.apache.struts.upload.FormFile" />
+			<form-property name="esignatoryName" type="java.lang.String"></form-property>
+			<form-property name="designation" type="java.lang.String"></form-property>
+		</form-bean>
+		<!--End Of User Form -->
+		 <!-- Region Form --> 
+     <form-bean name="RegionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="regionCd" type="java.lang.String" />
+      <form-property name="regionName" type="java.lang.String" />
+      <form-property name="aaiCategory" type="java.lang.String" />
+      <form-property name="remarks" type="java.lang.String" />     
+     </form-bean>
+      <!-- End of Region Form --> 
+      <!-- Unit Form --> 
+     <form-bean name="UnitForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="unitCode" type="java.lang.String" />
+      <form-property name="unitName" type="java.lang.String" />
+      <form-property name="option" type="java.lang.String" />
+      <form-property name="region" type="java.lang.String" />     
+     </form-bean>
+      <!-- End of Unit Form --> 
+      <!-- Profile Option Form --> 
+     <form-bean name="ProfileOptionForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="optionCode" type="java.lang.String" />
+      <form-property name="optionName" type="java.lang.String" />
+      <form-property name="path" type="java.lang.String" />  
+      <form-property name="optionType" type="java.lang.String" />  
+      <form-property name="description" type="java.lang.String" />          
+     </form-bean>
+      <!-- End of Profile Option Form -->
+      <!-- Approvals Form --> 
+     <form-bean name="ApprovalsForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="approvalCode" type="java.lang.String" />
+      <form-property name="approvalName" type="java.lang.String" />
+      <form-property name="description" type="java.lang.String" />          
+     </form-bean>
+      <!-- End of Approvals Form -->
+       <!-- Access Rights Form --> 
+     <form-bean name="AccessRightsForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="user" type="java.lang.String" />          
+      <form-property name="modules" type="java.lang.String" />             
+     </form-bean>
+      <!-- End of Access Rights Form -->
+       <!-- Sub Module Form --> 
+     <form-bean name="SubModuleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="subModuleCode" type="java.lang.String" />
+      <form-property name="subModuleName" type="java.lang.String" />
+      <form-property name="sortingOrder" type="java.lang.String" />  
+      <form-property name="moduleCode" type="java.lang.String" />          
+     </form-bean>
+      <!-- End of Sub Module Form -->
+	   <!-- Role Form --> 
+     <form-bean name="RoleForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="roleCd" type="java.lang.String" />
+      <form-property name="roleName" type="java.lang.String" />
+      <form-property name="roleDescription" type="java.lang.String" /> 
+      <form-property name="modules" type="java.lang.String[]" />
+       <form-property name="selectedModules" type="java.lang.String" /> 
+               
+     </form-bean>
+      <!-- End of Role Form -->
+	  <!-- Screen Form --> 
+     <form-bean name="ScreenForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+      <form-property name="moduleCd" type="java.lang.String" />
+      <form-property name="subModuleCd" type="java.lang.String" />
+      <form-property name="moduleName" type="java.lang.String" />
+      <form-property name="subModuleName" type="java.lang.String" />
+      <form-property name="screenName" type="java.lang.String" />
+      <form-property name="sortingOrder" type="java.lang.String" />      
+      <form-property name="screenPath" type="java.lang.String" />
+      <form-property name="screenCD" type="java.lang.String" />
+      <form-property name="opionPath" type="java.lang.String" />
+      <form-property name="opionName" type="java.lang.String" />
+       <form-property name="optionDetails" type="java.lang.String[]" />
+      </form-bean>
+      <!-- End of Screen Form --> 
+      <!-- Cash Book -->
+ 	 	<!-- Accounting Code Type Form -->
+			<form-bean name="AccountCodeType" type="org.apache.struts.validator.DynaValidatorActionForm">
+				<form-property name="accountCodeType" type="java.lang.String" />
+				<form-property name="code" type="java.lang.String" />
+				<form-property name="description" type="java.lang.String" />
+				<form-property name="deleteRecord" type="java.lang.String[]" />
+			</form-bean>
+	 	<!--End of Accounting Code Type Form -->
+	 	<!-- Accounting Code  Form -->
+			<form-bean name="AccountCode" type="org.apache.struts.validator.DynaValidatorActionForm">
+				<form-property name="accountHead" type="java.lang.String" />
+				<form-property name="particular" type="java.lang.String" />
+				<form-property name="type" type="java.lang.String" />
+				<form-property name="deleteRecord" type="java.lang.String[]" />
+				<form-property name="date" type="java.lang.String" />
+				<form-property name="screenType" type="java.lang.String" />
+			</form-bean>
+	 	<!--End of Accounting Code  Form -->
+	 	
+	 	<!-- Bank Master  Form -->
+			<form-bean name="BankMaster" type="org.apache.struts.validator.DynaValidatorActionForm">
+				<form-property name="bankName" type="java.lang.String" />
+				<form-property name="branchName" type="java.lang.String" />
+				<form-property name="bankCode" type="java.lang.String" />
+				<form-property name="deleteRecord" type="java.lang.String[]" />
+				<form-property name="accountNo" type="java.lang.String" />
+				<form-property name="accountCode" type="java.lang.String" />
+				<form-property name="particular" type="java.lang.String" />
+				<form-property name="IFSCCode" type="java.lang.String" />
+				<form-property name="accountType" type="java.lang.String" />
+				<form-property name="NEFTRTGSCode" type="java.lang.String" />
+				<form-property name="MICRNo" type="java.lang.String" />
+				<form-property name="contactPerson" type="java.lang.String" />
+				<form-property name="mobileNo" type="java.lang.String" />	
+				<form-property name="phoneNo" type="java.lang.String" />
+				<form-property name="faxNo" type="java.lang.String" />		
+				<form-property name="trustType" type="java.lang.String" />
+				<form-property name="enteredBy" type="java.lang.String" />
+				<form-property name="enteredDate" type="java.lang.String" />
+				<form-property name="unitName" type="java.lang.String" />
+				<form-property name="address" type="java.lang.String" />
+				<form-property name="region" type="java.lang.String" />	
+				<form-property name="accountName" type="java.lang.String" />				
+			</form-bean>
+	 	<!--End of Bank Master  Form -->
+	 	
+	 	<!-- Bank Opening Balance  Form -->
+	 		 	
+	 	<form-bean name="BankOpeningBalance" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+	 			<form-property name="accountNo" type="java.lang.String" />
+				<form-property name="opendate" type="java.lang.String" />
+				<form-property name="amount" type="java.lang.String" />
+				<form-property name="details" type="java.lang.String" />
+				<form-property name="bankName" type="java.lang.String" />
+				<form-property name="enteredBy" type="java.lang.String" />
+				<form-property name="enteredDate" type="java.lang.String" />	
+				<form-property name="amountType" type="java.lang.String" /> 
+				<form-property name="deleteRecord" type="java.lang.String[]" />	
+	 	</form-bean>
+	 	<!--End of Bank Opening Balance  Form -->
+	 	
+	 	<!-- Party Form -->
+	 		 	
+	 	<form-bean name="Party" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+	 		<form-property name="partyName" type="java.lang.String" />
+			<form-property name="faxNo" type="java.lang.String" />
+			<form-property name="mobileNo" type="java.lang.String" />
+			<form-property name="partyDetail" type="java.lang.String" />
+			<form-property name="contactNo" type="java.lang.String" />
+			<form-property name="emailId" type="java.lang.String" />
+			<form-property name="bankInfo" type="java.lang.String[]" />	
+			<form-property name="deleteRecord" type="java.lang.String[]" />
+			<form-property name="partyCode" type="java.lang.String" />	
+			<form-property name="reportType" type="java.lang.String" />
+			<form-property name="cbPartyName" type="java.lang.String" />
+			<form-property name="invPartyName" type="java.lang.String" />
+			<form-property name="groupName" type="java.lang.String"/>
+	 	</form-bean>
+	 	<!--End of Party Form -->
+	 	<!-- schedule Form -->	 		 	
+	 	<form-bean name="Schedule" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+	 		<form-property name="schType" type="java.lang.String" />
+			<form-property name="description" type="java.lang.String" />
+			<form-property name="deleteRecord" type="java.lang.String[]" />
+			<form-property name="accHeadAdd" type="java.lang.String[]" />
+			<form-property name="accHeadLess" type="java.lang.String[]" />		
+			<form-property name="screenType" type="java.lang.String" />		
+			<form-property name="type" type="java.lang.String" />	
+	 	</form-bean>
+	 	<!--End of schedule Form -->
+	 	<!-- Voucher Form-->		 		 	
+			 	<form-bean name="Voucher" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="bankName" type="java.lang.String" />
+					<form-property name="finYear" type="java.lang.String" />
+					<form-property name="voucherType" type="java.lang.String" />
+					<form-property name="voucherDt" type="java.lang.String" />
+					<form-property name="preparedDt" type="java.lang.String" />
+					<form-property name="voucherNo" type="java.lang.String" />
+					<form-property name="reportType" type="java.lang.String" />
+					<form-property name="deleteRecord" type="java.lang.String" />
+					<form-property name="keyno" type="java.lang.String" />
+					<form-property name="accountNo" type="java.lang.String" />
+					<form-property name="empPartyCode" type="java.lang.String" />
+					<form-property name="trustType" type="java.lang.String" />
+					<form-property name="transactionType" type="java.lang.String" />
+					<form-property name="partyType" type="java.lang.String" />
+					<form-property name="empRegion" type="java.lang.String" />
+					<form-property name="pfidFlag" type="java.lang.String" />
+					<form-property name="employeeName" type="java.lang.String" />
+					<form-property name="designation" type="java.lang.String" />
+					<form-property name="empCpfacno" type="java.lang.String" />
+					<form-property name="unitName" type="java.lang.String" />
+					<form-property name="partyName" type="java.lang.String" />
+					<form-property name="accountHead" type="java.lang.String" />
+					<form-property name="month" type="java.lang.String" />
+					<form-property name="year" type="java.lang.String" />
+			 	</form-bean>
+		<!--End of Voucher Form -->
+		<!-- Journal Voucher Form-->		 		 	
+			 	<form-bean name="journalVoucher" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="voucherNo" type="java.lang.String" />
+					<form-property name="voucherDate" type="java.lang.String" />
+					<form-property name="preparationDate" type="java.lang.String" />
+					<form-property name="partyType" type="java.lang.String" />	
+					<form-property name="deleteRecord" type="java.lang.String[]" />	
+					<form-property name="stationName" type="java.lang.String" />
+					<form-property name="pfid" type="java.lang.String" />
+					<form-property name="partyCode" type="java.lang.String" />
+					<form-property name="other" type="java.lang.String" />	
+					<form-property name="byAccHead" type="java.lang.String" />
+					<form-property name="byDetails" type="java.lang.String" />
+					<form-property name="byAmount" type="java.lang.String" />	
+					<form-property name="toAccHead" type="java.lang.String" />
+					<form-property name="toDetails" type="java.lang.String" />
+					<form-property name="toAmount" type="java.lang.String" />
+					<form-property name="byRecords" type="java.lang.String[]" />
+					<form-property name="toRecords" type="java.lang.String[]" />	
+					<form-property name="trustType" type="java.lang.String" />
+					<form-property name="keyNo" type="java.lang.String" />
+					<form-property name="partyName" type="java.lang.String" />
+					<form-property name="finYear" type="java.lang.String" />	
+			 		<form-property name="details" type="java.lang.String" />
+			 	</form-bean>
+		<!--End of Journal Voucher Form -->
+		<!-- Bank Reconciliation Statement  -->
+				<form-bean name="Configure" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="accountNo" type="java.lang.String" />
+			 		<form-property name="file" type="org.apache.struts.upload.FormFile"></form-property>
+					<form-property name="fileName" type="java.lang.String"></form-property>	
+			 		<form-property name="bankName" type="java.lang.String" />
+			 		<form-property name="description" type="java.lang.String" />
+			 		<form-property name="keyno" type="java.lang.String" />
+			 		<form-property name="transactionDt" type="java.lang.String" />
+			 		<form-property name="valueDt" type="java.lang.String" />
+			 		<form-property name="creditAmt" type="java.lang.String" />
+			 		<form-property name="debitAmt" type="java.lang.String" />
+			 		<form-property name="chequeNo" type="java.lang.String" />
+			 		<form-property name="debitOrCredit" type="java.lang.String" />
+			 		<form-property name="amount" type="java.lang.String" />
+			 		<form-property name="dataLine" type="java.lang.String" /> 	
+			 		<form-property name="reportType" type="java.lang.String" />	
+			 		<form-property name="fromDate" type="java.lang.String" /> 	
+			 		<form-property name="toDate" type="java.lang.String" /> 					 							
+			 	</form-bean>
+			 	
+		<!-- End of Bank Reconciliation Statement  -->	
+		<!-- Notifications  -->
+				<form-bean name="Notifications" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="keyno" type="java.lang.String" />					
+			 	</form-bean>
+		<!-- End of Notifications  -->	
+		<!-- Funds Transfer  -->
+				<form-bean name="fundsTransfer" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="fromAccountNo" type="java.lang.String" />	
+			 		<form-property name="toAccountNo" type="java.lang.String" />
+			 		<form-property name="preparationDate" type="java.lang.String" />
+			 		<form-property name="amount" type="java.lang.String" />		
+			 		<form-property name="keyno" type="java.lang.String" />
+			 		<form-property name="approvedDt" type="java.lang.String" />
+			 		<form-property name="approvedBy" type="java.lang.String" />
+			 		<form-property name="finalApproval" type="java.lang.String" />
+			 		<form-property name="finalApprovedBy" type="java.lang.String" />
+			 	</form-bean>
+		<!-- End of Funds Transfer  -->		
+		<!--  Report -->
+			<form-bean name="report" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="fromDate" type="java.lang.String" />		
+			 		<form-property name="toDate" type="java.lang.String" />
+			 		<form-property name="finYear" type="java.lang.String" /> 		
+			 		<form-property name="trustType" type="java.lang.String" />
+			 		<form-property name="toMonth" type="java.lang.String" />
+			 		<form-property name="reportType" type="java.lang.String" />
+			 		<form-property name="scheduleType" type="java.lang.String" />
+			 		<form-property name="pfId" type="java.lang.String"/>
+			 		<form-property name="transactionNo" type="java.lang.String"/>
+			 		<form-property name="approvedDate" type="java.lang.String"/>
+			 </form-bean>
+		<!--  End of Report -->			
+		<!-- End of CashBook -->		 	
+	 	<!-- Investment Report  Form -->
+			<form-bean name="InvestmentReports" type="org.apache.struts.validator.DynaValidatorActionForm">
+				<form-property name="securityName" type="java.lang.String" />
+				<form-property name="securityList" type="java.util.ArrayList" />
+				<form-property name="trustType" type="java.lang.String" />
+				<form-property name="trustList" type="java.util.ArrayList" />
+				<form-property name="fromDate" type="java.lang.String" />
+				<form-property name="toDate" type="java.lang.String" />
+				<form-property name="modeOfInvestment" type="java.lang.String" />
+				<form-property name="year" type="java.lang.String" /> 
+				<form-property name="securityCategory" type="java.lang.String" /> 
+				<form-property name="securityCategoryId" type="java.lang.String" /> 
+				<form-property name="securityNames" type="java.lang.String" />
+				<form-property name="investmentDate" type="java.lang.String"/>
+				<form-property name="interestMonthList" type="java.lang.String"/>
+				<form-property name="maturityMonth" type="java.lang.String"/>
+				<form-property name="maturityYear" type="java.lang.String"/>
+				<form-property name="finYear" type="java.lang.String"/>
+				<form-property name="reportType" type="java.lang.String"/>
+								
+			</form-bean>
+	 	<!--End of Investment Report  Form -->
+	 	<form-bean name="fundAccuredForm" type="org.apache.struts.validator.DynaValidatorActionForm">
+	 			<form-property name="finYear" type="java.lang.String" />
+				<form-property name="amount" type="java.lang.String" />
+				<form-property name="deleteRecord" type="java.lang.String" />
+				<form-property name="trustType" type="java.lang.String" />
+				<form-property name="asOnDate" type="java.lang.String"/>				
+	 	</form-bean>
+	 	 <!-- Quarter Master Form-->
+           <form-bean name="quarterMaster" type="org.apache.struts.validator.DynaValidatorForm">
+           <form-property name="quarterid" type="java.lang.String" />
+           <form-property name="quartertype" type="java.lang.String" />
+           <form-property name="description" type="java.lang.String"/>
+           <form-property name="paymentType" type="java.lang.String"/>
+           <form-property  name="water" type="java.lang.String"/>
+           <form-property name="cons" type="java.lang.String"/>
+           <form-property name="hrr" type="java.lang.String"/>
+           </form-bean>
+ <!-- end Quarter Master Form-->
+  <!-- Payslip-->
+ 	 <form-bean name="payslip" type="org.apache.struts.validator.DynaValidatorForm">
+		 	<form-property name="earnDeduCd" type="java.lang.String" initial=""/>
+			<form-property name="earnDeduName" type="java.lang.String" initial=""/>
+			<form-property name="amount" type="java.lang.String" initial=""/>
+			<form-property name="empNo" type="java.lang.String" initial=""/>
+			<form-property name="empName" type="java.lang.String" initial=""/>
+			<form-property name="empDesg" type="java.lang.String" initial=""/>
+			<form-property name="month" type="java.lang.String" initial=""/>
+			<form-property name="year" type="java.lang.String" initial=""/>
+			<form-property name="paytransid" type="java.lang.String" initial=""/>
+			<form-property name="empAllFlag" type="java.lang.String" initial=""/>
+			<form-property name="payrollmonthid" type="java.lang.String" initial=""/>
+			<form-property name="payrollmonthnm" type="java.lang.String" initial=""/>
+			<form-property name="payrollyear" type="java.lang.String" initial=""/>
+			<form-property name="fyearcd"			type="java.lang.String"/>
+			<form-property name="payscale" type="java.lang.String" initial=""/>
+			<form-property name="cpfNo" type="java.lang.String" initial=""/>
+			<form-property name="bacno" type="java.lang.String" initial=""/>
+			<form-property name="regioncd" type="java.lang.String" initial=""/>
+			<form-property name="station" type="java.lang.String" initial=""/>
+			<form-property name="disciplineCd" type="java.lang.String" initial=""/>
+			<form-property name="staffCategoryCd" type="java.lang.String" initial=""/>
+			<form-property name="reportType" type="java.lang.String" initial=""/>
+			<form-property name="psformattype" type="java.lang.String" initial=""/>
+			<form-property name="paybillCode" type="java.lang.String" />
+			<form-property name="pc" type="java.lang.Double" />
+			<form-property name="pf" type="java.lang.Double" />
+			<form-property name="staffCategory" type="java.lang.String" initial=""/>
+			<form-property name="staffCategoryName" type="java.lang.String" initial=""/>
+		</form-bean>
+		  <!-- Payslip-->
+		   <!-- Savings Declaration -->
+             <form-bean name="savDeclForm" type="org.apache.struts.validator.DynaValidatorForm">
+	             <form-property name="savDeclCd" type="java.lang.String" />
+	             <form-property name="finyearcd" type="java.lang.String" />
+	             <form-property name="empno" type="java.lang.String" />
+              	 <form-property name="name" type="java.lang.String" />
+	             <form-property name="totalSaving" type="java.lang.String" />
+	             <form-property name="savDecDetCd" type="java.lang.String" />
+	             <form-property name="savingsCd" type="java.lang.String" />
+	             <form-property name="savingAmt" type="java.lang.String" /> 
+	             <form-property name="sdDetails" type="java.lang.String[]" /> 
+	             <form-property name="nscAmount" type="java.lang.String" /> 
+	             <form-property name="nscIntrAmount" type="java.lang.String" /> 
+	             <form-property name="percent" type="java.lang.String" /> 
+	             <form-property name="interestamt" type="java.lang.String" /> 
+	             <form-property name="savingsName" type="java.lang.String" /> 
+	             <form-property name="status" type="java.lang.String" /> 
+	             <form-property name="mode" type="java.lang.String" /> 
+	             <form-property name="detail" type="java.lang.String" /> 
+	             <form-property name="paybillCode" type="java.lang.String"/>
+	             
+	        </form-bean>
+       <!-- End: Savings Declaration -->
+       
+        <!-- Employee IncomeTax-->
+	<form-bean name="empincometax" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-property name="empincometaxcd" type="java.lang.String"/>    
+		<form-property name="empno" type="java.lang.String"/>	  
+		<form-property name="empname" type="java.lang.String"/>	    
+		<form-property name="fyearcd" type="java.lang.String" />
+		<form-property name="monthId" type="java.lang.String"/>
+		<form-property name="staffCategoryCd" type="java.lang.String"/>
+		<form-property name="staffCategoryName" type="java.lang.String"/>	
+		<form-property name="empincometaxdetcd" type="java.lang.String"/>	 
+		<form-property name="taxAmt" type="java.lang.Double"/>	
+		<form-property name="fileName" type="java.lang.String"/>	
+	</form-bean>
+
+<!-- End of  Employee IncomeTax-->
+	</form-beans>
+	
+	<global-exceptions />
+	<global-forwards />
+	<action-mappings>
+		<action path="/home" parameter="/jsp/common/Main.jsp" type="org.apache.struts.actions.ForwardAction" />
+		<!--  For Logout Forward Action  -->
+		<!-- <action path="/logout" parameter="/jsp/common/logout.jsp" type="org.apache.struts.actions.ForwardAction" />-->
+		<action path="/header" parameter="/jsp/common/header.jsp" type="org.apache.struts.actions.ForwardAction" />
+		<action path="/menuheader" parameter="/jsp/common/menuheader.jsp" type="org.apache.struts.actions.IncludeAction" />
+		<action path="/body" parameter="/jsp/common/body.jsp" type="org.apache.struts.actions.ForwardAction" />		
+		<action path="/super" parameter="/jsp/common/SuperAdminProfile.jsp" type="org.apache.struts.actions.ForwardAction" />
+		<!--  For Logout seperate Action  -->
+		<action  
+		parameter="method" 
+		path="/logout" 
+		validate="false" 
+		scope="request" 
+		type="com.epis.action.login.LoginAction">
+		<forward name="sucess" path="/jsp/common/logout.jsp"/>
+		</action>
+		<!--  For Logout seperate Action  -->
+		
+		<action  
+		parameter="method" 
+		path="/commonMenue" 
+		validate="false" 
+		scope="request" 
+		type="com.epis.action.admin.CommonMenueAction">
+		<forward name="menueitems" path="/jsp/common/CommonMenue.jsp"/>
+		</action>
+		
+
+			<action attribute="TrustTypeForm" 
+				parameter="method" 
+				name="TrustTypeForm" 
+				path="/searchTrustType" 
+				input="/jsp/investment/trusttype/TrustTypeSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.TrustTypeAction">
+			<forward name="showtrustnew" path="/jsp/investment/trusttype/TrustTypeNew.jsp" />
+			<forward name="trustsearch" path="/searchTrustType.do?method=searchTrustType" redirect="true"/>
+			<forward name="showtrustsearch" path="/jsp/investment/trusttype/TrustTypeSearch.jsp" />
+      <forward name="showtrustedit" path="/jsp/investment/trusttype/TrustTypeEdit.jsp" />
+			
+		</action>
+
+		<action
+      attribute="TrustTypeForm"
+      input="/jsp/investment/trusttype/TrustTypeNew.jsp"
+      name="TrustTypeForm"
+      parameter="method"
+      path="/addTrustType"
+      scope="request"
+      type="com.epis.action.investment.TrustTypeAction"
+      validate="false">
+    <forward name="trustsearch" path="/searchTrustType.do?method=searchTrustType" redirect="true"/>
+    </action>
+		<action attribute="TrustTypeForm" 
+				parameter="method" 
+				name="TrustTypeForm" 
+				path="/editTrustType" 
+				input="/jsp/investment/trusttype/TrustTypeEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.TrustTypeAction">
+			<forward name="trustsearch" path="/searchTrustType.do?method=searchTrustType" redirect="true"/>
+		</action>
+		<!--  Security Category Action-->
+		<action attribute="SecurityCategoryForm" 
+				parameter="method" 
+				name="SecurityCategoryForm" 
+				path="/searchSCategory" 
+				input="/jsp/investment/securitycategory/SecurityCategorySearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.SecurityCategoryAction">
+			<forward name="showcategorynew" path="/jsp/investment/securitycategory/SecurityCategoryNew.jsp" />
+			<forward name="categorysearch" path="/searchSCategory.do?method=searchSCategory" redirect="true" />
+			<forward name="showcategorysearch" path="/jsp/investment/securitycategory/SecurityCategorySearch.jsp" />
+			<forward name="showcategoryedit" path="/jsp/investment/securitycategory/SecurityCategoryEdit.jsp" />
+
+		</action>
+
+		<action attribute="SecurityCategoryForm" 
+				parameter="method" 
+				name="SecurityCategoryForm" 
+				path="/addSCategory" 
+				input="/jsp/investment/securitycategory/SecurityCategoryNew.jsp" 
+				validate="false" 
+				scope="request"
+				type="com.epis.action.investment.SecurityCategoryAction">
+			<forward name="categorysearch" path="/searchSCategory.do?method=searchSCategory" redirect="true" />
+		</action>
+		<action attribute="SecurityCategoryForm" 
+				parameter="method" 
+				name="SecurityCategoryForm" 
+				path="/editSCategory" 
+				input="/jsp/investment/securitycategory/SecurityCategoryEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.SecurityCategoryAction">
+			<forward name="categorysearch" path="/searchSCategory.do?method=searchSCategory" redirect="true" />
+		</action>
+		<!--  End of Security Category Action -->
+		<!--  Arrangers Action-->
+		<action attribute="ArrangersForm" 
+				parameter="method" 
+				name="ArrangersForm" 
+				path="/searchArrangers" 
+				input="/jsp/investment/arrangers/ArrangersSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ArrangersAction">
+			<forward name="showarrangersnew" path="/jsp/investment/arrangers/ArrangersNew.jsp" />
+			<forward name="showarrangerssearch" path="/jsp/investment/arrangers/ArrangersSearch.jsp" />
+			<forward name="showarrangersedit" path="/jsp/investment/arrangers/ArrangersEdit.jsp" />
+			<forward name="arrangerssearch" path="/searchArrangers.do?method=searchArrangers" redirect="true" />
+			<forward name="arrangersparam" path="/jsp/investment/arrangers/ArrangersParam.jsp" />
+			<forward name="arrangersreport" path="/jsp/investment/arrangers/ArrangersListReport.jsp" />
+			<forward name="arrangersreportExcel" path="/jsp/investment/arrangers/ArrangersListReport.jsp?reportType=excel" />
+		</action>
+
+		<action attribute="ArrangersForm" 
+				parameter="method" 
+				name="ArrangersForm" 
+				path="/addArrangers" 
+				input="/jsp/investment/arrangers/ArrangersNew.jsp" 
+				validate="false" 
+				scope="request"
+				type="com.epis.action.investment.ArrangersAction">
+			<forward name="arrangerssearch" path="/searchArrangers.do?method=searchArrangers" redirect="true" />
+		</action>
+		<action attribute="ArrangersForm" 
+				parameter="method" 
+				name="ArrangersForm" 
+				path="/editArrangers" 
+				input="/jsp/investment/arrangers/ArrangersEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ArrangersAction">
+			<forward name="arrangerssearch" path="/searchArrangers.do?method=searchArrangers" redirect="true" />
+		</action>
+		<!--  End of Arrangers Action-->
+		<!--  Ratio Action-->
+		<action attribute="RatioForm" 
+				parameter="method" 
+				name="RatioForm" 
+				path="/searchRatio" 
+				input="/jsp/investment/ratio/InvestmentRatioSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.RatioAction">
+			<forward name="showrationew" path="/jsp/investment/ratio/InvestmentRatioNew.jsp" />
+			<forward name="showratiosearch" path="/jsp/investment/ratio/InvestmentRatioSearch.jsp" />
+			<forward name="showratioedit" path="/jsp/investment/ratio/InvestmentRatioEdit.jsp" />
+			<forward name="showcurrentratio" path="/jsp/investment/ratio/CurrentInvestmentRatio.jsp" />
+			<forward name="ratiosearch" path="/searchRatio.do?method=searchRatio" redirect="true" />
+		</action>
+
+		<action attribute="RatioForm" 
+				parameter="method" 
+				name="RatioForm" 
+				path="/addRatio" 
+				input="/jsp/investment/ratio/InvestmentRatioNew.jsp" 
+				validate="false" 
+				scope="request"
+				type="com.epis.action.investment.RatioAction">
+		<forward name="ratiosearch" path="/searchRatio.do?method=searchRatio" redirect="true" />
+		</action>
+		<action attribute="RatioForm" 
+				parameter="method" 
+				name="RatioForm" 
+				path="/editRatio" 
+				input="/jsp/investment/ratio/InvestmentRatioEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.RatioAction">
+			<forward name="ratiosearch" path="/searchRatio.do?method=searchRatio" redirect="true" />
+		</action>
+		<!--  End of Ratio Action-->
+		<!--  Comparative Statement Action-->
+		<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/searchcomparative" 
+				input="/jsp/investment/compstmt/ComparisionStatementSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ComparativeAction">
+			<forward name="showcomparisionnew" path="/jsp/investment/compstmt/ComparisionStatementNew.jsp" />
+			<forward name="showcomparisionsearch" path="/jsp/investment/compstmt/ComparisionStatementSearch.jsp" />
+			<forward name="comparisionsearch" path="/searchcomparative.do?method=searchComparative" redirect="true" />
+			<forward name="showcomparisionreport" path="/jsp/investment/compstmt/ComparisionStatementReport.jsp" />
+			
+		</action>
+		<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/addcomparative" 
+				input="/jsp/investment/compstmt/ComparisionStatementNew.jsp" 
+				validate="false" 
+				scope="request"
+				type="com.epis.action.investment.ComparativeAction">
+				<forward name="showreport" path="/jsp/investment/compstmt/ComparisionStatementReport.jsp" />
+				<forward name="showcomstmt" path="/jsp/investment/compstmt/ComparisionStatement.jsp" />
+			<forward name="comparisionsearch" path="/searchcomparative.do?method=searchComparative" redirect="true" />
+		</action>
+		<!--  End of Comparative Statement Action-->
+		<!--  ShortList Arrangers Action-->
+		 <action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/searchshortlist" 
+				input="/jsp/investment/shortlist/ShortListedArrangersSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ShortListArrangersAction">
+			<forward name="showshortnew" path="/jsp/investment/shortlist/ShortListedArrangersNew.jsp" />
+			<forward name="showshortsearch" path="/jsp/investment/shortlist/ShortListedArrangersSearch.jsp" />
+			<forward name="shortsearch" path="/searchshortlist.do?method=searchShortlist" redirect="true" />
+		</action>
+		<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/shortListReport" 
+				input="/jsp/investment/shortlist/ShortListedArrangersSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ShortListArrangersAction">
+			<forward name="shortReport" path="/jsp/investment/shortlist/ShortListedArrangersReport.jsp"/>
+		</action>
+		<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/addshortlist" 
+				input="/jsp/investment/shortlist/ShortListedArrangersNew.jsp" 
+				validate="false" 
+				scope="request"
+				type="com.epis.action.investment.ShortListArrangersAction">
+				<forward name="showshortstmt" path="/jsp/investment/shortlist/ShortListedArrangers.jsp" />
+			<forward name="shortsearch" path="/searchshortlist.do?method=searchShortlist" redirect="true" />
+		</action>
+		
+		<!--  End of ShortList Arrangers Action-->
+			<!--  Investment Approval Action-->
+		 <action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/searchinvestapproval" 
+				input="/jsp/investment/approval/InvestmentApprovalSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestArrovalAction">
+			<forward name="showinvestapprovalnew" path="/jsp/investment/approval/InvestmentApprovalNew.jsp" />
+			<forward name="showinvestapprovalsearch" path="/jsp/investment/approval/InvestmentApprovalSearch.jsp" />
+			<forward name="investapprovalsearch" path="/searchinvestapproval.do?method=searchInvestApproval" redirect="true" />
+			<forward name="approvalinvest" path="/jsp/investment/approval/InvestmentApprovals.jsp"/>
+	</action>
+	<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/investapprovalReport" 
+				input="/jsp/investment/approval/InvestmentApprovalSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestArrovalAction">
+		<forward name="approvalReport" path="/jsp/investment/approval/InvestmentApprovalReport.jsp"/>
+	</action>
+	
+	
+	<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/approvalinvestment" 
+				input="/jsp/investment/approval/InvestmentApprovals.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestArrovalAction">
+		<forward name="investapprovalsearch" path="/searchinvestapproval.do?method=searchInvestApproval" redirect="true" />
+	</action>
+		
+	
+	<action attribute="QuotationForm" 
+				parameter="method"
+				name="QuotationForm" 
+				path="/addinvestapproval" 
+				input="/jsp/investment/approval/InvestmentApprovalNew.jsp" 
+				validate="false" 
+				scope="request"
+				type="com.epis.action.investment.InvestArrovalAction">
+				<forward name="showinvestapproval" path="/jsp/investment/approval/InvestmentApproval.jsp" />
+			<forward name="investapprovalsearch" path="/searchinvestapproval.do?method=searchInvestApproval" redirect="true" />
+		</action>
+		
+		<!--  End of Investment Approval Action-->
+		
+<!--  Investment Proposal Action -->
+	<action 
+      attribute="InvestmentProposalForm"
+      parameter="method"
+      name="InvestmentProposalForm"
+      path="/searchProposal"
+      input="/jsp/investment/praposal/InvestmentPraposalSearch.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.InvestmentProposalAction">
+      <forward name="showproposalnew" path="/jsp/investment/praposal/InvestmentPraposalNew.jsp" />
+      <forward name="showpsuproposalnew" path="/jsp/investment/psuprimary/proposal/InvestmentPraposalNew.jsp" />
+      <forward name="showrbiproposalnew" path="/jsp/investment/rbiauction/proposal/InvestmentPraposalNew.jsp" />
+      <forward name="proposalsearch" path="/searchProposal.do?method=searchInvestProposal" redirect="true"/>
+      <forward name="showproposalsearch" path="/jsp/investment/praposal/InvestmentPraposalSearch.jsp" />
+      <forward name="showpsuproposalsearch" path="/jsp/investment/psuprimary/proposal/InvestmentPraposalSearch.jsp" />
+      <forward name="showrbiproposalsearch" path="/jsp/investment/rbiauction/proposal/InvestmentPraposalSearch.jsp" />
+      <forward name="showproposaledit" path="/jsp/investment/praposal/InvestmentProposalEdit.jsp" />
+      <forward name="showpsuproposaledit" path="/jsp/investment/psuprimary/proposal/InvestmentProposalEdit.jsp" />
+      <forward name="showrbiproposaledit" path="/jsp/investment/rbiauction/proposal/InvestmentProposalEdit.jsp" />
+      <forward name="approvalProposal" path="/jsp/investment/praposal/InvestmentApproval.jsp" />
+      <forward name="approvalpsuProposal" path="/jsp/investment/psuprimary/proposal/InvestmentApproval.jsp" />
+      <forward name="approvalrbiProposal" path="/jsp/investment/rbiauction/proposal/InvestmentApproval.jsp" />
+    </action>  
+    
+    <action 
+      attribute="InvestmentProposalForm"
+      parameter="method"
+      name="InvestmentProposalForm"
+      path="/addProposal"
+      input="/jsp/investment/praposal/InvestmentPraposalNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.InvestmentProposalAction">
+      <forward name="proposalsearch" path="/searchProposal.do?method=searchInvestProposal" redirect="true"/>       
+    </action> 
+    
+     <action 
+      attribute="InvestmentProposalForm"
+      parameter="method"
+      name="InvestmentProposalForm"
+      path="/editProposal"
+      input="/jsp/investment/praposal/InvestmentPraposalEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.InvestmentProposalAction">
+      <forward name="proposalsearch" path="/searchProposal.do?method=searchInvestProposal" redirect="true"/>
+    </action> 
+    
+    <action 
+      attribute="InvestmentProposalForm"
+      parameter="method"
+      name="InvestmentProposalForm"
+      path="/approvalProposal"
+      input="/jsp/investment/praposal/InvestmentApproval.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.InvestmentProposalAction">
+      <forward name="proposalsearch" path="/searchProposal.do?method=searchInvestProposal" redirect="true" />
+    </action> 
+    <action 
+      attribute="InvestmentProposalForm"
+      parameter="method"
+      name="InvestmentProposalForm"
+      path="/initialproposal"
+      input="/jsp/investment/praposal/InvestmentPraposalSearch.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.InvestmentProposalAction">
+      <forward name="proposalReport" path="/jsp/investment/praposal/InvestmentPraposalReport.jsp"  />
+    </action> 
+    
+    <!--  End of Investment Proposal Action -->
+		<!-- Request for Quotation-->
+		<action attribute="QuotationRequest" 
+				parameter="method" 
+				name="QuotationRequest" 
+				path="/searchQuotationRequests" 
+				input="/jsp/investment/quotation/QuotationRequestsSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.QuotationRequestAction">
+			<forward name="showquotationrequestnew" path="/jsp/investment/quotation/QuotationRequestsNew.jsp" />
+			<forward name="quotationrequestsearch" path="/searchQuotationRequests.do?method=searchQuotationRequests" redirect="true"/>
+			<forward name="showquotationrequestsearch" path="/jsp/investment/quotation/QuotationRequestsSearch.jsp" />
+			<forward name="showquotationrequestedit" path="/jsp/investment/quotation/QuotationRequestsEdit.jsp" />
+		</action>
+		<action attribute="QuotationRequest" 
+				parameter="method" 
+				name="QuotationRequest" 
+				path="/addQuotationRequest" 
+				input="/jsp/investment/quotation/QuotationRequestsNew.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.QuotationRequestAction">
+			<forward name="quotationletterformate" path="/jsp/investment/quotation/QuotationLetterFormate.jsp" redirect="true" />
+
+		</action>
+		
+		<action attribute="QuotationRequest" 
+				parameter="method" 
+				name="QuotationRequest" 
+				path="/quotationLetterFormate" 
+				input="/jsp/investment/quotation/QuotationLetterFormate.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.QuotationRequestAction">
+			<forward name="quotationrequestsearch" path="/searchQuotationRequests.do?method=searchQuotationRequests" redirect="true" />
+
+		</action>
+		
+		
+		<action attribute="QuotationRequest" 
+				parameter="method" 
+				name="QuotationRequest" 
+				path="/editQuotationRequest" 
+				input="/jsp/investment/quotation/QuotationRequestsEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.QuotationRequestAction">
+			<forward name="quotationletterformate" path="/jsp/investment/quotation/QuotationLetterFormate.jsp" redirect="true" />
+		</action>
+		
+		
+		<action attribute="QuotationRequest" 
+				parameter="method" 
+				name="QuotationRequest" 
+				path="/QuotationRequestReport" 
+				input="/jsp/investment/quotation/QuotationRequestsSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.QuotationRequestAction">
+			<forward name="quotationreportformate" path="/jsp/investment/quotation/QuotationReportFormate.jsp"  />
+		</action>
+		<!-- End of Request for Quotation-->
+		
+	<!-- Generate BankLetter -->
+	
+	<action attribute="GenerateBankLetter" 
+				parameter="method" 
+				name="GenerateBankLetter" 
+				path="/searchGenerateBankLetter" 
+				input="/jsp/investment/generatebankletter/GenerateBankLetterSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.GenerateBankLetterAction">
+			<forward name="bankletter" path="/jsp/investment/generatebankletter/GenerateBankLetter.jsp"/>
+			<forward name="showbankletternew" path="/jsp/investment/generatebankletter/GenerateBankLetterNew.jsp" />
+			<forward name="generatebanklettersearch" path="/searchGenerateBankLetter.do?method=searchBankLetter" redirect="true"/>
+			<forward name="showbanklettersearch" path="/jsp/investment/generatebankletter/GenerateBankLetterSearch.jsp" />
+			
+		</action>
+
+
+
+<action attribute="GenerateBankLetter" 
+				parameter="method" 
+				name="GenerateBankLetter" 
+				path="/addGenerateBankLetter" 
+				 input="/jsp/investment/generatebankletter/GenerateBankLetterNew.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.GenerateBankLetterAction">
+			<forward name="generatebanklettersearch" path="/searchGenerateBankLetter.do?method=searchBankLetter" redirect="true" />
+		</action>
+		
+		
+<action attribute="GenerateBankLetter" 
+				parameter="method" 
+				name="GenerateBankLetter" 
+				path="/reportGenerateBankLetter" 
+				 input="/jsp/investment/generatebankletter/GenerateBankLetterSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.GenerateBankLetterAction">
+			<forward name="generatebanklettersearch" path="/jsp/investment/generatebankletter/GenerateBankLetterReport.jsp"  />
+		</action>
+	
+	
+	<!-- End of BankLetter-->
+	
+	<!-- Form Filling-->
+			<action attribute="FormFilling" 
+				parameter="method" 
+				name="FormFilling" 
+				path="/searchFormFilling" 
+				input="/jsp/investment/psuprimary/formfilling/FormFillingSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.FormFillingAction">
+			<forward name="showformfillingnew" path="/jsp/investment/psuprimary/formfilling/FormFillingNew.jsp" />
+			<forward name="showformfillingrbinew" path="/jsp/investment/rbiauction/formfilling/FormFillingNew.jsp" />
+			<forward name="formfillingsearch" path="/searchFormFilling.do?method=searchFormFilling" redirect="true"/>
+			<forward name="showformfillingsearch" path="/jsp/investment/psuprimary/formfilling/FormFillingSearch.jsp" />
+			<forward name="showformfillingrbisearch" path="/jsp/investment/rbiauction/formfilling/FormFillingSearch.jsp" />
+			<forward name="formfillingProposal" path="/jsp/investment/psuprimary/formfilling/FormFillingApproval.jsp"/>
+			<forward name="formfillingrbiProposal" path="/jsp/investment/rbiauction/formfilling/FormFillingApproval.jsp"/>
+			<forward name="showformfillingedit" path="/jsp/investment/psuprimary/formfilling/FormFillingEdit.jsp" />
+			<forward name="showformfillingrbiedit" path="/jsp/investment/rbiauction/formfilling/FormFillingEdit.jsp" />
+		</action>
+		
+		<action attribute="FormFilling" 
+				parameter="method" 
+				name="FormFilling" 
+				path="/addformfilling" 
+				input="/jsp/investment/psuprimary/formfilling/FormFillingNew.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.FormFillingAction">
+			<forward name="formfillingsave" path="/searchFormFilling.do?method=searchFormFilling" redirect="true"/>
+			</action>
+	<action attribute="FormFilling"
+		parameter="method"
+		name="FormFilling"
+		path="/editformfilling"
+		input="/jsp/investment/psuprimary/formfilling/FormFillingEdit.jsp"
+		validate="false"
+		scope="request"
+		type="com.epis.action.investment.FormFillingAction">
+		<forward name="formfillingedit" path="/searchFormFilling.do?method=searchFormFilling" redirect="true"/>
+			</action>
+	<action attribute="FormFilling" 
+	parameter="method" 
+	name="FormFilling" 
+	path="/approvalformfilling" 
+	input="/jsp/investment/psuprimary/formfilling/FormFillingApproval.jsp"
+	validate="false"
+	scope="request"
+	type="com.epis.action.investment.FormFillingAction">
+	<forward name="formfillingSearch" path="/searchFormFilling.do?method=searchFormFilling" redirect="true"/>
+	</action>
+	
+	<action attribute="FormFilling" 
+				parameter="method" 
+				name="FormFilling" 
+				path="/FormFillingReport" 
+				input="/jsp/investment/psuprimary/formfilling/FormFillingSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.FormFillingAction">
+			<forward name="formfillingreport" path="/jsp/investment/psuprimary/formfilling/FormFillingReport.jsp" />
+			<forward name="formfillingrbireport" path="/jsp/investment/rbiauction/formfilling/FormFillingReport.jsp" />
+			</action>
+	
+	
+	<!-- end of FormFilling-->
+	
+	<!-- Letter to Bank-->
+	
+	
+	<action attribute="LettertoBank" 
+				parameter="method" 
+				name="LettertoBank" 
+				path="/searchLettertoBank" 
+				input="/jsp/investment/psuprimary/lettertobank/LettertoBankSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.LettertoBankAction">
+			<forward name="showlettertobankpsunew" path="/jsp/investment/psuprimary/lettertobank/LettertoBankNew.jsp" />
+			<forward name="showlettertobankrbinew" path="/jsp/investment/rbiauction/lettertobank/LettertoBankNew.jsp" />
+			<forward name="lettertobanksearch" path="/searchLettertoBank.do?method=searchLettertoBank" redirect="true"/>
+			<forward name="showlettertobanksearch" path="/jsp/investment/psuprimary/lettertobank/LettertoBankSearch.jsp" />
+			<forward name="showlettertobankedit" path="/jsp/investment/psuprimary/lettertobank/LettertoBankEdit.jsp" />
+		</action>
+		<action attribute="LettertoBank" 
+				parameter="method" 
+				name="LettertoBank" 
+				path="/addlettertobank" 
+				input="/jsp/investment/psuprimary/lettertobank/LettertoBankNew.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.LettertoBankAction">
+				<forward name="lettertoBankSave" path="/jsp/investment/psuprimary/lettertobank/LettetoBankReport.jsp" redirect="true"/>
+				<forward name="lettertoBankFormat" path="/searchLettertoBank.do?method=searchLettertoBank" redirect="true"/>
+			</action>
+		<action attribute="LettertoBank" 
+				parameter="method" 
+				name="LettertoBank" 
+				path="/editlettertobank" 
+				input="/jsp/investment/psuprimary/lettertobank/LettertoBankEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.LettertoBankAction">
+				<forward name="lettertoBankupdate" path="/jsp/investment/psuprimary/lettertobank/LettetoBankReport.jsp"/>
+				
+			</action>
+			
+			
+		<action attribute="LettertoBank" 
+				parameter="method" 
+				name="LettertoBank" 
+				path="/LettertoBankReport" 
+				input="/jsp/investment/psuprimary/lettertobank/LettertoBankSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.LettertoBankAction">
+				<forward name="lettertoBankview" path="/jsp/investment/psuprimary/lettertobank/LettetoBankview.jsp"/>
+				
+			</action>
+			
+	<!-- end of Letter to Bank-->
+	
+	
+	
+	<!-- confirmation to Company-->
+	<action attribute="confirmationcompany" 
+				parameter="method" 
+				name="confirmationcompany" 
+				path="/searchConfirmationCompany" 
+				input="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanySearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ConfirmationFromCompanyAction">
+			<forward name="showconfirmationpsunew" path="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyNew.jsp" />
+			<forward name="showconfirmationcompanyrbinew" path="/jsp/investment/rbiauction/confirmationtocompany/ConfirmationToCompanyNew.jsp" />
+			<forward name="preperationrbinew" path="/jsp/investment/rbiauction/preperation/ConfirmationToCompanyNew.jsp"/>
+			<forward name="confirmationcompanysearch" path="/searchConfirmationCompany.do?method=searchConfirmationCompany" redirect="true"/>
+			<forward name="showconfirmationcompanypsusearch" path="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanySearch.jsp" />
+			<forward name="showconfirmationcompanyrbisearch" path="/jsp/investment/rbiauction/confirmationtocompany/ConfirmationToCompanySearch.jsp" />
+			<forward name="showconfirmationcompanyedit" path="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyEdit.jsp" />
+			<forward name="confirmationapproval" path="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyApproval.jsp"/>
+		</action>
+		
+		
+		<action attribute="confirmationcompany" 
+				parameter="method" 
+				name="confirmationcompany" 
+				path="/addConfirmationCompany" 
+				input="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyNew.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ConfirmationFromCompanyAction">
+			<forward name="confirmationcompanysave" path="/searchConfirmationCompany.do?method=searchConfirmationCompany" redirect="true"/>
+			<forward name="confirmationpreperationsave" path="/searchConfirmationCompany.do?method=showConfirmationCompanyAdd" redirect="true"/>
+		</action>
+		
+		<action attribute="confirmationcompany" 
+				parameter="method" 
+				name="confirmationcompany" 
+				path="/editConfirmationCompany" 
+				input="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyEdit.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ConfirmationFromCompanyAction">
+			<forward name="confirmationcompanyupdate" path="/searchConfirmationCompany.do?method=searchConfirmationCompany" redirect="true"/>
+		</action>
+		
+		
+		<action attribute="confirmationcompany" 
+				parameter="method" 
+				name="confirmationcompany" 
+				path="/approvalConfirmation" 
+				input="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyApproval.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ConfirmationFromCompanyAction">
+			<forward name="confirmationSearch" path="/searchConfirmationCompany.do?method=searchConfirmationCompany" redirect="true"/>
+		</action>
+		
+		
+		<action attribute="confirmationcompany" 
+				parameter="method" 
+				name="confirmationcompany" 
+				path="/ConfirmationCompanyReport" 
+				input="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanySearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.ConfirmationFromCompanyAction">
+			<forward name="confirmationcompanyview" path="/jsp/investment/psuprimary/confirmationtocompany/ConfirmationToCompanyView.jsp" />
+		</action>
+	
+	
+	
+	<!--  end of Confirmation to Company-->
+	
+	<!--  Investment Register-->
+	
+	<action attribute="investmentregister" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/searchInvestmentRegister" 
+				input="/jsp/investment/psuprimary/register/InvestmentRegisterSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentRegisterAction">
+			<forward name="showInvestmentRegister" path="/jsp/investment/psuprimary/register/InvestmentRegister.jsp" />
+			<forward name="showInvestmentRegisterAdd" path="/jsp/investment/psuprimary/register/InvestmentRegisterManual.jsp"/>
+			<forward name="investmentRegistersearch" path="/searchInvestmentRegister.do?method=searchInvestmentRegister" redirect="true"/>
+			<forward name="showinvestmentRegistersearch" path="/jsp/investment/psuprimary/register/InvestmentRegisterSearch.jsp" />
+			<forward name="showinvestmentRegisterManualsearch" path="/jsp/investment/psuprimary/register/InvestmentRegisterManualSearch.jsp"/>
+			
+		</action>
+		
+		
+		<action attribute="investmentregister" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/investmentregisternew" 
+				input="/jsp/investment/psuprimary/register/InvestmentRegister.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentRegisterAction">
+			<forward name="showInvestmentRegisternew" path="/jsp/investment/psuprimary/register/InvestmentRegisterNew.jsp" />
+			
+			
+		</action>
+		
+		<action attribute="investmentregister" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/addInvestmentRegister" 
+				input="/jsp/investment/psuprimary/register/InvestmentRegisterNew.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentRegisterAction">
+			<forward name="saveInvestmentRegister" path="/searchInvestmentRegister.do?method=searchInvestmentRegister" redirect="true"/>
+			
+			
+		</action>
+		<action attribute="investmentregister" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/editInvestmentRegister" 
+				input="/jsp/investment/psuprimary/register/InvestmentRegisterSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentRegisterAction">
+			<forward name="EditInvestmentRegister" path="/jsp/investment/psuprimary/register/InvestmentRegisterEdit.jsp"  />
+			
+			
+		</action>
+		
+		
+		<action attribute="investmentregister" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/addInvestmentRegisterManual" 
+				input="/jsp/investment/psuprimary/register/InvestmentRegisterManual.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentRegisterAction">
+			<forward name="saveInvestmentRegisterManual" path="/searchInvestmentRegister.do?method=searchInvestmentRegister" redirect="true"/>
+			<forward name="updateInvestmentRegisterManual" path="/searchInvestmentRegister.do?method=searchInvestmentRegister"  redirect="true"  />
+			
+		</action>
+		
+		
+		
+		<action attribute="investmentregister" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/InvestmentRegisterReport" 
+				input="/jsp/investment/psuprimary/register/InvestmentRegisterSearch.jsp" 
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentRegisterAction">
+			<forward name="registerReport" path="/jsp/investment/psuprimary/register/InvestmentRegisterReport.jsp"/>
+			
+			
+		</action>
+	
+	<!--  end of Investment Register-->
+	
+		
+	<!--  YTM Verification Action -->
+		<action 
+	      attribute="YTMVerificationForm"
+	      parameter="method"
+	      name="YTMVerificationForm"
+	      path="/actionYTM"
+	      input="/jsp/investment/ytm/YTMVerificationNew.jsp"
+	      validate="false"
+	      scope="request"
+	      type="com.epis.action.investment.YTMVerificationAction">
+	      <forward name="ytmnew" path="/jsp/investment/ytm/YTMVerificationNew.jsp" />
+	      <forward name="ytmnewdetails" path="/jsp/investment/ytm/YTMVerification.jsp" />
+	      <forward name="ytmsearch" path="/actionYTM.do?method=searchYTM" redirect="true"/>
+	      <forward name="ytmsearchsuccess" path="/jsp/investment/ytm/ytmSuccess.jsp" />
+	      <forward name="showytmsearch" path="/jsp/investment/ytm/YTMVerificationSearch.jsp" />
+	      <forward name="showproposaledit" path="/jsp/investment/praposal/InvestmentProposalEdit.jsp" />
+	      <forward name="ytmdetails" path="/jsp/investment/ytm/YTMVerificationReport.jsp" />
+	      
+	    </action>  
+    
+    <!--  End of YTM Verification Action -->
+		
+		<!--  Login Action-->
+		<action path="/loginValidation" 
+				name="loginValidation" 
+				parameter="method" 
+				scope="request" 
+				input="/login.jsp"
+				type="com.epis.action.login.LoginAction" 
+				validate="false">
+			<forward name="reLogin" path="/login.jsp" />
+			<forward name="profile" path="/jsp/common/Main.jsp" />
+			<forward name="changePassword" path="/jsp/common/ChangePassword.jsp" />
+			
+		</action>
+		<!-- End of  Login Action-->
+		<!--  Change Password Action-->
+		<action path="/changePassword" 
+				name="changePassword" 
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.login.LoginAction" 
+				validate="false">
+			<forward name="profile" path="/jsp/common/Main.jsp" />
+			<forward name="changePassword" path="/jsp/common/ChangePassword.jsp" />
+			<forward name="showAccount" path="/userSearchResult.do?method=myAccount" />
+			<forward name="incorrectPassword" path="/jsp/common/AccountResetPassword.jsp" />
+		</action>
+		<!-- End of  Change Password Action-->
+		<!-- User Action -->
+		<action attribute="User" 
+				path="/userSearch" 
+				name="User" 
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.admin.UserAction" 
+				validate="false">
+			<forward name="search" path="/jsp/admin/user/UserSearch.jsp" />
+		</action>
+		<action attribute="User" 
+				path="/userSearchResult" 
+				name="User" 
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.admin.UserAction" 
+				validate="false">
+			<forward name="search" path="/jsp/admin/user/UserSearch.jsp" />
+			<forward name="searchResult" path="/userSearchResult.do?method=searchResult" />
+			<forward name="new" path="/jsp/admin/user/UserNew.jsp" />
+			<forward name="showmyaccount" path="/jsp/common/myAccount.jsp" />
+		</action>
+		<action attribute="User" 
+				path="/userNew" 
+				name="User" 
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.admin.UserAction" 
+				input="/jsp/admin/user/UserNew.jsp"
+				validate="false">
+			<forward name="search" path="/userSearchResult.do?method=searchResult" />
+		</action>
+		<!-- End of  Change Password Action-->
+		<!--  Region Action -->
+	 <action 
+      attribute="RegionForm"
+      parameter="method"
+      name="RegionForm"
+      path="/searchRegion"
+      input="/jsp/admin/region/RegionNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.RegionAction">
+      <forward name="showregionnew" path="/jsp/admin/region/RegionNew.jsp" />
+      <forward name="regionsearch" path="/searchRegion.do?method=searchRegion" />
+      <forward name="regionemptysearch" path="/searchRegion.do?method=searchRegion" redirect="true"/>
+      <forward name="showregionsearch" path="/jsp/admin/region/RegionSearch.jsp" />
+      <forward name="showregionedit" path="/jsp/admin/region/RegionEdit.jsp" />
+    </action>    
+    <action 
+      attribute="RegionForm"
+      parameter="method"
+      name="RegionForm"
+      path="/addRegion"
+      input="/jsp/admin/region/RegionNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.RegionAction">
+      <forward name="regionsearch" path="/searchRegion.do?method=searchRegion" />       
+    </action>
+    <action 
+      attribute="RegionForm"
+      parameter="method"
+      name="RegionForm"
+      path="/editRegion"
+      input="/jsp/admin/region/RegionEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.RegionAction">
+      <forward name="regionsearch" path="/searchRegion.do?method=searchRegion" />
+    </action>
+    <!--  End of Region Action -->
+    <!--  Unit Action -->
+	 <action 
+      attribute="UnitForm"
+      parameter="method"
+      name="UnitForm"
+      path="/searchUnit"
+      input="/jsp/admin/unit/UnitNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.UnitAction">
+      <forward name="showunitnew" path="/jsp/admin/unit/UnitNew.jsp" />
+      <forward name="unitsearch" path="/searchUnit.do?method=searchUnit" />
+      <forward name="unitemptysearch" path="/searchUnit.do?method=searchUnit" redirect="true"/>
+      <forward name="showunitsearch" path="/jsp/admin/unit/UnitSearch.jsp" />
+      <forward name="showunitedit" path="/jsp/admin/unit/UnitEdit.jsp" />
+    </action>    
+    <action 
+      attribute="UnitForm"
+      parameter="method"
+      name="UnitForm"
+      path="/addUnit"
+      input="/searchUnit.do?method=showUnitAdd"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.UnitAction">
+      <forward name="unitsearch" path="/searchUnit.do?method=searchUnit" />       
+    </action>
+    <action 
+      attribute="UnitForm"
+      parameter="method"
+      name="UnitForm"
+      path="/editUnit"
+      input="/jsp/admin/unit/UnitEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.UnitAction">
+      <forward name="unitsearch" path="/searchUnit.do?method=searchUnit" />
+    </action>
+    <!--  End of Unit Action -->
+    <!--  Profile Option Action -->
+	 <action 
+      attribute="ProfileOptionForm"
+      parameter="method"
+      name="ProfileOptionForm"
+      path="/searchOption"
+      input="/jsp/admin/profile/ProfileOptionNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ProfileOptionAction">
+      <forward name="showoptionnew" path="/jsp/admin/profile/ProfileOptionNew.jsp" />
+      <forward name="optionsearch" path="/searchOption.do?method=searchOption" />
+      <forward name="optionemptysearch" path="/searchOption.do?method=searchOption" redirect="true"/>
+      <forward name="showoptionsearch" path="/jsp/admin/profile/ProfileOptionSearch.jsp" />
+      <forward name="showoptionedit" path="/jsp/admin/profile/ProfileOptionEdit.jsp" />
+    </action>    
+    <action 
+      attribute="ProfileOptionForm"
+      parameter="method"
+      name="ProfileOptionForm"
+      path="/addOption"
+      input="/jsp/admin/profile/ProfileOptionNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ProfileOptionAction">
+      <forward name="optionsearch" path="/searchOption.do?method=searchOption" />       
+    </action>
+    <action 
+      attribute="ProfileOptionForm"
+      parameter="method"
+      name="ProfileOptionForm"
+      path="/editOption"
+      input="/jsp/admin/profile/ProfileOptionEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ProfileOptionAction">
+      <forward name="optionsearch" path="/searchOption.do?method=searchOption" />
+    </action>
+    <action 
+      attribute="ProfileOptionForm"
+      parameter="method"
+      name="ProfileOptionForm"
+      path="/showProfileOptions"
+      input="/jsp/admin/profile/ViewProfile.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ProfileAction">
+      <forward name="showprofileoptions" path="/jsp/admin/profile/ViewProfile.jsp" />
+      <forward name="modifyprofileoptions" path="/jsp/admin/profile/CreateProfile.jsp" />
+      <forward name="updateprofileoptions" path="/showProfileOptions.do?method=showProfileOptions" />
+      
+    </action>
+    <!--  End of Profile Option Action -->
+    <!--  Approvals Action -->
+	 <action 
+      attribute="ApprovalsForm"
+      parameter="method"
+      name="ApprovalsForm"
+      path="/searchApproval"
+      input="/jsp/admin/approvals/ApprovalsNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ApprovalsAction">
+      <forward name="showapprovalsnew" path="/jsp/admin/approvals/ApprovalsNew.jsp" />
+      <forward name="approvalssearch" path="/searchApproval.do?method=searchApproval" />
+      <forward name="approvalsemptysearch" path="/searchApproval.do?method=searchApproval" redirect="true"/>
+      <forward name="showapprovalssearch" path="/jsp/admin/approvals/ApprovalsSearch.jsp" />
+      <forward name="showapprovalsedit" path="/jsp/admin/approvals/ApprovalsEdit.jsp" />
+    </action>    
+    <action 
+      attribute="ApprovalsForm"
+      parameter="method"
+      name="ApprovalsForm"
+      path="/addApproval"
+      input="/jsp/admin/approvals/ApprovalsNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ApprovalsAction">
+      <forward name="approvalssearch" path="/searchApproval.do?method=searchApproval" />       
+    </action>
+    <action 
+      attribute="ApprovalsForm"
+      parameter="method"
+      name="ApprovalsForm"
+      path="/editApproval"
+      input="/jsp/admin/approvals/ApprovalsEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ApprovalsAction">
+      <forward name="approvalssearch" path="/searchApproval.do?method=searchApproval" />
+    </action>
+    <!--  End of Approvals Action -->
+     <!--  Sub Module Action -->
+	 <action 
+      attribute="SubModuleForm"
+      parameter="method"
+      name="SubModuleForm"
+      path="/searchSM"
+      input="/jsp/admin/submodule/SMNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.SubModuleAction">
+      <forward name="showsmnew" path="/jsp/admin/submodule/SMNew.jsp" />
+      <forward name="smsearch" path="/searchSM.do?method=searchSM" />
+      <forward name="smemptysearch" path="/searchSM.do?method=searchSM" redirect="true"/>
+      <forward name="showsmsearch" path="/jsp/admin/submodule/SMSearch.jsp" />
+      <forward name="showsmedit" path="/jsp/admin/submodule/SMEdit.jsp" />
+    </action>    
+    <action 
+      attribute="SubModuleForm"
+      parameter="method"
+      name="SubModuleForm"
+      path="/addSM"
+      input="/jsp/admin/submodule/SMNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.SubModuleAction">
+      <forward name="smsearch" path="/searchSM.do?method=searchSM" />       
+    </action>
+    <action 
+      attribute="SubModuleForm"
+      parameter="method"
+      name="SubModuleForm"
+      path="/editSM"
+      input="/jsp/admin/submodule/SMEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.SubModuleAction">
+      <forward name="smsearch" path="/searchSM.do?method=searchSM" />
+    </action>
+    <!--  End of Sub Module Action -->
+ <!--  Role Action -->
+	 <action 
+      attribute="RoleForm"
+      parameter="method"
+      name="RoleForm"
+      path="/searchRole"
+      input="/jsp/admin/role/RoleNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.RoleAction">
+      <forward name="showrolenew" path="/jsp/admin/role/RoleNew.jsp" />
+      <forward name="rolesearch" path="/searchRole.do?method=searchRole" />
+      <forward name="roleemptysearch" path="/searchRole.do?method=searchRole" redirect="true"/>
+      <forward name="showrolesearch" path="/jsp/admin/role/RoleSearch.jsp" />
+      <forward name="showroleedit" path="/jsp/admin/role/RoleEdit.jsp" />
+    </action>    
+    <action 
+      attribute="RoleForm"
+      parameter="method"
+      name="RoleForm"
+      path="/addRole"
+      input="/jsp/admin/role/RoleNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.RoleAction">
+      <forward name="rolesearch" path="/searchRole.do?method=searchRole" />       
+    </action>
+    <action 
+      attribute="RoleForm"
+      parameter="method"
+      name="RoleForm"
+      path="/editRole"
+      input="/jsp/admin/role/RoleEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.RoleAction">
+      <forward name="rolesearch" path="/searchRole.do?method=searchRole" />
+    </action>
+    <!--  End of Role Action -->
+<!--  Screen Action -->
+		<action 
+	      attribute="ScreenForm"
+	      parameter="method"
+	      name="ScreenForm"
+	      path="/actionScreen"
+	      input="/jsp/admin/screen/ScreenNew.jsp"
+	      validate="false"
+	      scope="request"
+	      type="com.epis.action.admin.ScreenAction">
+	      <forward name="showscreensearch" path="/jsp/admin/screen/ScreenSearch.jsp" />
+	      <forward name="shownewscreen" path="/jsp/admin/screen/ScreenNew.jsp" />
+	      <forward name="searchscreen" path="/actionScreen.do?method=searchScreen" redirect="true"/>
+	      <forward name="showeditscreen" path="/jsp/admin/screen/ScreenEdit.jsp" />
+	      <forward name="searchscreenerror" path="/actionScreen.do?method=searchScreen" />
+	    </action> 
+	    <action attribute="ScreenForm" 
+				parameter="method" 
+				name="ScreenForm" 
+				path="/addScreen" 
+				input="/jsp/admin/screen/ScreenNew.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.admin.ScreenAction">
+			<forward name="searchscreen" path="/actionScreen.do?method=searchScreen" redirect="true"/>
+		</action> 
+	  <action 
+      attribute="ScreenForm"
+      parameter="method"
+      name="ScreenForm"
+      path="/editScreen"
+      input="/jsp/admin/screen/ScreenEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.admin.ScreenAction">
+      <forward name="searchscreen" path="/actionScreen.do?method=searchScreen" redirect="true"/>
+    </action> 
+    
+    <!--  End of Screen Action -->
+
+    <!--  Quotation Action -->
+     <action 
+      attribute="QuotationForm"
+      parameter="method"
+      name="QuotationForm"
+      path="/searchQuotation"
+      input="/jsp/investment/quotation/QuotationEntryNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.QuotationAction">
+      <forward name="showquotationnew" path="/jsp/investment/quotation/QuotationEntryNew.jsp" />
+      <forward name="quotationsearch" path="/searchQuotation.do?method=searchQuotation" />
+      <forward name="quotationemptysearch" path="/searchQuotation.do?method=searchQuotation" redirect="true"/>
+      <forward name="showquotationsearch" path="/jsp/investment/quotation/QuotationEntrySearch.jsp" />
+      <forward name="showquotationedit" path="/jsp/investment/quotation/QuotationEntryEdit.jsp" />
+      <forward name="quotationreport" path="/jsp/investment/quotation/QuotationEntryReport.jsp"/>
+    </action>    
+    <action 
+      attribute="QuotationForm"
+      parameter="method"
+      name="QuotationForm"
+      path="/addQuotation"
+      input="/jsp/investment/quotation/QuotationEntryNew.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.QuotationAction">
+      <forward name="quotationsearch" path="/searchQuotation.do?method=showQuotationAdd" redirect="true"/>       
+    </action>
+    <action 
+      attribute="QuotationForm"
+      parameter="method"
+      name="QuotationForm"
+      path="/editQuotation"
+      input="/jsp/investment/quotation/QuotationEntryEdit.jsp"
+      validate="false"
+      scope="request"
+      type="com.epis.action.investment.QuotationAction">
+      <forward name="quotationsearch" path="/searchQuotation.do?method=searchQuotation" redirect="true" />
+    </action>
+      <action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/investregister" 
+				 input="/jsp/investment/approval/InvestRegisterNew.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestArrovalAction">
+			<forward name="showinvestregister" path="/jsp/investment/approval/InvestRegisterNew.jsp"  />
+			<forward name="addinvestregister" path="/jsp/investment/approval/InvestmentRegister.jsp" />
+			
+		</action>
+		<action attribute="QuotationForm" 
+				parameter="method" 
+				name="investmentregister" 
+				path="/searchinvestregister" 
+				 input="/jsp/investment/approval/InvestmentRegisterSearch.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestArrovalAction">
+		<forward name="showinvestmentRegistersearch" path="/jsp/investment/approval/InvestmentRegisterSearch.jsp" />
+		<forward name="registerReport" path="/jsp/investment/psuprimary/register/InvestmentRegisterReport.jsp"/>
+		</action>
+		
+	<action attribute="QuotationForm" 
+				parameter="method" 
+				name="QuotationForm" 
+				path="/addInvestRegister" 
+				 input="/jsp/investment/approval/InvestRegisterNew.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.InvestArrovalAction">
+			<forward name="showinvestregister" path="/searchinvestregister.do?method=searchInvestRegister" redirect="true" />
+			
+		</action>
+    <!-- End of  Quotation Action -->
+    <!-- Party Amount Type Action-->
+    
+    <action attribute="PartyAmountTypeForm" 
+				parameter="method" 
+				name="PartyAmountTypeForm" 
+				path="/partyamount" 
+				 input="/jsp/investment/amounttype/PartyAmountType.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.AmountTypeAction">
+			<forward name="amountType" path="/jsp/investment/amounttype/PartyAmountType.jsp" />
+			<forward name="addNew" path="/jsp/investment/amounttype/PartyAmountNew.jsp"/>
+		</action>
+	<action attribute="PartyAmountTypeForm" 
+				parameter="method" 
+				name="PartyAmountTypeForm" 
+				path="/savepartyamount" 
+				 input="/jsp/investment/amounttype/PartyAmountNew.jsp"
+				validate="false" 
+				scope="request" 
+				type="com.epis.action.investment.AmountTypeAction">
+			<forward name="showpartyamount" path="/partyamount.do?method=partyDetails" redirect="true" />
+		</action>
+    
+     <!--  Reset Password Action-->
+    <action  path="/resetPassword"     
+      name="changePassword"
+      parameter="method"
+      input="/jsp/admin/user/ResetPassword.jsp"
+      scope="request"
+      type="com.epis.action.admin.AdminAction" validate="false">      
+      <forward name="showresetpassword" path="/jsp/admin/user/ResetPassword.jsp"></forward> 
+      <forward name="resetpassword" path="/resetPassword.do?method=showResetPassword" ></forward> 
+	  
+    </action>
+   <!-- End of  Reset Password Action--> 
+       <!-- Profile Action -->
+    <action path="/Profile" 				
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.admin.ProfileAction" 
+				validate="false">
+			<forward name="profile" path="/jsp/common/Profile.jsp" />
+		</action>
+	 <!--End of Profile Action -->
+	 <!-- Access Rights Action -->
+    <action path="/accessRights" 		
+    		name="AccessRightsForm"		
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.admin.AccessRightsAction" 
+				validate="false">
+			<forward name="accessRights" path="/jsp/admin/user/AccessRights.jsp" />
+			<forward name="screenCodes" path="/jsp/admin/user/ScreenCodes.jsp" />
+		</action>
+	 <!--End of Access Rights  Action -->
+ 	 <!-- Cash Book -->
+ 	 	<!-- Accounting Code Type Action -->
+    		<action path="/accCodeTypeSearchResult" 		
+    			name="AccountCodeType"		
+				parameter="method" 
+				input = "/jsp/cashbook/accountingCodeType/AccountingCodeTypeSearch.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.AccountingCodeTypeAction" 
+				validate="false">
+				<forward name="new" path="/jsp/cashbook/accountingCodeType/AccountingCodeType.jsp" />
+				<forward name="search" path="/accCodeTypeSearchResult.do?method=search" redirect="true"/>
+			</action>
+			<action path="/accCodeType" 		
+    			name="AccountCodeType"		
+				parameter="method" 
+				input = "/jsp/cashbook/accountingCodeType/AccountingCodeType.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.AccountingCodeTypeAction" 
+				validate="false">
+				<forward name="search" path="/accCodeTypeSearchResult.do?method=search" redirect="true"/>
+			</action>
+	 	<!--End of Accounting Code Type Action -->
+	 	<!-- Accounting Code  Action -->
+    		<action path="/accCodeSearchResult" 		
+    			name="AccountCode"		
+				parameter="method" 
+				input = "/jsp/cashbook/accountingCode/AccountingCodeSearch.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.AccountingCode" 
+				validate="false">
+				<forward name="new" path="/jsp/cashbook/accountingCode/AccountingCode.jsp" />
+				<forward name="search" path="/accCodeSearchResult.do?method=search" redirect="true"/>
+			</action>
+			<action path="/accCode" 		
+    			name="AccountCode"		
+				parameter="method" 
+				input = "/jsp/cashbook/accountingCode/AccountingCode.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.AccountingCode" 
+				validate="false">
+				<forward name="search" path="/accCodeSearchResult.do?method=search" redirect="true"/>
+				<forward name="param" path="/jsp/cashbook/accountingCode/AccountingCodeParam.jsp" />
+			</action>
+			<action path="/accCodeReport" 		
+    			name="AccountCode"		
+				parameter="method" 
+				input = "/jsp/cashbook/accountingCode/AccountingCodeParam.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.AccountingCode" 
+				validate="false">
+				<forward name="report" path="/jsp/cashbook/accountingCode/AccountingCodeReport.jsp" />	
+				<forward name="reportExcel" path="/jsp/cashbook/accountingCode/AccountingCodeReport.jsp?reportType=excel" />								
+			</action>
+	 	<!--End of Accounting Code  Action -->
+	 	
+	 	<!-- Bank Info  Action -->
+    		<action path="/bankInfoSearchResult" 		
+    			name="BankMaster"		
+				parameter="method" 
+				input = "/jsp/cashbook/bank/BankMasterSearch.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.BankInfoAction" 
+				validate="false">
+				<forward name="new" path="/jsp/cashbook/bank/BankMaster.jsp" />
+				<forward name="search" path="/bankInfoSearchResult.do?method=search" redirect="true"/>
+			</action>
+			<action path="/bankInfo" 		
+    			name="BankMaster"		
+				parameter="method" 
+				input = "/jsp/cashbook/bank/BankMaster.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.BankInfoAction" 
+				validate="false">
+				<forward name="search" path="/bankInfoSearchResult.do?method=search" redirect="true"/>
+			</action>
+	 	<!--End of Bank Info  Action -->
+	 	
+	 	<!-- Bank Opening Balance  Action -->
+    		<action path="/bankOpenBalSearchResult" 		
+    			name="BankOpeningBalance"		
+				parameter="method" 
+				input = "/jsp/cashbook/bank/BankOpeningBalSearch.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.BankOpenBal" 
+				validate="false">
+				<forward name="new" path="/jsp/cashbook/bank/BankOpeningBal.jsp" />
+				<forward name="search" path="/bankOpenBalSearchResult.do?method=search" redirect="true" />
+			</action>
+			<action path="/bankOpenBal" 		
+    			name="BankOpeningBalance"		
+				parameter="method" 
+				input = "/jsp/cashbook/bank/BankOpeningBal.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.BankOpenBal" 
+				validate="false">
+				<forward name="search" path="/bankOpenBalSearchResult.do?method=search" redirect="true"/>
+			</action>
+	 	<!--End of Bank Opening Balance  Action -->
+	 	<!-- Party  Action -->
+    		<action path="/partySearchResult" 		
+    			name="Party"		
+				parameter="method" 
+				input = "/jsp/cashbook/party/PartyMasterSearch.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.Party" 
+				validate="false">
+				<forward name="new" path="/jsp/cashbook/party/PartyMaster.jsp" />
+				<forward name="search" path="/partySearchResult.do?method=search" redirect="true"/>
+			</action>
+			<action path="/party" 		
+    			name="Party"		
+				parameter="method" 
+				input = "/jsp/cashbook/party/PartyMaster.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.Party" 
+				validate="false">
+				<forward name="search" path="/partySearchResult.do?method=search" redirect="true"/>
+				<forward name="showPartyParam" path="/jsp/cashbook/party/PartyParam.jsp"></forward>
+				<forward name="showReport" path="/jsp/cashbook/party/PartyReport.jsp" ></forward>
+				<forward name="reportExcel" path="/jsp/cashbook/party/PartyReport.jsp?reportType=excel" />								
+			
+			
+			</action>
+			
+			<action path="/cashbooktoInvestMapping" 		
+    			name="Party"		
+				parameter="method" 
+				input = "/jsp/cashbook/party/CashbooktoInvestMapping.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.Party" 
+				validate="false">
+				<forward name="mapping" path="/jsp/cashbook/party/CashbooktoInvestMapping.jsp" />
+				
+			</action>
+			
+			<action path="/cashbooktoInvestGroupMap" 		
+    			name="Party"		
+				parameter="method" 
+				input = "/jsp/cashbook/party/CashbooktoInvestGroupMapping.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.Party" 
+				validate="false">
+				<forward name="groupmapping" path="/jsp/cashbook/party/CashbooktoInvestGroupMapping.jsp" />
+				
+			</action>
+			
+			
+	 	<!--End of Party Action -->
+	 	<!-- Schedule Type  Action -->
+    		<action path="/ScheduleTypeSearch" 		
+    			name="Schedule"		
+				parameter="method" 
+				input = "/jsp/cashbook/schedule/ScheduleTypeSearch.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.ScheduleType" 
+				validate="false">
+				<forward name="new" path="/jsp/cashbook/schedule/ScheduleType.jsp" />
+				<forward name="search" path="/ScheduleTypeSearch.do?method=search" redirect="true"/>
+			</action>
+			<action path="/ScheduleType" 		
+    			name="Schedule"		
+				parameter="method" 
+				input = "/jsp/cashbook/schedule/ScheduleType.jsp"
+				scope="request" 
+				type="com.epis.action.cashbook.ScheduleType" 
+				validate="false">
+				<forward name="search" path="/ScheduleTypeSearch.do?method=search" redirect="true"/>	
+			</action>
+	 	<!--End of Schedule Type Action -->
+	 	<!-- Vouchers -->		
+			 <!-- Voucher  Action -->
+	    		<action path="/voucherSearchResult" 		
+	    			name="Voucher"		
+					parameter="method" 
+					input = "/jsp/cashbook/voucher/VoucherSearchResult.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.Voucher" 
+					validate="false">
+					<forward name="paymentNew" path="/jsp/cashbook/voucher/VoucherNew.jsp?voucherType=P" />
+					<forward name="receiptNew" path="/jsp/cashbook/voucher/VoucherNew.jsp?voucherType=R" />
+					<forward name="contraNew" path="/jsp/cashbook/voucher/ContraVoucher.jsp?voucherType=C" />
+					<forward name="search" path="/voucherSearchResult.do?method=search" redirect="true"/>
+				</action>
+				<action path="/voucher" 		
+	    			name="Voucher"		
+					parameter="method" 
+					input = "/jsp/cashbook/voucher/Voucher.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.Voucher" 
+					validate="false">
+					<forward name="search" path="/voucherSearchResult.do?method=search" redirect="true"/>
+					<forward name="unreconcileParam" path="/jsp/cashbook/brs/UnreconcileVoucherParam.jsp"></forward>
+					<forward name="bankreconcileStatement" path="/jsp/cashbook/brs/BankReconcileStatementParam.jsp"/>
+					<forward name="bankreconcileReport" path="/jsp/cashbook/brs/BankReconcileStatementReport.jsp"/>
+					<forward name="unreconcileVouchers" path="/jsp/cashbook/brs/UnreconcileVouchers.jsp" ></forward>
+					</action>
+				<action path="/contraVoucher" 		
+	    			name="Voucher"		
+					parameter="method" 
+					input = "/jsp/cashbook/voucher/ContraVoucher.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.Voucher" 
+					validate="false">
+					<forward name="search" path="/voucherSearchResult.do?method=search" redirect="true"/>
+				</action>
+				<!--Journal Voucher Action -->	
+					<action path="/journalVoucher" 		
+		    			name="journalVoucher"		
+						parameter="method" 
+						input = "/jsp/cashbook/journalVoucher/JVSearch.jsp"
+						scope="request" 
+						type="com.epis.action.cashbook.JournalVoucher" 
+						validate="false">
+						<forward name="search" path="/journalVoucher.do?method=search" redirect="true"/>
+						<forward name="new" path="/jsp/cashbook/journalVoucher/JournalVoucher.jsp" />
+						<forward name="report" path="/jsp/cashbook/journalVoucher/JVReport.jsp" />
+					</action>
+					<action path="/journalVoucherInfo" 		
+		    			name="journalVoucher"		
+						parameter="method" 
+						input = "/jsp/cashbook/journalVoucher/JournalVoucher.jsp"
+						scope="request" 
+						type="com.epis.action.cashbook.JournalVoucher" 
+						validate="false">
+						<forward name="search" path="/journalVoucher.do?method=search" redirect="true"/>
+						<forward name="new" path="/journalVoucher.do?method=fwdtoNew" redirect="true"/>
+					</action>
+					
+					<action path="/journalVoucherApproval" 		
+		    			name="journalVoucher"		
+						parameter="method" 
+						input = "/jsp/cashbook/journalVoucher/JVApprovalSearch.jsp"
+						scope="request" 
+						type="com.epis.action.cashbook.JournalVoucher" 
+						validate="false">
+						<forward name="search" path="/journalVoucherApproval.do?method=approvalSearch" redirect="true"/>
+						<forward name="new" path="/jsp/cashbook/journalVoucher/JVApproval.jsp" />
+						<forward name="report" path="/jsp/cashbook/journalVoucher/JVReport.jsp" />
+					</action>
+				<!--End of Voucher Action -->
+			<!--End of Voucher Action -->
+		<!--End of Vouchers -->
+		<!-- Bank Reconciliation Statement  -->
+				<action path="/Configure" 		
+	    			name="Configure"		
+					parameter="method" 
+					input = "/jsp/cashbook/brs/ConfigureSearch.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.BRStatement" 
+					validate="false">
+					<forward name="search" path="/Configure.do?method=search" />
+					<forward name="configure" path="/jsp/cashbook/brs/Configure.jsp" />
+				</action>
+				<action path="/Import" 		
+	    			name="Configure"		
+					parameter="method" 
+					input = "/jsp/cashbook/brs/ImportStatement.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.BRStatement" 
+					validate="false">
+					<forward name="importStatement" path="/Import.do?method=importStatement" />
+					<forward name="configure" path="/jsp/cashbook/brs/Configure.jsp" />					
+				</action>
+				<action path="/LoadStatements" 		
+	    			name="Configure"		
+					parameter="method" 					
+					scope="request" 
+					type="com.epis.action.cashbook.BRStatement" 
+					validate="false">
+					<forward name="showDetails" path="/jsp/cashbook/brs/BankStatementDetails.jsp" />									
+				</action>
+				
+				<action path="/reconciledReport" 		
+	    			name="Configure"		
+					parameter="method" 
+					input = "/jsp/cashbook/brs/ReconcileReportParam.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.BRStatement" 
+					validate="false">
+					<forward name="showParam" path="/jsp/cashbook/brs/ReconcileReportParam.jsp" />
+					<forward name="showReport" path="/jsp/cashbook/brs/ReconcileReport.jsp" />					
+					<forward name="showExcel" path="/jsp/cashbook/brs/ReconcileReport.jsp?reportType=excel" />					
+				</action>
+				
+				<action path="/unreconciledReport" 		
+	    			name="Configure"		
+					parameter="method" 
+					input = "/jsp/cashbook/brs/UnReconcileReportParam.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.BRStatement" 
+					validate="false">
+					
+					<forward name="showParam" path="/jsp/cashbook/brs/UnReconcileReportParam.jsp" />
+					<forward name="showReport" path="/jsp/cashbook/brs/UnReconcileReport.jsp" />					
+					<forward name="showExcel" path="/jsp/cashbook/brs/UnReconcileReport.jsp?reportType=excel" />					
+				</action>
+				
+				
+				
+				
+				<action path="/unreconciledVoucherReport" 		
+	    			name="Configure"		
+					parameter="method" 
+					input = "/jsp/cashbook/brs/UnReconcileVoucherReportParam.jsp"
+					scope="request" 
+					type="com.epis.action.cashbook.BRStatement" 
+					validate="false">
+					<forward name="showVoucherParam" path="/jsp/cashbook/brs/UnReconcileVoucherReportParam.jsp"/>
+					<forward name="showReport" path="/jsp/cashbook/brs/UnReconcileVoucherReport.jsp" />					
+					<forward name="showExcel" path="/jsp/cashbook/brs/UnReconcileVoucherReport.jsp?reportType=excel" />
+										
+				</action>		
+				
+		<!-- End of Bank Reconciliation Statement  -->
+		<!-- Notifications  -->
+				<action path="/Notifications" 		
+	    			name="Notifications"		
+					parameter="method" 
+					scope="request" 
+					type="com.epis.action.cashbook.Notifications" 
+					validate="false">
+					<forward name="notifications" path="/jsp/cashbook/notifications/Notifications.jsp" />
+					<forward name="paymentVocucher" path="/jsp/cashbook/voucher/Voucher.jsp?type=P" />
+					<forward name="pendingamtemp" path="/jsp/cashbook/notifications/NotificationsPendingReport.jsp"/>
+				</action>
+		<!-- End of Notifications  -->
+		<!-- Funds Transfer  -->
+				<action 
+					attribute="fundsTransfer"
+					path="/FundsTransfer" 		
+	    			name="fundsTransfer"		
+					parameter="method" 
+					scope="request" 
+					input = "/jsp/cashbook/fundTransfer/fundsTransferSearch.jsp"
+					type="com.epis.action.cashbook.FundsTransfer" 
+					validate="false">
+					<forward name="search" path="/FundsTransfer.do?method=search" redirect="true"/>					
+					<forward name="new" path="/jsp/cashbook/fundTransfer/fundsTransfer.jsp" />
+					<forward name="report" path="/jsp/cashbook/fundTransfer/FundsTransferReport.jsp" />				
+			</action>
+				<action 
+				    attribute="fundsTransfer"
+				    path="/FundsApproval" 		
+	    			name="fundsTransfer"		
+					parameter="method" 
+					scope="request" 
+					input = "/jsp/cashbook/fundTransfer/approvalSearch.jsp"
+					type="com.epis.action.cashbook.FundsTransfer" 
+					validate="false">
+					<forward name="search" path="/FundsApproval.do?method=approvalSearch" redirect="true"/>	
+					<forward name="approval" path="/jsp/cashbook/fundTransfer/approval.jsp" />
+					<forward name="report" path="/jsp/cashbook/fundTransfer/FundsTransferReport.jsp" />				
+				</action>
+				
+				<action
+				    attribute="fundsTransfer"
+				    path="/FundsFinApproval" 		
+	    			name="fundsTransfer"		
+					parameter="method" 
+					scope="request" 
+					input = "/jsp/cashbook/fundTransfer/FinalApprovalSearch.jsp"
+					type="com.epis.action.cashbook.FundsTransfer" 
+					validate="false">
+					<forward name="search" path="/FundsFinApproval.do?method=finalApprovalSearch" redirect="true"/>	
+					<forward name="approval" path="/jsp/cashbook/fundTransfer/finalApproval.jsp" />				
+					<forward name="report" path="/jsp/cashbook/fundTransfer/FundsTransferReport.jsp" />				
+				</action>
+				
+		<!-- End of Funds Transfer  -->
+		<!-- Reports -->
+				<action
+				    attribute="report"
+				    path="/reports" 		
+	    			name="report"		
+					parameter="method" 
+					scope="request" 
+					type="com.epis.action.cashbook.Report" 
+					validate="false">					
+					<forward name="dailyStatement" path="/jsp/cashbook/reports/DailyStatement.jsp" />
+					<forward name="dailyStatementSearch" path="/jsp/cashbook/reports/DailyStatementSearch.jsp" />
+					<forward name="ie" path="/jsp/cashbook/reports/IncAndExp.jsp" />
+					<forward name="ieSearch" path="/jsp/cashbook/reports/IncAndExpSearch.jsp" />
+					<forward name="bs" path="/jsp/cashbook/reports/BalanceSheet.jsp" />
+					<forward name="bsSearch" path="/jsp/cashbook/reports/BalanceSheetSearch.jsp" />	
+					<forward name="schReport" path="/jsp/cashbook/reports/ScheduleReport.jsp" />	
+					<forward name="schReportSearch" path="/jsp/cashbook/reports/ScheduleReportSearch.jsp" />
+					<forward name="paymentandreceiptparam" path="/jsp/cashbook/reports/PaymentAndReceiptParam.jsp"/>
+					<forward name="paymentandreceiptreport" path="/jsp/cashbook/reports/PaymentAndReceiptReport.jsp"/>
+					<forward name="rejectedcasesparam" path="/jsp/cashbook/reports/RejectedLoansParam.jsp"/>
+					<forward name="rejectedcasesreport" path="/jsp/cashbook/reports/RejectedLoansReport.jsp"/>
+				</action>
+		<!-- End of Reports -->
+		<!--End of CashBook -->
+	 	<!-- Investment  Report Action -->
+	 	
+    		<action path="/investmentReports" 		
+    			name="InvestmentReports"		
+				parameter="method" 
+				input = "/jsp/investment/InterstReceivedStatementPrm.jsp"
+				scope="request" 
+				type="com.epis.action.investment.InvestmentReportAction" 
+				validate="false">
+				<forward name="interestReceivedPrm" path="/jsp/investment/reports/InterstReceivedStatementPrm.jsp" />
+				<forward name="interstReceiveStatementReport" path="/jsp/investment/reports/InterestReceivedStatementReport.jsp" />
+				<forward name="interstReceiveStatementReportExcel" path="/jsp/investment/reports/InterestReceivedStatementReport.jsp?reportType=excel" />
+				<forward name="investmentregisterprm" path="/jsp/investment/reports/InvestmentRegisterPrm.jsp" />
+				<forward name="investmentgroupregisterprm" path="/jsp/investment/reports/InvestmentGroupRegisterPrm.jsp" />
+				<forward name="investmentregisterreport" path="/jsp/investment/reports/InvestmentRegisterReport.jsp" />
+				<forward name="investmentgroupregisterreport" path="/jsp/investment/reports/InvestmentGroupRegisterReport.jsp" />
+				<forward name="investmentgroupregisterreportExcel" path="/jsp/investment/reports/InvestmentGroupRegisterReport.jsp?reportType=excel" />
+				<forward name="interestReceivedInCashbook" path="/jsp/investment/reports/InvestmentRegisterCashBookReport.jsp" />
+				<forward name="trustinvestmentmadePrm" path="/jsp/investment/reports/TrustInvestmentMadePrm.jsp" />
+				<forward name="trustinvestmentmadeReport" path="/jsp/investment/reports/TrustInvestmentMadeReport.jsp" />
+			    <forward name="investstmtparam" path="/jsp/investment/reports/InvestmentStatementParam.jsp" />
+	      		<forward name="investstmtreport" path="/jsp/investment/reports/InvestmentStatementReport.jsp" />
+	      		<forward name="investstmtreportExcel" path="/jsp/investment/reports/InvestmentStatementReport.jsp?reportType=excel" />
+	      		<forward name="investmadeparam" path="/jsp/investment/reports/InvestmentMadeParam.jsp" />
+	      		<forward name="investmadereport" path="/jsp/investment/reports/InvestmentMadeReport.jsp" />
+	      		<forward name="investmadereportExcel" path="/jsp/investment/reports/InvestmentMadeReport.jsp?reportType=excel" />
+	      		<forward name="investstatisticsparam" path="/jsp/investment/reports/InvestStatisticsPrm.jsp" />
+				<forward name="investstatisticsReport" path="/jsp/investment/reports/InvestStatisticsReport.jsp" />
+				<forward name="amtinvestparam" path="/jsp/investment/reports/AmountInvestedParam.jsp" />
+	      		<forward name="amtinvestreport" path="/jsp/investment/reports/AmountInvestedReport.jsp" />
+	      		<forward name="amtinvestreportExcel" path="/jsp/investment/reports/AmountInvestedReport.jsp?reportType=excel" />
+	      		<forward name="ytminvestmentmadeparam" path="/jsp/investment/reports/TrustYTMInvestMadeParam.jsp" />
+	      		<forward name="ytminvestmentmadereport" path="/jsp/investment/reports/TrustYTMInvestMadeReport.jsp" />
+	      		<forward name="redumptionbondsecuritiresparam" path="/jsp/investment/reports/RedumptionBondSecuritiresParam.jsp" />
+	      		<forward name="redumptionbondsecuritiresreport" path="/jsp/investment/reports/RedumptionBondSecuritiresReport.jsp" />
+	      		<forward name="trusttotalinvestmentparam" path="/jsp/investment/reports/TrustTotalInvestmentParam.jsp" />
+	      		<forward name="trusttotalinvestmentreport" path="/jsp/investment/reports/TrustTotalInvestmentReport.jsp" />
+	      		<forward name="filedetailparam" path="/jsp/investment/reports/FileDetailsParam.jsp" />
+				<forward name="filedetailreport" path="/jsp/investment/reports/FileDetailsreport.jsp" />
+				<forward name="filedetailreportExcel" path="/jsp/investment/reports/FileDetailsreport.jsp?reportType=excel" />
+				<forward name="interestdetailparam" path="/jsp/investment/reports/InterestDetailParam.jsp" />
+				<forward name="interestdetailreport" path="/jsp/investment/reports/InterestDetailReport.jsp" />
+				<forward name="interestdetailreportExcel" path="/jsp/investment/reports/InterestDetailReport.jsp?reportType=excel" />
+			</action>
+			
+	 	<!--End of Investment  Report Action -->
+	 	<!-- Investment Fund accured -->
+	 		<action
+				attribute="fundAccuredForm"
+				path="/fundAccured" 		
+				name="fundAccuredForm"		
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.investment.FundAccured" 
+				input = "/jsp/investment/fundaccured/FundAccuredSearch.jsp"
+				validate="false">					
+				<forward name="new" path="/jsp/investment/fundaccured/FundAccured.jsp" />
+				<forward name="search" path="/fundAccured.do?method=search" redirect="true"/>						
+			</action>
+			<action path="/fundAccuredNew" 		
+    			name="fundAccuredForm"		
+				parameter="method" 
+				input = "/jsp/investment/fundaccured/FundAccured.jsp"
+				scope="request" 
+				type="com.epis.action.investment.FundAccured" 
+				validate="false">
+				<forward name="search" path="/fundAccured.do?method=search" redirect="true"/>
+			</action>
+	 	<!-- End of Investment Fund accured -->
+	 	<!-- Investment Made-->
+	 	
+	 		<action
+				attribute="InvestMadeForm"
+				path="/searchInvestMade" 		
+				name="InvestMadeForm"		
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentMadeAction" 
+				input = "/jsp/investment/investmentmade/InvestmentMadeSearch.jsp"
+				validate="false">					
+				<forward name="showinvestmentMadeSearch" path="/jsp/investment/investmentmade/InvestmentMadeSearch.jsp" />
+				<forward name="showinvestmentMadeNew" path="/jsp/investment/investmentmade/InvestmentMadeNew.jsp"/>
+				<forward name="showinvestmentMadeEdit" path="/jsp/investment/investmentmade/InvestmentMadeEdit.jsp"/>
+				<forward name="investmentMadeSearch" path="/searchInvestMade.do?method=searchinvestMade" redirect="true"/>
+				<forward name="showinvestmentMadeReport" path="/jsp/investment/investmentmade/InvestmentMadeView.jsp"/>						
+			</action>
+			<action
+				attribute="InvestMadeForm"
+				path="/addinvestmentMade" 		
+				name="InvestMadeForm"		
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentMadeAction" 
+				input = "/jsp/investment/investmentmade/InvestmentMadeNew.jsp"
+				validate="false">	
+				<forward name="investmentMadeSearch" path="/searchInvestMade.do?method=searchinvestMade" redirect="true"/>
+			</action>
+			
+			<action
+				attribute="InvestMadeForm"
+				path="/editinvestmentMade" 		
+				name="InvestMadeForm"		
+				parameter="method" 
+				scope="request" 
+				type="com.epis.action.investment.InvestmentMadeAction" 
+				input = "/jsp/investment/investmentmade/InvestmentMadeEdit.jsp"
+				validate="false">	
+				<forward name="investmentMadeSearch" path="/searchInvestMade.do?method=searchinvestMade" redirect="true"/>
+			</action>
+			
+	 			
+	 	<!-- End of Investment Made-->
+ 	  <!-- quarter Type Master-->
+     <action
+      path="/searchQuatertype"
+      attribute="/searchQuatertype"
+      name="quarterMaster"
+      parameter="method"
+      scope="request"
+      type="com.aims.action.quarter.QuarterTypeAction">
+      <forward name="showtypesearch" path="/jsp/quarter/QuarterTypeSearch.jsp"></forward>  
+      <forward name="showtypesearchr" path="/searchQuatertype.do?method=quarterSearchType" redirect="true"/> 
+      </action>
+      <action path="/showquarter" name="quarterMaster" attribute="quarterMaster" parameter="method"  scope="request" type="com.aims.action.quarter.QuarterTypeAction" validate="false">
+       <forward name="showaddquarter" path="/jsp/quarter/QuarterMaster.jsp"/>
+       <forward name="showeditquarter" path="/jsp/quarter/QuarterEdit.jsp" />      
+      </action>
+      
+      <action path="/addquarter" input="/jsp/quarter/QuarterMaster.jsp" name="quarterMaster" parameter="method"  scope="request" type="com.aims.action.quarter.QuarterTypeAction" validate="true">
+       <forward name="showtypesearch" path="/searchQuatertype.do?method=quarterSearchType" redirect="true"/>
+      </action>
+      <action path="/editquarter" input="/jsp/quarter/QuarterEdit.jsp" name="quarterMaster" parameter="method"  scope="session" type="com.aims.action.quarter.QuarterTypeAction" validate="true">
+       <forward name="showquartersearch" path="/searchQuatertype.do?method=quarterSearchType" redirect="true"/>
+      </action>
+     
+     <!-- end of quarter-->
+      <!-- Payroll-->
+         <action
+      path="/paySlip"
+      attribute="payslip"
+      name="payslip"
+      parameter="method"
+      scope="request"
+      type="com.aims.action.payrollprocess.PayrollProcessAction" validate="false">
+      <forward name="showPaySlipParam" path="/jsp/payrollprocess/PaySlipParam.jsp"></forward>  
+      <forward name="viewPaySlip" path="/jsp/payrollprocess/PaySlipView.jsp"></forward> 
+	  <forward name="viewAAIPaySlip" path="/jsp/payrollprocess/AAIPaySlipView.jsp"></forward>
+      <forward name="viewPayAbstract" path="/jsp/payrollprocess/PayAbstractReport.jsp"></forward> 
+      <forward name="viewPayAbstractExcel" path="/jsp/payrollprocess/ExcelPayAbstractReport.jsp"></forward> 
+      <forward name="showPayAbstractParam" path="/jsp/payrollprocess/PayAbstractReportParam.jsp"></forward>
+      <forward name="showPBRReportParam" path="/jsp/payrollprocess/PBRReportParam.jsp"></forward>
+      <forward name="viewPBRReport" path="/jsp/payrollprocess/PBRReport.jsp"></forward> 
+    </action>
+      <!-- Payroll-->
+      <!--  Savings Declaration -->
+	<action path="/showSavingsDeclaration" name="savDeclForm" parameter="method"  scope="request" type="com.aims.action.incometax.SavingsDeclarationAction" validate="false">
+       <forward name="showEditSavingsDeclaration" path="/jsp/incometax/SavingsDeclarationEdit.jsp"/> 
+       <forward name="showAddSavingsDeclaration" path="/jsp/incometax/SavingsDeclarationNew.jsp"/> 
+       <forward name="showSavingsDeclarationSearch" path="/jsp/incometax/SavingsDeclarationSearch.jsp"/>   
+       <forward name="showSavingsDeclarationDetails" path="/jsp/incometax/SavingsDeclarationDetails.jsp"/>        
+       <forward name="ProjectedIncomeTaxParam" path="/jsp/incometax/ProjectedIncomeTaxParam.jsp"/>
+       <forward name="ProjectedIncomeTax" path="/jsp/incometax/ProjectedIncomeTax.jsp"/>
+       <forward name="DetailedPIT" path="/jsp/incometax/DetailedPIT.jsp"/>
+    </action>
+	</action-mappings>
+	<message-resources parameter="com.epis.resource.errorMessages" key="error" null="true" />
+	<message-resources parameter="com.epis.resource.ApplicationResources" key="common" null="false" />
+	<message-resources parameter="com.epis.resource.PayrollProcess" key="payroll" null="false" />
+	
+	 
+</struts-config>
+

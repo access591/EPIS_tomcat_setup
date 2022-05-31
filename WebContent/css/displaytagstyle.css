@@ -1,0 +1,75 @@
+ 
+
+.displaytable {
+	width: 100%;
+	font:12px;	
+	margin: 10px 0 20px 0 !important;
+	border: 1px solid #7F9DC5;
+}
+.displaytabletreven {
+	background-color:#CEEBFF;
+	height:20px;
+}
+.displaytabletreven:hover {
+	background-color:#DEF0FD;
+	height:20px;
+}
+.displaytabletrodd {
+	background-color:#F0FAFF;
+	height:20px;
+}
+.displaytabletrodd:hover {
+	background-color:#DEF0FD;
+	height:20px;
+}
+th.sorted a,th.sortable a {
+	background-color:#85BDEC;
+	height:30px;
+	background-position: right;
+	display: block;
+	width: 100%;
+	text-decoration: none;	
+	
+}
+
+th.sortable a {
+	background-color:#85BDEC;
+	height:30px;
+	background-image: url(../images/displaytag/arrow_off.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    font-size:12px;
+	font-weight:bold;
+	text-indent:2px;
+	color:#003366;
+	text-align: center;
+	 
+}
+
+th.order1 a {
+	background-color:#85BDEC;
+	height:30px;
+	background-image: url(../images/displaytag/arrow_down.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    font-size:12px;
+	font-weight:bold;
+	text-indent:2px;
+	color:#003366;
+	text-align: center;
+	
+}
+
+th.order2 a {
+	background-color:#85BDEC;
+	height:30px;
+	background-image: url(../images/displaytag/arrow_up.png);
+    background-repeat: no-repeat;
+    text-decoration: none;
+    font-size:12px;
+	font-weight:bold;
+	text-indent:2px;
+	color:#003366;
+	text-align: center;
+	
+}

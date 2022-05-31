@@ -1,0 +1,1207 @@
+-- Trust Type Initial Data
+delete from INVEST_TRUSTTYPE;
+insert into INVEST_TRUSTTYPE (TRUSTCD, TRUSTTYPE, DESCRIPTION, CREATED_BY, CREATED_DT) values ('02', 'NAA ECPF', 'NAA ECPF', '2', sysdate);
+insert into INVEST_TRUSTTYPE (TRUSTCD, TRUSTTYPE, DESCRIPTION, CREATED_BY, CREATED_DT) values ('01', 'IAAI ECPF', 'IAAI ECPF', '2', sysdate);
+insert into INVEST_TRUSTTYPE (TRUSTCD, TRUSTTYPE, DESCRIPTION, CREATED_BY, CREATED_DT) values ('03', 'AAI EPF', 'AAI EPF', '2', sysdate);
+alter table invest_trusttype add  unique (TRUSTTYPE);
+
+-- Accounting Code Type
+
+create table CB_AccountCodeType_INFO (
+	code char(5) primary key,
+	accountcodetype varchar2(50) unique not null,
+	description varchar2(150),
+	enteredby varchar2(10),
+	entereddt date default sysdate,
+	editedby varchar2(10),
+	editedDt date default sysdate,
+	UNITCODE VARCHAR2(10)
+);
+
+
+ --ACCOUNT CODE TYPE INITIAL DATA
+
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT, UNITCODE) values ('00003', 'Income', 'Income', '2', sysdate, 'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00002', 'Liability', 'Liability', '2',sysdate, 'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00001', 'Asset', 'Asset', '2', sysdate,  'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00004', 'Expenditure', 'Expenditure', '2', sysdate,  'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00005', 'Inter Unit', 'Inter Unit', '2', sysdate, 'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00006', 'Current Liability', 'Current Liability', '2', sysdate,  'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00007', 'Inter Trust', 'Inter Trust', '2', sysdate,  'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00008', 'Inter unit Remittance A/c', 'Inter unit Remittance A/c', '2', sysdate, 'OPOFFICE');
+insert into CB_AccountCodeType_INFO (CODE, ACCOUNTCODETYPE, DESCRIPTION, ENTEREDBY, ENTEREDDT,  UNITCODE) values ('00009', 'Current Asset', 'Current Asset', '2', sysdate, 'OPOFFICE');
+
+-- Account Code Info
+
+-- Create table
+create table CB_ACCOUNTCODE_INFO
+(
+  ACCOUNTHEAD VARCHAR2(10) not null,
+  PARTICULAR  VARCHAR2(100),
+  TYPE        CHAR(5),
+  ENTEREDBY   VARCHAR2(20),
+  ENTEREDDT   DATE default SYSDATE,
+  OPENDATE    DATE,
+  editedby varchar2(10),
+  editedDt date default sysdate,
+  UNITCODE VARCHAR2(10)
+);
+
+alter table CB_ACCOUNTCODE_INFO add constraint accounthead_pk primary key (ACCOUNTHEAD) ;
+alter table CB_ACCOUNTCODE_INFO  ADD CONSTRAINT accinfo_type_fk FOREIGN KEY (TYPE) REFERENCES CB_AccountCodeType_INFO(CODE);
+
+-- Account Code Initial Data
+
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('100.00','Interest income','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('101.00','Interest on GOI Investment','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('102.00','Interest on SDL/SGB','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('103.00','Interest on PSU Bonds','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('104.00','Interest on Private Bonds','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('105.00','Int. on Spl. Deposit Scheme','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('106.00','Incentive on Investment','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('107.00','Interest on saving a/c','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('108.00','Interest on TDS received','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('109.00','Misc income','00003','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('201.00','Prior period adjustment ','00004','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('201.01','Prior Period Adjust Emp Subscription ','00004','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('201.02','Prior period Adjust AAI Contribution','00004','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('202.00','Bank Charges','00004','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('203.00','Interest Expenditure A/c','00004','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('204.00','Investment Premium Write off','00004','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('313.00','Tfr. from other Org. (EPF)','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('313.01','Tfr. from other Org. (VPF)','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('313.02','Tfr. from other Org.(Princ. Recov./Intt. Recov./Emploer Contbn./Pension Conbn.)','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('314.00','Employees Subscription Opening Balance','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('314.01','Employer Contribution Opening Balance','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('315.00','Employees subscription (Statutory)','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('315.01','Employees subscription Addl/VPF','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('316.00','AAI Contribution PF (Net)','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('316.01','AAI Contribution to EPS1995','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('317.00','AAI Contribution to Family Pension','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('318.00','CPF Advance Recovery','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('318.01','Int. on CPF Adv Recovery','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('319.00','Interest credited on Emp Subscription','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('321.00','Interest credited on AAI Contribution','00006','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('401.00','Employees subscription Balance','00002','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('402.00','AAI Contribution Balance','00002','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('403.00','Provision for doubt debt (Interest)','00002','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('403.01','Provison for Doubtful debt(investment)','00002','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('444.00','Reserve & Surplus','00002','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('510.00','AAI EPF TRUST','00007','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('510.01','IAAI-ECPF','00007','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('510.02','NAA-ECPF','00007','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('520.00','Inter Unit Main A/c','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('521.01','AAI- CHQ-IAD (office complex)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('521.02','AAI_CHQ-NAD','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('522.00','AAI-Amritsar project','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('523.00','AAI-Chennai Airport','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('524.00','AAI-Chennai Project','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('525.00','AAI-Kolkata Airport','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('526.00','AAI-Kolkata Project','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('527.00','AAI-CSI Airport COORDINATION Cell','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('528.00','AAI-Delhi Coordination Cell','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('528.01','AAI-IGI Cargo','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('528.02','AAI-IGI Airport','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('529.00','AAI-Surat project','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.00','AAI-Northern Region','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.01','AAI-Amritsar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.04','AAI-Safdarjung','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.05','AAI-Dehradun(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.06','AAI-Jaipur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.08','AAI-Kanpur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.09','AAI-Khajuraho','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.10','AAI-Kota(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.11','AAI-Kullu-Manali','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.13','AAI-Lucknow','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.14','AAI-Ludhiana','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.16','AAI-PantNagar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.18','AAI-Shimla','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.20','AAI-Udaipur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.21','AAI-Varanasi','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.40','AAI-Agra','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.41','AAI-Allahabad(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.42','AAI-Bikaner(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.43','AAI-Chandigarh','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.44','AAI-Gorakhpur(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.45','AAI-Gwalior','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.46','AAI-Jaisalmer(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.47','AAI-Jammu','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.48','AAI-Jodhpur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.50','AAI-Leh','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.51','AAI-Srinagar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.55','AAI-Jaisalmer project','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.60','AAI-RHQ Delhi','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.63','AAI-HISSAR','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.71','AAI-Sikandrabad(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.72','AAI-Dadri','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.74','AAI-Farukabad(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.75','AAI-Partapgarh','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.76','AAI-NUH','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.77','AAI-Aligarh(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.79','AAI-Reengus(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.83','AAI-Gaggal','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.85','AAI-Pathankot','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('531.86','AAI-Kargil','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.00','AAI-Eastern Region','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.02','AAI-Balurghat(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.04','AAI-Behala','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.08','AAI-Bhubaneswar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.10','AAI-RHQ kolkata','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.14','AAI-Gaya','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.16','AAI-Jamshedpur(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.18','AAI-Jarsuguda(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.20','AAI-Katihar(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.22','AAI-Kishanganj(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.24','AAI-Malda(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.26','AAI-Patna','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.28','AAI-Port Bliar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.30','AAI-Ranchi','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.32','AAI-Raipur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.92','AAI-Cooch Behar(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.97','AAI-Berhampur(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('532.99','AAI-Tarakeshwar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.00','AAI-Southern Region','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.01','AAI-Calicut','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.02','AAI-Coimbatore','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.03','AAI-Cuddapah(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.04','AAI-Donakonda(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.05','AAI - Hassan','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.06','AAI-Hubli(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.07','AAI-Hyderabad','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.08','AAI-Madurai','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.09','AAI-Mangalore','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.10','AAI - Mysore','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.12','AAI-Rajahmundry','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.14','AAI-Tirupati','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.15','AAI-Trichy','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.16','AAI-Trivendram','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.17','AAI-Vellore(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.18','AAI-Vijayawada','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.19','AAI-Agatti','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.20','AAI-Warangal(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.21','AAI-Gulbarga(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.22','AAI-Kancheepuram(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.23','AAI-Pondicherry(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.24','AAI-Vikarabad(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.25','AAI-Khammam(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.26','AAI - Ooty','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.28','AAI-Tuticorin','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.29','AAI-Salem(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.39','AAI- Bangalore Project','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.40','AAI-Bangalore','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.41','AAI-Cochin','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.43','AAI-Visakhapatnam','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.60','AAI-Bellary(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.61','AAI-RHQ Chennai','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('533.62','AAI-Vidyanagar(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.00','AAI-Western Region','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.01','AAI-Akola(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.02','AAI-Ahmedabad','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.03','AAI-Aurangabad','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.04','AAI-Belgam','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.05','AAI-Bhavnagar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.07','AAI-Juhu(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.08','AAI-Indore','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.09','AAI-Jabalpur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.10','AAI-Kandla(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.11','AAI-Keshod(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.13','AAI-Kolhapur(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.14','AAI-Nagpur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.15','AAI-Porbandar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.16','AAI-Raipur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.17','AAI-Rajkot','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.18','AAI-Sholapur(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.19','AAI-Vadodara','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.20','AAI-Bhopal','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.24','AAI-Songadh(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.40','AAI-Bhuj','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.41','AAI-Goa','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.42','AAI-Jamnagar(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.43','AAI-Pune','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.44','AAI-Ratnagiri','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.45','AAI-Nanded(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.46','AAI-Surat','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.48','AAI-Deesa','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.49','AAI-Gondia','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.50','AAI-Diu','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('534.60','AAI-RHQ Mumbai','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.00','AAI- North Eastern Region','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.02','AAI- Agartala','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.04','AAI-Bagdogra','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.06','AAI-Barapani','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.08','AAI-Coochbehar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.10','AAI-Dimapur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.11','AAI-GHY-Airport','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.12','AAI- RHQ Guwahati','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.14','AAI-Imphal','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.16','AAI-Jorhat','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.18','AAI-Lilabari(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.20','AAI-Dibrugarh','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.22','AAI-Passighat','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.24','AAI-Silchar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.26','AAI-Tezu(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.30','AAI-Aizawl(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.34','AAI-Tezpur(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.36','AAI-Passighat','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.38','AAI-Kamalpur','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.40','AAI-Khowai','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.42','AAI-Lengpui(Pending)','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.44','AAI-Tura','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.46','AAI-Pakyong','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.48','AAI-Itanagar','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('535.50','AAI-Kohima','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('536.00','AAI-RAUSAP','00005','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('550.00','Remittance Inter Unit Main A/c','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('551.00','Remittance From AAI_CHQ','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('552.00','Remittance to AAI-Amritsar project','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('553.00','Remittance to AAI-Chennai Airport','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('554.00','Remittance to AAI-Chennai Project','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('555.00','Remittance to AAI-Kolkata Airport','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('556.00','Remittance to AAI-Kolkata Project','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('557.00','Remittance to AAI-CSI Airport COORDINATION Cell','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('558.00','Remittance to AAI-Delhi Coordination Cell','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('559.00','Remittance to AAI-Surat project','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('561.00','Remittance to AAI-Northern Region','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('562.00','Remittance toAAI-Eastern Region','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('563.00','Remittance to AAI-Southern Region','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('564.00','Remittance to AAI-Western Region','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('565.00','Remittance to AAI-North Eastern Region','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('566.00','Remittance to AAI RAUSAP','00008','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('651.00','Investment GOI Securities','00001','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('652.00','Investment SDL/Bonds','00001','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('653.00','Investment PSU Bonds','00001','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('654.00','Investment Private Bonds','00001','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('655.00','Invest. Spl.Deposit Scheme','00001','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('656.00','Investment Premium','00001','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('660.00','Due from AAI','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('662.00','Balance with canara bank','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('663.00','Balance with HDFC bank','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('664.00','Balance with Syndicate Bank','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('665.00','Remittances in Transit','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('666.00','Contra entry','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('667.01','Interest accrued but not due','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('667.02','Interest due but not received ','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('667.03','Incentive due but not received','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('668.00','TDS Deducted at source','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('668.01','TDS refund received','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('672.03','CPF Advance(Marriage/obligatory/Higher edu)','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('672.04','CPF PFW Employees subscription','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('672.05','CPF PFW AAI Contribution','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('672.06','CPF Final Settlement Employees subscription','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('672.07','CPF Final Settlement AAI contribution','00009','2','OPOFFICE');
+insert into cb_accountcode_info (ACCOUNTHEAD,PARTICULAR,TYPE,ENTEREDBY,UNITCODE) values('673.00','Pension contribution Deposited with RPFC','00009','2','OPOFFICE');
+
+
+-- Account Code Details
+create table CB_ACCOUNTCODE_DETAILS
+(
+  ACCOUNTHEAD VARCHAR2(10),
+  TRUSTTYPE   varchar2(20),
+  AMOUNT      NUMBER(15,2),
+  AMOUNTTYPE  CHAR(2),
+  ENTEREDBY   VARCHAR2(20),
+  ENTEREDDT   DATE default SYSDATE,
+  UNITCODE VARCHAR2(10)
+);
+
+alter table CB_ACCOUNTCODE_DETAILS add constraint FK_ACCOUNTCODE foreign key (ACCOUNTHEAD) references CB_ACCOUNTCODE_INFO (ACCOUNTHEAD);
+alter table CB_ACCOUNTCODE_DETAILS  ADD CONSTRAINT TRUSTTYPE_fk FOREIGN KEY (TRUSTTYPE) REFERENCES invest_trusttype (TRUSTTYPE);
+
+-- Accounting Code Initial Data
+insert into cb_accountcode_details (ACCOUNTHEAD,TRUSTTYPE,AMOUNT,AMOUNTTYPE,ENTEREDBY,ENTEREDDT,UNITCODE) select ACCOUNTHEAD,'AAI EPF',0,'DR',2,sysdate,'OPOFFICE' from cb_accountcode_info where ACCOUNTHEAD not in (select ACCOUNTHEAD from cb_accountcode_details where TRUSTTYPE = 'AAI EPF');
+ 
+insert into cb_accountcode_details (ACCOUNTHEAD,TRUSTTYPE,AMOUNT,AMOUNTTYPE,ENTEREDBY,ENTEREDDT,UNITCODE) select ACCOUNTHEAD,'NAA ECPF',0,'DR',2,sysdate,'OPOFFICE' from cb_accountcode_info where ACCOUNTHEAD not in (select ACCOUNTHEAD from cb_accountcode_details where TRUSTTYPE = 'NAA ECPF');
+ 
+insert into cb_accountcode_details (ACCOUNTHEAD,TRUSTTYPE,AMOUNT,AMOUNTTYPE,ENTEREDBY,ENTEREDDT,UNITCODE) select ACCOUNTHEAD,'IAAI ECPF',0,'DR',2,sysdate,'OPOFFICE' from cb_accountcode_info where ACCOUNTHEAD not in (select ACCOUNTHEAD from cb_accountcode_details where TRUSTTYPE = 'IAAI ECPF');
+
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='100.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='101.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='102.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='103.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='105.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='106.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='107.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='109.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='205.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='206.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='313.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='313.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='315.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='315.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='316.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='316.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='318.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='318.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='510.02';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='523.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='524.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='525.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='526.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='527.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='528.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='528.02';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='533.16';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='651.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='652.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='653.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='660.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='662.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='663.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='667.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.03';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.04';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.05';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.06';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.07';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='673.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='101.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='102.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='103.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='105.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='106.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='107.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='109.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='202.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='205.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='206.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='313.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='313.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='315.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='316.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='316.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='317.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='318.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='318.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='510.02';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='651.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='652.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='653.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='660.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='664.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='667.01';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.03';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.04';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.05';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.06';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='672.07';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='673.00';
+update cb_accountcode_info set OPENDATE='01/APR/2010' where ACCOUNTHEAD ='318.00';
+
+
+update cb_accountcode_details set AMOUNT='25468',AMOUNTTYPE='CR' where ACCOUNTHEAD='100.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='146917431.56',AMOUNTTYPE='CR' where ACCOUNTHEAD='101.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='95269415.67',AMOUNTTYPE='CR' where ACCOUNTHEAD='102.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='174010237.88',AMOUNTTYPE='CR' where ACCOUNTHEAD='103.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='95977723',AMOUNTTYPE='CR' where ACCOUNTHEAD='105.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='90000',AMOUNTTYPE='CR' where ACCOUNTHEAD='106.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='2664794.28',AMOUNTTYPE='CR' where ACCOUNTHEAD='107.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='303781',AMOUNTTYPE='CR' where ACCOUNTHEAD='109.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='361698.79',AMOUNTTYPE='DR' where ACCOUNTHEAD='205.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='370744',AMOUNTTYPE='DR' where ACCOUNTHEAD='206.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='203294',AMOUNTTYPE='CR' where ACCOUNTHEAD='313.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='177470',AMOUNTTYPE='CR' where ACCOUNTHEAD='313.01' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='343824',AMOUNTTYPE='CR' where ACCOUNTHEAD='315.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='212682',AMOUNTTYPE='CR' where ACCOUNTHEAD='315.01' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='321822',AMOUNTTYPE='CR' where ACCOUNTHEAD='316.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='16422223',AMOUNTTYPE='CR' where ACCOUNTHEAD='316.01' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='514825',AMOUNTTYPE='CR' where ACCOUNTHEAD='318.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='156826',AMOUNTTYPE='CR' where ACCOUNTHEAD='318.01' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='3071500',AMOUNTTYPE='CR' where ACCOUNTHEAD='510.02' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='2508548.5',AMOUNTTYPE='DR' where ACCOUNTHEAD='523.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='12224.9',AMOUNTTYPE='CR' where ACCOUNTHEAD='524.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='813622',AMOUNTTYPE='DR' where ACCOUNTHEAD='525.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='211753',AMOUNTTYPE='DR' where ACCOUNTHEAD='526.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='5104056',AMOUNTTYPE='DR' where ACCOUNTHEAD='527.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='109312',AMOUNTTYPE='CR' where ACCOUNTHEAD='528.01' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='3000000',AMOUNTTYPE='DR' where ACCOUNTHEAD='528.02' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='489617',AMOUNTTYPE='CR' where ACCOUNTHEAD='533.16' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='210000000',AMOUNTTYPE='DR' where ACCOUNTHEAD='651.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='63630000',AMOUNTTYPE='DR' where ACCOUNTHEAD='652.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='85183454.21',AMOUNTTYPE='DR' where ACCOUNTHEAD='653.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='118575215',AMOUNTTYPE='CR' where ACCOUNTHEAD='660.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='37804763.59',AMOUNTTYPE='DR' where ACCOUNTHEAD='662.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='9897658.35',AMOUNTTYPE='DR' where ACCOUNTHEAD='663.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='6539194',AMOUNTTYPE='CR' where ACCOUNTHEAD='667.01' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='7917840',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.03' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='20863000',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.04' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='910000',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.05' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='62402616',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.06' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='39197515',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.07' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='143055984',AMOUNTTYPE='DR' where ACCOUNTHEAD='673.00' and TRUSTTYPE='IAAI ECPF';
+update cb_accountcode_details set AMOUNT='295258368.22',AMOUNTTYPE='CR' where ACCOUNTHEAD='101.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='70555339.11',AMOUNTTYPE='CR' where ACCOUNTHEAD='102.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='197024604.48',AMOUNTTYPE='CR' where ACCOUNTHEAD='103.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='72914919',AMOUNTTYPE='CR' where ACCOUNTHEAD='105.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='45000',AMOUNTTYPE='CR' where ACCOUNTHEAD='106.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='11211705.96',AMOUNTTYPE='CR' where ACCOUNTHEAD='107.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='491836',AMOUNTTYPE='CR' where ACCOUNTHEAD='109.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='1387',AMOUNTTYPE='CR' where ACCOUNTHEAD='202.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='1016114.81',AMOUNTTYPE='DR' where ACCOUNTHEAD='205.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='1794436',AMOUNTTYPE='DR' where ACCOUNTHEAD='206.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='51781',AMOUNTTYPE='CR' where ACCOUNTHEAD='313.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='47924',AMOUNTTYPE='CR' where ACCOUNTHEAD='313.01' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='50590',AMOUNTTYPE='CR' where ACCOUNTHEAD='315.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='42531',AMOUNTTYPE='CR' where ACCOUNTHEAD='316.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='5335938',AMOUNTTYPE='CR' where ACCOUNTHEAD='316.01' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='145930',AMOUNTTYPE='DR' where ACCOUNTHEAD='317.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='429663',AMOUNTTYPE='CR' where ACCOUNTHEAD='318.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='79642',AMOUNTTYPE='CR' where ACCOUNTHEAD='318.01' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='6955000',AMOUNTTYPE='CR' where ACCOUNTHEAD='510.02' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='450000000',AMOUNTTYPE='DR' where ACCOUNTHEAD='651.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='326780000',AMOUNTTYPE='DR' where ACCOUNTHEAD='652.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='240000000',AMOUNTTYPE='DR' where ACCOUNTHEAD='653.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='931639743',AMOUNTTYPE='CR' where ACCOUNTHEAD='660.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='71656394.52',AMOUNTTYPE='DR' where ACCOUNTHEAD='664.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='6702036',AMOUNTTYPE='CR' where ACCOUNTHEAD='667.01' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='6814140',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.03' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='13257641',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.04' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='1147000',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.05' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='12079009',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.06' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='12891961',AMOUNTTYPE='DR' where ACCOUNTHEAD='672.07' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='473503664',AMOUNTTYPE='DR' where ACCOUNTHEAD='673.00' and TRUSTTYPE='NAA ECPF';
+update cb_accountcode_details set AMOUNT='17960',AMOUNTTYPE='CR' where ACCOUNTHEAD='318.00' and TRUSTTYPE='NAA ECPF';
+
+
+---Bank Info
+create table CB_BANK_INFO
+(
+  BANKNAME      VARCHAR2(50),
+  BRANCHNAME    VARCHAR2(50),
+  BANKCODE      VARCHAR2(10),
+  ADDRESS       VARCHAR2(150),
+  PHONENO       VARCHAR2(15),
+  FAXNO         VARCHAR2(15),
+  ACCOUNTCODE   VARCHAR2(20),
+  ACCOUNTNO     VARCHAR2(20) not null,
+  ACCOUNTTYPE   CHAR(1),
+  IFSCCODE      VARCHAR2(11),
+  NEFT_RTGSCODE VARCHAR2(20),
+  MICRNO        VARCHAR2(9),
+  CONTACTPERSON VARCHAR2(50),
+  MOBILENO      VARCHAR2(10),
+  ENTEREDBY     VARCHAR2(20),
+  ENTEREDDT     DATE default SYSDATE,
+  TRUSTTYPE      VARCHAR2(20),
+  UNITNAME      VARCHAR2(20),
+  REGION        VARCHAR2(50),
+  editedby varchar2(10),
+  editedDt date default sysdate,
+  UNITCODE VARCHAR2(10)
+);
+
+alter table CB_BANK_INFO add CONSTRAINT pk_accountno primary key (ACCOUNTNO) ;
+alter table CB_BANK_INFO add CONSTRAINT unique_IFSCCODE unique (IFSCCODE) ;
+alter table CB_BANK_INFO add constraint FK_BANK_ACC_ACTNO foreign key (ACCOUNTCODE) references CB_ACCOUNTCODE_INFO (ACCOUNTHEAD);
+alter table CB_BANK_INFO  ADD CONSTRAINT TRUST_bank_fk FOREIGN KEY (TRUSTTYPE) REFERENCES invest_trusttype (TRUSTTYPE);
+
+--Bank Initial Data 
+
+insert into cb_bank_info (BANKNAME,branchname,bankcode,address,PHONENO,faxno,accountcode,accountno,accounttype,ifsccode,neft_rtgscode,MICRNO,contactperson,MOBILENO,enteredby,TRUSTTYPE,unitname,region,unitcode) select BANKNAME,BRANCHNAME,BANKCODE,ADDRESS,PHONENO,FAXNO,'663.00',ACCOUNTNO,ACCOUNTTYPE,IFSCCODE,NEFT_RTGSCODE,MICRNO,CONTACTPERSON,MOBILENO,'2','IAAI ECPF',UNITNAME,REGION,'OPOFFICE' from bank_info  where ACCOUNTNO='00031110001734';
+insert into cb_bank_info (BANKNAME,branchname,bankcode,address,PHONENO,faxno,accountcode,accountno,accounttype,ifsccode,neft_rtgscode,MICRNO,contactperson,MOBILENO,enteredby,TRUSTTYPE,unitname,region,unitcode) select BANKNAME,BRANCHNAME,BANKCODE,ADDRESS,PHONENO,FAXNO,'664.00',ACCOUNTNO,ACCOUNTTYPE,IFSCCODE,NEFT_RTGSCODE,MICRNO,CONTACTPERSON,MOBILENO,'2','NAA ECPF',UNITNAME,REGION,'OPOFFICE' from bank_info  where ACCOUNTNO='91102170000011';
+insert into cb_bank_info (BANKNAME,branchname,bankcode,address,PHONENO,faxno,accountcode,accountno,accounttype,ifsccode,neft_rtgscode,MICRNO,contactperson,MOBILENO,enteredby,TRUSTTYPE,unitname,region,unitcode) select BANKNAME,BRANCHNAME,BANKCODE,ADDRESS,PHONENO,FAXNO,'662.00',ACCOUNTNO,ACCOUNTTYPE,IFSCCODE,NEFT_RTGSCODE,MICRNO,CONTACTPERSON,MOBILENO,'2','IAAI ECPF',UNITNAME,REGION,'OPOFFICE' from bank_info  where ACCOUNTNO='2009101050502';
+
+-- Bank Opening Balance 
+
+create table CB_BANKOPENINGBAL_INFO
+(
+  ACCOUNTNO  VARCHAR2(20) not null,
+  OPENEDDATE DATE,
+  AMOUNT     NUMBER(15,4),
+  DETAILS    VARCHAR2(150),
+  ENTEREDBY  VARCHAR2(20),
+  ENTEREDDT  DATE default SYSDATE,
+  AMOUNTTYPE CHAR(2) default 'DR',
+  editedby varchar2(10),
+  editedDt date default sysdate,
+  UNITCODE VARCHAR2(10)
+);
+
+alter table CB_BANKOPENINGBAL_INFO add constraint pk_open_accountno primary key (ACCOUNTNO);
+alter table CB_BANKOPENINGBAL_INFO add constraint FK_OPENINGBAL_ACTNO foreign key (ACCOUNTNO) references CB_BANK_INFO (ACCOUNTNO);
+
+-- Party Info 
+create table CB_PARTY_INFO
+(
+  PARTYNAME   VARCHAR2(50) not null,
+  PARTYDETAIL VARCHAR2(150),
+  FAXNO       VARCHAR2(15),
+  EMAIL       VARCHAR2(150),
+  MOBILENO    VARCHAR2(10),
+  ENTEREDBY   VARCHAR2(20),
+  ENTEREDDT   DATE default SYSDATE,
+  CONTACTNO   VARCHAR2(15),
+  PARTYCODE   VARCHAR2(10) not null,
+  editedby varchar2(10),
+  editedDt date default sysdate,
+  UNITCODE VARCHAR2(10)
+);
+alter table CB_PARTY_INFO add primary key (PARTYNAME);
+
+-- Party Initial Data
+
+insert into cb_party_info (partyname,partydetail,faxno,email,mobileno,enteredby,contactno,partycode,unitcode) select partyname,partydetail,faxno,email,mobileno,'2',contactno,partycode,'OPOFFICE' from party_info ;
+
+delete from cb_party_bank_details where partycode  in ( select partycode from cb_party_info where partyname not in (select EMP_PARTY_CODE from cb_voucher_info where partytype='P'));
+delete from cb_party_info where partyname not in (select EMP_PARTY_CODE from cb_voucher_info where partytype='P');
+
+alter table cb_party_info modify PARTYNAME VARCHAR2(75);
+
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('06.85% GOI 2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.30%  REC BONDS 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.30%  REC BONDS 2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.36%  MAHA SDL 2014','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.50%  GOI 2010','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.50% IDBI RRB  2012 FV 10 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.50% IDBI RRB  2012 FV 3.5 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.53% JK SDL 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.53% UP SDL 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.60% PFC, SR.- XXV','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.70% IDBI RRB  2016','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.93%  WB SDL 2016','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('07.95% PFC, SR.- XXVI','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('08.00%  GOI 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('08.00% IOB , SR.- X','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('08.03% FCI Bonds 2024','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('08.45%  PNB , SR.- XI','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('09.39% GOI 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('09.5% Vijaya Bank 2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('09.90% HPFC - SLR  2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10% NABARD,2012 Sr.IXA','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10%NEELACHAL ISPAT(KMCL  2002)','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10%Power Finance Company-2012 (Option B)','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.15% NEELACHAL ISPAT(KMCL LTD)','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.18%GOVT OF INDIA 2026   04.07.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.18%GOVT OF INDIA 2026  07.06.02','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.18%GOVT OF INDIA 2026 26.03.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.25% GOI 2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.25%GOVT OF INDIA 2021 ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.3%Industrial Investment Bank of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.5%Industrial Investment Bank of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.50% JKFC - SLR , 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.52% HPFC - SLR  2010','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.7%GOVT OF INDIA 2020   27.03.02','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.7%GOVT OF INDIA 2020  05.02.02','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.75% REC Bonds','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.75%Industrial Credit & Investment Corp. of India Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.75%Power finance Corporation ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.79% PNB Housing Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.79%Pnb Housing-Series viii','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.82% HPFC - SLR 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('10.95% GOI 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11% Industrial Development Bank of India-Bond 98F','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11%Industrial Credit & Investment Corp. of India Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.00% MPSRTC, 2009','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.03% GOI 2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.1%Jammu & Kashmir State Power Develop. Corporation 11.02.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.1%Jammu & Kashmir State Power Develop. Corporation 12.03.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.1%Jammu & Kashmir State Power Develop. Corporation 17.01.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.15% Indian Oil Bonds','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.15% IOC bonds 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.25%Gujrat Urja Vikas Nigam Ltd(Gujrat Elect. Board)','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.29%Jammu & Kashmir State Power Develop. Corporation','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.30% GOI 2010  27.01.2009','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.30%  GOI 2010 FV  5  Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.30% GOI 2010 FV  15  Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.43% GOI 2015 FV 10 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.43% GOI 2015 FV 5 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.43%GOVT OF INDIA 2015  ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.5%Gujrat Electricity Board','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.50%  GOI 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.50% GOI 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.50% HPFC SLR  2010','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.50% JKFC - SLR , 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.50% JKSFC - SLR , 2011','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.6%GOVT OF INDIA 2020   03.05.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.6%GOVT OF INDIA 2020   26.11.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('11.72%Maharastra State Road Development Corp.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.25%  GOI 2010 FV 18 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.25%  GOI 2010 FV 6 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.25% GOVT OF INDIA 2010   17.07.98','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.25%Industrial Investment Bank of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.32%  GOI 2011 FV 10 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.32% GOI 2011 FV 3.85 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.32% GOI 2011 FV 4.5 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.4%GOVT OF INDIA 2013   06.09.00','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.4%GOVT OF INDIA 2013   18.08.99','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.4%GOVT OF INDIA 2013  08.04.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.4%GOVT OF INDIA 2013  22.07.99','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Andra Pradesh Power finance Corp. Ltd. 08.06.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Andra Pradesh Power finance Corp. Ltd. 15.10.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Godavari Marathwara Irrigation Dev.Corp. 07.09.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Godavari Marathwara Irrigation Dev.Corp. 15.10.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Konkan Irrigation Development Corp.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Maharashtra State Road Development Corp.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Maharastra Vikrikar Rokha Pradhikaran.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Tapi Irrigation Development Corporation','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.5%Vidarbha Irrigation Development Corp.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.6%GOVT OF INDIA 2018   07.01.00','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.6%GOVT OF INDIA 2018   07.03.00','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.6%GOVT OF INDIA 2018  07.06.00','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('12.8%Andra Pradesh Power finance Corp. Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('13%Pradeshiya Industrial and Investment Corp. of UP Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('13.5%Andra Pradesh Power finance Corp. Ltd. 07.12.00','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('13.5%Andra Pradesh Power finance Corp. Ltd. 08.02.01','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('13.5%Maharashtra Krishna Velly Development Corp.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('13.5%Maharastra state electricity Board','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('13.85%Andhra Pradesh - Transco-Bond','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('14%Maharashtra Jeevan Pradhikaran-Bond','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('14.5%14.50%  Gujrat State Energy Genration Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('5.85%  UP SDL 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('5.85%Govt of Karnataka State Loan-2015            ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.01%GOVT OF INDIA 2028','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.13%GOVT OF INDIA 2026  ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.15%National Textile Corp. Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.2%Govt of Maharastra State Loan-2015          ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.20%  ASSAM SDL 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.20%  BIHAR SDL 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.7%Karnatak Neeravari Nigam Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('6.85%Krishna Bhagya Jala Nigam Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.09%Konkan Railway Finance Corp. Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.25% Industrial Development Bank of India-Bond ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.27%Food Corporation of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.32%AP State Loan 2014','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.35%Kerela State Financial Corporation','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.36%UP State Loan 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.4%GOVT OF INDIA 2035','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.4%Indian Overseas Bank','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.4%Syndicate Bank Bond  2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.45% Industrial Development Bank of India-Omni bond','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.5%Bank of India 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.5%GOVT OF INDIA 2034   03.02.05','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.5%GOVT OF INDIA 2034   04.03.05','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.5%GOVT OF INDIA 2034  23.02.05','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.5%GOVT OF INDIA 2034  28.04.05','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.5%ICICI BANK BONDS','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.53%Govt of UP State Loan 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.58%Food Carporation of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.59%  GOI 2016 FV 25 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.59%GOVT OF INDIA 2016  07.07.06','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.65%  REC BONDS 2016','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.65%Rural Electrification Corporation Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.7%Andra Pradesh Power finance Corp. Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.7%Punjab State infrastructure Development Corp.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.77%Kerla State Loan-2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.77%Rajisthan State Loan 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.77%TN State Loan 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.77%UP State Loan 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.8%Housing Urban Dev. Corporation of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2015   10.01.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2015  10.11.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2015  22.11.02','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2032   28.10.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2032  22.07.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2032  28.10.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%GOVT OF INDIA 2032 23.12.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('7.95%Jammu & Kashmir  SDL-2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8%Gujrat Electricty Board','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8%Himachal Pradesh State Forest Corp. Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8%Kerla State Loan-2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8%Oil Marketing Bond 2026','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8%SPECIAL  DEPOSIT   SCHEME','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.00% Oil Marketing GOI Special Bonds 2026','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.01%OIL SPL - 2023(GOI)  ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.03% Special Bonds 2024','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.03% UPSDL 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.03%GOI 2024 ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.03%UPSDL 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.07%GOVT OF INDIA 2017 ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.13%OIL SPL - 2021(GOI)   ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.15%  GOI FCI SPL. 2022','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.15%Central  Bank of India 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.15%FOOD-SPL-2022(GOI) ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%Andra Pradesh Water ResourcesDev.  Corp. 07.01.04','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%Andra Pradesh Water ResourcesDev. Corp. 16.12.03','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%Cauvery Neeravari Nigam Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%Krishna Bhagya Jala Nigam Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%Oil Marketing Bond 2023','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%Oil Marketing Co. Special Bonds 2024 27.01.2010','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.2%OIL Marketing GOI 2024 22.09.2009','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.20% Oil Marketing GOI Special Bonds 2023','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.20% Oil Marketing GOI Special Bonds 2024 FV 10 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.20% Oil Marketing GOI Special Bonds 2024 FV 15 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.23% GOI FCI SPL. 2027','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.23%FOOD-SPL-2022(GOI) ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.27% Maharashtra SDL 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.28% GOI 2032 FV 34 Cr.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.28%GOI 2032  15.07.08','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.28%GOI 2032 01.08.08','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.30% GOI 2023 FERT. ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.30% GOI FERT.BOND 2023 ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.35%Bihar SDL 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.35%GOVT OF INDIA 2022 ','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.35%Housing Urban Dev. Corporation of India','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.38% HP SDL 2020','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.39% APSDL 2020','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.4%APSDL - 2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.4%Kerla State Power & Infrastructure Finance Corp. Ltd(KPFCL)','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.45%  J & K SDL 2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.45%Industrial Railway Finance Corporation Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.45%UP State Loan 2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.48% J& K SDL 2018','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.52% TNSDL 2020','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.52%TNSDL 2020','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.55%  IDBI RRB- III,SR.-III','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.55% IRFC Bonds 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.55% IRFC Bonds 2020','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.57%  J & K SDL 2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.58%Jammu & Kashmir SDL-2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.65% REC Bonds 2020','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.65%AP State Loan 2016','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.65%Rural Electrification Corporation Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.68 % J & K SDL 2018','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.68%  PGCL 2013','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.68%  PGCL 2014','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.68% PGCL-2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.68%J& K SDL 2018','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.7%PNB Housing-Series III','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.7%Power Finance Corporation Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.70%  PNBHFL, SR.- 3','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.8%Rural Electrification Corporation Ltd.','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.80%  PFC Bonds 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.80%  REC Bonds 2019','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.85%Power Finance Company-2021','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.95%AP Transco Vidut (series 1/2006)','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.95%Gujrat Electricty Board','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('8.95%Sardar Sarover Neeravari Nigam Ltd','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9%Industrial Finance Corporation of India Ltd 09.12.97','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9%Industrial Finance Corporation of India Ltd 12.05.99','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9%Industrial Finance Corporation of India Ltd 16.06.98','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9%Industrial Finance Corporation of India Ltd 23.03.99','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.1%Indian Overseas Bank 2016','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.38%  EXIM BANK 2012','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.5%Vijay Bank-2017','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.81% Punjab SDL 2018','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.81%Punjab SDL 2032','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.85% GOI 2015','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.9%Power Finance Company-2017 04.05.07','2',party_seq.nextval);
+insert into cb_party_info(PARTYNAME,ENTEREDBY,partycode)values ('9.9%Power Finance Company-2017 16.03.07','2',party_seq.nextval);
+
+
+-- Party Bank Details
+
+create table CB_PARTY_BANK_DETAILS
+(
+  PARTYCODE     VARCHAR2(10) not null,
+  BANKNAME      VARCHAR2(50),
+  BRANCHNAME    VARCHAR2(50),
+  BANKCODE      VARCHAR2(25),
+  ADDRESS       VARCHAR2(150),
+  PHONENO       VARCHAR2(15),
+  BFAXNO        VARCHAR2(15),
+  ACCOUNTNO     VARCHAR2(20) not null,
+  ACCOUNTTYPE   CHAR(1),
+  IFSCCODE      VARCHAR2(20),
+  NEFT_RTGSCODE VARCHAR2(20),
+  MICRNO        VARCHAR2(20),
+  CONTACTPERSON VARCHAR2(50),
+  BMOBILENO     VARCHAR2(10),
+  enteredby varchar2(10),
+  entereddt date default sysdate,
+  UNITCODE VARCHAR2(10)
+);
+
+alter table CB_PARTY_BANK_DETAILS add constraint PARTY_PK_ACCNO_CODE primary key (ACCOUNTNO,PARTYCODE);
+
+-- party Bank Details Initial Data
+
+insert into cb_party_bank_details(partycode,bankname,branchname,bankcode,address,phoneno,bfaxno,accountno,accounttype,ifsccode,neft_rtgscode,micrno,contactperson,bmobileno,enteredby,unitcode) select partycode,bankname,branchname,bankcode,address,phoneno,bfaxno,accountno,accounttype,ifsccode,neft_rtgscode,micrno,contactperson,bmobileno,'2','OPOFFICE' from party_bank_details;
+
+-- Voucher Info
+
+create table CB_VOUCHER_INFO
+(
+  KEYNO           VARCHAR2(12) not null,
+  ACCOUNTNO       VARCHAR2(20),
+  FYEAR           VARCHAR2(7),
+  TRUSTTYPE       VARCHAR2(20),
+  VOUCHERTYPE     CHAR(1),
+  PARTYTYPE       CHAR(1),
+  DETAILS         VARCHAR2(300),
+  EMP_PARTY_CODE  VARCHAR2(75),
+  VOUCHERNO       VARCHAR2(25),
+  PREPAREDBY      VARCHAR2(50),
+  CHECKEDBY       VARCHAR2(50),
+  APPROVEDBY      VARCHAR2(50),
+  APPROVAL        CHAR(1) default 'N',
+  VOUCHER_DT      DATE,
+  ENTEREDBY       VARCHAR2(20),
+  ENTEREDDT       DATE default SYSDATE,
+  PREPERATION_DT  DATE,
+  ECPFACNO        VARCHAR2(15),
+  EREGION         VARCHAR2(20),
+  PFIDFLAG        VARCHAR2(5),
+  EMPLOYEENAME    VARCHAR2(100),
+  TRANSACTIONTYPE CHAR(1),
+  editedby varchar2(10),
+  editedDt date default sysdate,
+  UNITCODE VARCHAR2(10),
+  ApprovalBY  VARCHAR2(20),
+  ApprovedDDT date default sysdate
+);
+
+alter table CB_VOUCHER_INFO add constraint pk_keyno primary key (KEYNO) ;
+alter table CB_VOUCHER_INFO add constraint FK_VOUCHER_ACCNO foreign key (ACCOUNTNO) references CB_BANK_INFO (ACCOUNTNO);
+
+-- Voucher Details
+
+create table CB_VOUCHER_DETAILS
+(
+  KEYNO       VARCHAR2(12),
+  ACCOUNTHEAD VARCHAR2(10),
+  MONTH_YEAR  VARCHAR2(8),
+  DETAILS     VARCHAR2(300),
+  ENTEREDBY   VARCHAR2(20),
+  ENTEREDDT   DATE default SYSDATE,
+  CREDIT      NUMBER(15,4),
+  DEBIT       NUMBER(15,4),
+  CHEQUENO    VARCHAR2(25),
+  UNITCODE VARCHAR2(10)
+);
+
+alter table CB_VOUCHER_DETAILS add constraint FK_VOUCHER_KEYNO foreign key (KEYNO) references CB_VOUCHER_INFO (KEYNO);
+alter table CB_VOUCHER_DETAILS add constraint FK_VOUCHER_ACCHEAD foreign key (ACCOUNTHEAD) references CB_ACCOUNTCODE_INFO (ACCOUNTHEAD);
+
+
+CREATE OR REPLACE TRIGGER CB_CHECK_ACCNO BEFORE INSERT OR UPDATE ON CB_PARTY_BANK_DETAILS FOR EACH ROW
+    
+DECLARE
+      ACCNO1  VARCHAR2(100);
+     BEGIN
+      IF INSERTING THEN
+           SELECT count(ACCOUNTNO) INTO ACCNO1 FROM CB_bank_info WHERE ACCOUNTNO=:NEW.ACCOUNTNO;
+          IF ACCNO1 >=1 THEN
+             RAISE_APPLICATION_ERROR(-20010,'Account Number Already Exists');
+         END IF;
+      ELSIF UPDATING THEN
+        SELECT count(ACCOUNTNO) INTO ACCNO1 FROM CB_bank_info WHERE ACCOUNTNO=:NEW.ACCOUNTNO;
+            IF ACCNO1>=1 THEN
+         RAISE_APPLICATION_ERROR(-20010,'Account Number Already Exists');
+         END IF;
+      END IF;
+    END;
+
+/
+
+CREATE OR REPLACE TRIGGER CB_CHECK_PACCNO BEFORE INSERT OR UPDATE ON CB_bank_info FOR EACH ROW
+DECLARE
+  ACCNO1  VARCHAR2(100);
+ BEGIN
+  IF INSERTING THEN
+       SELECT count(ACCOUNTNO) INTO ACCNO1 FROM CB_PARTY_BANK_DETAILS WHERE ACCOUNTNO=:NEW.ACCOUNTNO;
+      IF ACCNO1 >=1 THEN
+         RAISE_APPLICATION_ERROR(-20010,'Account Number Already Exists');
+     END IF;
+  ELSIF UPDATING THEN
+     SELECT count(ACCOUNTNO) INTO ACCNO1 FROM CB_PARTY_BANK_DETAILS WHERE ACCOUNTNO=:NEW.ACCOUNTNO;
+        IF ACCNO1>=1 THEN
+     RAISE_APPLICATION_ERROR(-20010,'Account Number Already Exists');
+     END IF;
+  END IF;
+END;
+
+/
+
+update epis_accesscodes_mt set path=path||'?' where SCREENCODE in ('CB0205','CB0204');
+update epis_accesscodes_mt set path=path||'?' where SUBMODULECD like'CB03%';
+
+delete from epis_accessrights where SCREENCODE in ('CB0206','CB0207');
+delete from epis_accesscodes_mt where SCREENCODE in ('CB0206','CB0207');
+
+alter table employee_pension_finsettlement add keyno varchar2(12);
+alter table employee_pension_loans add keyno varchar2(12);
+alter table employee_pension_advances add keyno varchar2(12);
+alter table cb_voucher_info add EUNITCODE VARCHAR2(10);
+
+alter table employee_adj_ob add keyno VARCHAR2(12);
+alter table employee_pension_ob add keyno VARCHAR2(12);
+alter table cb_voucher_details add Regard char(1);
+
+create sequence CB_VOUCHER_VALIDATE_SEQ
+minvalue 1
+maxvalue 9999999999999999
+start with 1
+increment by 1;
+
+ALTER TABLE EMPLOYEE_PENSION_VALIDATE ADD ACC_keyNO VARCHAR2(12);
+ALTER TABLE cb_voucher_details ADD ACC_keyNO VARCHAR2(12);
+alter table cb_voucher_info add otherModuleLink varchar2(100);
+alter table cb_bank_info add accountName varchar2(100);
+alter table cb_voucher_info add (RECONCILE_STATUS CHAR(1) default 'N');
+alter table cb_voucher_info add (transID number(10));
+alter table EMPLOYEE_ADVANCES_FORM add RAISEPAYMENT CHAR(1);
+alter table EMPLOYEE_ADVANCE_NOTEPARAM add RAISEPAYMENT CHAR(1);
+alter table EMPLOYEE_ADVANCES_FORM add raisePayment char(1) default 'N';
+alter table EMPLOYEE_ADVANCE_NOTEPARAM add raisePayment char(1) default 'N';
+
+
+create table cb_brs(
+TransactionDate date,
+ValueDate date,
+Amount number(15,2),
+creditAmount  number(15,2),
+debitAmount number(15,2),
+debit_credit char(1),
+description varchar2(200),
+chequeno varchar2(50),
+closingBal number(18,2),
+ACCOUNTNO varchar2(20),
+keyno varchar2(11) primary key,
+constraint FK_cbbrs_ACTNO foreign key (ACCOUNTNO)  references CB_BANK_INFO (ACCOUNTNO)
+);
+
+create table cb_brs_columns(
+columnValue varchar2(50) primary key,
+Description varchar2(100)
+);
+  
+create table cb_brs_mapping(
+ACCOUNTNO varchar2(20),
+columnNo number(2),
+columnValue varchar2(50),
+ENTEREDBY  VARCHAR2(10),
+entereddt date,
+UNITCODE  VARCHAR2(10),
+primary key(ACCOUNTNO,columnValue),
+ constraint FK_brs_ACTNO foreign key (ACCOUNTNO)  references CB_BANK_INFO (ACCOUNTNO),
+ constraint FK_brs_columnValue foreign key (columnValue)  references cb_brs_columns (columnValue)
+);
+
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('TRANSACTIONDATE','Transaction Date');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('VALUEDATE','Value Date');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('AMOUNT','Transaction Amount (Credit/Debit)');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('CREDITAMOUNT','Transaction Amount (Credit)');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('DEBITAMOUNT','Transaction Amount (debit)');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('DEBIT_CREDIT','Amount Type - Credit(C)/Debit(D)');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('CHEQUENO','Cheque No./ Reference No.');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('DESCRIPTION','Transaction Desciprtion');
+insert into cb_brs_columns(COLUMNVALUE,DESCRIPTION) values('CLOSINGBAL','Closing Balance');
+
+
+
+
+create table cb_fundstransfer(
+keyno VARCHAR2(12) primary key,
+From_account VARCHAR2(20) not null,
+to_account VARCHAR2(20) not null,
+PREPERATION_DT  DATE default sysdate,
+amount  NUMBER(15,4),
+approved_by VARCHAR2(20),
+approved_dt DATE ,
+approval char(1),
+fin_appproved_by VARCHAR2(20),
+fin_approved_dt DATE ,
+finapproval char(1),
+created_by VARCHAR2(20),
+created_DT  DATE default sysdate,
+edited_by VARCHAR2(20),
+edited_DT  DATE,
+unitcode varchar2(10)
+);
+
+
+
+
+update cb_voucher_info set APPROVEDBY='23201' where APPROVAL = 'Y' and upper(APPROVEDBY)  like '%SHIKHA%';
+alter table cb_brs_mapping add(Data_lineno NUMBER(3));
+alter table cb_brs add (VOUCHERNO VARCHAR2(25));
+alter table cb_brs add (RECONCILE_STATUS CHAR(1) default 'N');
+alter table cb_brs add (file_key NUMBER(10));
+alter table cb_party_info add constraint unq_partycode unique (partycode);
+create table cb_JournalVoucher(
+KEYNO VARCHAR2(12) primary key,
+PARTYTYPE CHAR(1),
+Emp_pfid NUMBER(10),
+party_code VARCHAR2(50),
+other VARCHAR2(50),
+VOUCHERNO VARCHAR2(25),
+VOUCHER_DT date,
+unitcode  VARCHAR2(10),
+region VARCHAR2(20),
+TRUSTTYPE VARCHAR2(20) ,
+DETAILS VARCHAR2(300),
+PREPAREDBY VARCHAR2(50),
+PREPERATION_DT   DATE,
+approval char(1),
+APPROVEDBY  VARCHAR2(20),
+APPROVEDDDT DATE,
+ENTEREDBY VARCHAR2(50),
+ENTERED_DT   DATE default sysdate,
+created_UNIT VARCHAR2(10), 
+EDITEDBY VARCHAR2(10),                        
+EDITEDDT DATE,  
+EDITED_UNIT VARCHAR2(10), 
+APPROVALBY  VARCHAR2(20),
+APPROVALDT DATE,         
+Approval_uNIT VARCHAR2(10),
+deletedby varchar2(10),
+deleteddt date,
+deleted_uNIT VARCHAR2(10),
+deletedno VARCHAR2(50),
+constraint FK_jv_Emp_pfid foreign key (Emp_pfid)  references employee_personal_info (PENSIONNO),
+constraint FK_jv_party_code foreign key (party_code)  references cb_party_info (PARTYCODE),
+constraint FK_jv_TRUSTTYPE foreign key (TRUSTTYPE)  references Invest_Trusttype (TRUSTTYPE));
+create table cb_journalvoucher_details(
+keyno varchar2(12),
+det_keyno varchar2(12) primary key,
+accountcode varchar2(10),
+description varchar2(100),
+debit NUMBER(15,4),
+credit NUMBER(15,4),
+constraint FK_jv_keyno foreign key (keyno)  references cb_JournalVoucher (KEYNO),
+constraint FK_jv_accountcode foreign key (accountcode)  references cb_accountcode_info (ACCOUNTHEAD));
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON, CREATED_BY,SORTINGORDER) values ('CB', 'CB04', 'Bank State Reconcilation',sysdate, '1',3);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON, CREATED_BY,SORTINGORDER) values ('CB', 'CB05', 'Transfer of Funds', sysdate, '1', 4);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0206', 'Journal voucher', 'CB02', '/journalVoucher.do?method=search', sysdate, 'CB', '1',4);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0304', 'Accounting Code', 'CB03', '/accCode.do?method=reportParam', sysdate, 'CB', '1',1);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0305', 'Party Information', 'CB03', '/party.do?method=showPartyParam',sysdate, 'CB', '1',2);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0401', 'Configure', 'CB04', '/Configure.do?method=search', sysdate, 'CB', '1', 1);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0402', 'Import Bank Satement', 'CB04', '/Import.do?method=importStatement',sysdate, 'CB', '1', 2);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0405', 'Unreconcile Vouchers', 'CB04', '/voucher.do?method=unreconcileParam', sysdate, 'CB', '1', 3);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0306', 'Reconciled Report', 'CB03', '/reconciledReport?method=showParam', sysdate, 'CB', '1',6);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0307', 'Unreconciled Report', 'CB03', '/unreconciledReport.do?method=showParam', sysdate, 'CB', '1',7);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0501', 'Transfer of Funds', 'CB05', '/FundsTransfer.do?method=search',sysdate, 'CB', '1', 1);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0502', 'Approval', 'CB05', '/FundsApproval.do?method=approvalSearch',sysdate, 'CB', '1', 2);
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0503', 'Final Approval', 'CB05', '/FundsFinApproval.do?method=finApprovalSearch',sysdate, 'CB', '1',3);
+update EPIS_SUBMODULES set SORTINGORDER = '1' where SUBMODULECD = 'CB01';
+update EPIS_SUBMODULES set SORTINGORDER = '2' where SUBMODULECD = 'CB02';
+update EPIS_SUBMODULES set SORTINGORDER = '5' where SUBMODULECD = 'CB03';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='1' where SCREENCODE='CB0201';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='2' where SCREENCODE='CB0202';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='3' where SCREENCODE='CB0203';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='5' where SCREENCODE='CB0204';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='6' where SCREENCODE='CB0205';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='3' where SCREENCODE='CB0301';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='4' where SCREENCODE='CB0302';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='5' where SCREENCODE='CB0303';
+update cb_voucher_info set APPROVEDBY='23201' where APPROVAL = 'Y' and upper(APPROVEDBY)  like '%SHIKHA%' and APPROVALBY is not null;
+
+CREATE OR REPLACE Function get_nextcode(p_table_name VARCHAR,p_col_name VARCHAR,p_length NUMBER) return VARCHAR is
+  v_query VARCHAR(200);
+  v_autocode VARCHAR(50);
+Begin
+ v_query := 'select lpad(nvl(max(to_number('||p_col_name||'))+1,1),'||p_length||',0) code from '||p_table_name;
+ EXECUTE IMMEDIATE v_query INTO v_autocode;
+ return v_autocode;
+End;
+/
+
+CREATE OR REPLACE Function get_nextcode_gby(p_table_name VARCHAR,p_col_name VARCHAR,p_length NUMBER,p_group_by VARCHAR) return VARCHAR is
+   v_group_by_length NUMBER;
+   v_autocode  VARCHAR(50);
+   v_query VARCHAR(300);
+Begin
+   v_group_by_length := length(p_group_by);
+
+   v_query := 'Select Lpad(Nvl(Max(To_Number(substr('||p_col_name||','||to_number(v_group_by_length+1)||')))+1,1),'||To_number(p_length-v_group_by_length)||',0) From '||p_table_name||' Where substr('||p_col_name||',1,'||v_group_by_length||')='''||p_group_by||'''';
+
+   EXECUTE IMMEDIATE v_query INTO v_autocode;
+   return (p_group_by||v_autocode);
+End;
+/
+
+CREATE OR REPLACE Function date_format(p_format VARCHAR) return VARCHAR is
+   v_format VARCHAR(30);
+Begin
+   Select To_Char(Sysdate,p_format) INTO v_format from Dual;
+   return Trim(v_format);
+End;
+/
+
+alter table EMPLOYEE_ADVANCES_FORM add countVoucher number(3);
+alter table employee_advance_noteparam add countVoucher number(3);
+
+
+
+update EPIS_ACCESSCODES_MT set PATH='/FundsFinApproval.do?method=finalApprovalSearch' where SCREENCODE='CB0503';
+alter table cb_journalvoucher add finYear varchar2(10);
+alter table cb_fundstransfer add(deleted_by VARCHAR2(20),deleted_DT      DATE,deleted_flag         CHAR(1));
+alter table cb_fundstransfer modify(deleted_flag    default 'N');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER) values ('CB0207', 'Journal voucher Approval', 'CB02', '/journalVoucherApproval.do?method=search', sysdate, 'CB', '1',7);
+update EPIS_ACCESSCODES_MT set SORTINGORDER='6' where SCREENCODE='CB0206';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='4' where SCREENCODE='CB0204';
+update EPIS_ACCESSCODES_MT set SORTINGORDER='5' where SCREENCODE='CB0205';
+update EPIS_ACCESSCODES_MT set PATH='/reconciledReport.do?method=showParam' where SCREENCODE='CB0306';
+alter table cb_JournalVoucher add(deleted_flag   CHAR(1) default 'N');
+create table cb_brs_file (KEYNO NUMBER(10),STATEMENT_FILENAME   VARCHAR2(100),STATEMENT_FILE BLOB default empty_blob(),CREATED_BY   VARCHAR2(10),CREATEDON  DATE);
+alter table cb_brs_file add (ACCOUNTNO VARCHAR2(20));
+alter table cb_brs_file add primary key (KEYNO);
+alter table cb_brs add constraint FK_CB_BRS foreign key(file_key) references cb_brs_file (keyno);
+
+
+
+create table cb_daily_statement_mapping(type char(1),Description varchar2(100),accheads varchar2(200),code varchar2(10) primary key);
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('R','Maturity of bonds','651.00,652.00,653.00,654.00,655.00','MOBR');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('R','Interest on bonds','101.00,102.00,103.00,104.00,105.00,100.00','IOBR');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('R','Accretion','660.00','AR');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('R','Other','106.00,107.00,108.00,109.00,313.00,313.01,313.02,313.03,313.04,313.05,110.00,668.01','OR');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('R','Redemption of Bonds','','ROBR');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('P','Final','672.06,672.07','FP');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('P','Part Final','672.04,672.05','PFP');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('P','Loans & Advance','672.03','LAP');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('P','Investment','651.00,652.00,653.00,654.00,655.00','IP');
+insert into cb_daily_statement_mapping(type,Description,accheads,code) values ('P','Other','202.00,205.00,206.00,550.00,551.00,552.00,553.00,554.00,555.00,556.00,557.00,558.00,559.00,561.00,562.00,563.00,564.00,565.00,566.00,973.00','OP');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE, CREATED_BY,SORTINGORDER)values ('CB0308', 'Daily Statement Of Bank Position', 'CB03', '/reports.do?method=dailyStatement', SYSDATE, 'CB', '1',8);
+alter table cb_journalvoucher add profile char(1);
+
+update EPIS_ACCESSCODES_MT set PATH='/journalVoucherApproval.do?method=approvalSearch' where SCREENCODE='CB0207';
+CREATE OR REPLACE Function getAccHeadOpenBal(p_acchead VARCHAR,p_trust VARCHAR,p_date date,p_param varchar ) return VARCHAR is
+   openbalance number(15,4);
+Begin
+   select decode(p_param,'C',sum(credit),'D',sum(debit),(sum(credit) - sum(debit))) into openbalance
+  from (select Nvl(decode(amounttype, 'CR', amount, 'DR', 0), 0) credit,
+               Nvl(decode(amounttype, 'CR', 0, 'DR', amount), 0) debit
+          from cb_accountcode_info info, cb_accountcode_details dt
+         where TRUSTTYPE = p_trust and
+               info.accounthead = dt.accounthead and info.accounthead = p_acchead and
+               info.opendate <= decode(p_date, '', '01/Jan/1000', p_date)
+        union all
+        select sum(credit) credit,
+               sum(debit) debit
+          from Cb_VOUCHER_INFO     info,
+               Cb_voucher_details  dt,
+               cb_accountcode_info ainfo
+         where dt.keyno = info.keyno and ainfo.accounthead = dt.accounthead and
+              TRUSTTYPE = p_trust and
+               info.voucher_dt < decode(p_date, '', '01/Jan/1000', p_date) and
+               info.voucher_dt >=
+               decode(ainfo.opendate, '', '01/Jan/1000', ainfo.opendate) and ainfo.accounthead = p_acchead
+         group by dt.accounthead, info.trusttype
+        union all
+        select sum(credit) credit,
+               sum(debit) debit
+          from Cb_Journalvoucher         info,
+               Cb_Journalvoucher_Details dt,
+               cb_accountcode_info       ainfo
+         where dt.keyno = info.keyno and ainfo.accounthead = dt.ACCOUNTCODE and
+               TRUSTTYPE = p_trust and
+               info.voucher_dt < decode(p_date, '', '02/Apr/2011', p_date) and
+               info.voucher_dt >= decode(ainfo.opendate, '', '01/Jan/1000', ainfo.opendate) and ainfo.accounthead = p_acchead
+         group by info.trusttype, ACCOUNTCODE) ;
+   return openbalance;
+End;
+/
+
+alter table  employee_region_master  add regioncd varchar2(6);
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '3';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '4';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '4';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '5';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '6';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '7';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '8';
+update  employee_region_master set regioncd='NR' where REGIONID = '9';
+update  employee_region_master set regioncd='ER' where REGIONID = '10';
+update  employee_region_master set regioncd='WR' where REGIONID = '11';
+update  employee_region_master set regioncd='SR' where REGIONID = '12';
+update  employee_region_master set regioncd='NER' where REGIONID = '13';
+update  employee_region_master set regioncd='RAUSAP' where REGIONID = '14';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '1';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '2';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '16';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '17';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '18';
+update  employee_region_master set regioncd='CHQNAD' where REGIONID = '19';
+update  employee_region_master set regioncd='CHQIAD' where REGIONID = '20';
+update  employee_region_master set regioncd='SR' where REGIONID = '21';
+----------------------------------------------------------------------
+

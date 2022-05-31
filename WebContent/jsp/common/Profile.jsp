@@ -1,0 +1,172 @@
+
+<%@ page language="java" import="com.epis.info.login.LoginInfo,java.util.Date" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="/tags-logic" prefix="logic" %>
+<%@ taglib uri="/tags-bean" prefix="bean" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+int size = 0;
+int reportSize =0;
+int payrollsize=0;
+List list = null;
+if(session.getAttribute("profileList")!=null){
+	list =(ArrayList)session.getAttribute("profileList");
+ 	size = list.size()-1;
+}
+if(session.getAttribute("reportList")!=null){
+	list =(ArrayList)session.getAttribute("reportList");
+	reportSize = list.size()-1;
+}
+if(session.getAttribute("payrollList")!=null){
+	list =(ArrayList)session.getAttribute("payrollList");
+	payrollsize = list.size()-1;
+}
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'MemberProfile.jsp' starting page</title>
+    
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    
+    <link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" /> 
+	<link href="<%=basePath%>css/menu.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<%=basePath%>js/jquery.min.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/ddaccordion.js"></script>
+	<script type="text/javascript" src="<%=basePath%>js/ddaccordioninit.js"></script>	
+	
+	<link href="<%=basePath%>css/leftmenu.css" rel="stylesheet" type="text/css" />
+  </head>
+  
+  <body>
+    <body>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top"><table width="100%" border="0" cellspacing="15" cellpadding="0">
+      <tr>
+        <td width="198" align="left" valign="top"><table width="198" border="0" cellspacing="0" cellpadding="0">
+          
+          <tr>
+            <td><table width="198" border="0" cellpadding="0" cellspacing="0" background="<%=basePath%>images/crvM.gif">
+                <tr>
+                  <td height="9" valign="top"><img src="<%=basePath%>images/crvT.gif" width="198" height="5" /></td>
+                </tr>
+                <tr>
+                  <td align="center" valign="top"><table width="180" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td><table width="180" height="49" border="0" cellpadding="0" cellspacing="0" background="<%=basePath%>images/userID.gif">
+                          <tr>
+                            <td align="center" valign="middle"><table width="164" border="0" cellspacing="3" cellpadding="0">
+                                <tr>
+                                  <td width="55" align="right" valign="middle" class="userID">User ID:</td>
+                                  <td width="110" align="left" valign="middle" class="userID"><%=((LoginInfo)session.getAttribute("user")).getUserName()%></td>
+                                </tr>
+                                <tr>
+                                  
+                                  <%
+                                  Date date=new Date(session.getCreationTime());                                  
+                                  String time=date.toLocaleString();
+                                  %>
+                                  <td align="left" valign="middle" class="userID" colspan=2><%=time%></td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table></td>
+                      </tr>
+                      <tr>
+                        <td><img src="<%=basePath%>images/spacer.gif" width="8" height="8" /></td>
+                      </tr>
+                      <tr>
+                        <td class="menuhead"><span>Menu</span></td>
+                      </tr>
+                      <logic:present name="profileList">                     
+                  <tr>
+                    <td align="left" valign="top"><div class="glossymenu">                  
+					<a class="menuitem submenuheader" href="javascript:void(0);">Profile </a>
+                          <div class="submenu">
+                            <ul>
+    
+	<logic:iterate id="profile"  name="profileList" indexId="index" >  
+		<logic:equal  value="<%=String.valueOf(size)%>" name="index">
+		<li style="border-bottom-color:#FFFFFF;">
+		</logic:equal>
+		<logic:notEqual value="<%=String.valueOf(size)%>" name="index">
+		<li >
+		</logic:notEqual>
+		<a href='<%=basePath%><bean:write name="profile" property="path" />' target="leftbody"><bean:write name="profile" property="optionName" /></a></li>
+	</logic:iterate>             
+                            
+                            </ul>
+                          </div>		
+                          			 
+                                          
+					  </div></td>
+                  </tr>
+   </logic:present>    
+   <logic:present name="reportList">                     
+                  <tr>
+                    <td align="left" valign="top"><div class="glossymenu">                  
+					<a class="menuitem submenuheader" href="javascript:void(0);">Report  </a>
+                          <div class="submenu">
+                            <ul>
+    
+	<logic:iterate id="report"  name="reportList" indexId="index" >  
+		<logic:equal  value="<%=String.valueOf(reportSize)%>" name="index">
+		<li style="border-bottom-color:#FFFFFF;">
+		</logic:equal>
+		<logic:notEqual value="<%=String.valueOf(reportSize)%>" name="index">
+		<li >
+		</logic:notEqual>
+		<a href='<%=basePath%><bean:write name="report" property="path" />' target="leftbody"><bean:write name="report" property="optionName" /></a></li>
+	</logic:iterate>             
+                            
+                            </ul>
+                          </div>					 
+                                          
+					  </div></td>
+                  </tr>
+   </logic:present> 
+   <logic:present name="payrollList">                     
+                  <tr>
+                    <td align="left" valign="top"><div class="glossymenu">                  
+					<a class="menuitem submenuheader" href="javascript:void(0);">Payroll  </a>
+                          <div class="submenu">
+                            <ul>
+    
+	<logic:iterate id="pay"  name="payrollList" indexId="index" >  
+		<logic:equal  value="<%=String.valueOf(payrollsize)%>" name="index">
+		<li style="border-bottom-color:#FFFFFF;">
+		</logic:equal>
+		<logic:notEqual value="<%=String.valueOf(payrollsize)%>" name="index">
+		<li >
+		</logic:notEqual>
+		<a href='<%=basePath%><bean:write name="pay" property="path" />' target="leftbody"><bean:write name="pay" property="optionName" /></a></li>
+	</logic:iterate>             
+                            
+                            </ul>
+                          </div>					 
+                                          
+					  </div></td>
+                  </tr>
+   </logic:present>   
+                  </table></td>
+                </tr>
+                <tr>
+                  <td height="8" valign="bottom"><img src="<%=basePath%>images/crvB.gif" width="198" height="5" /></td>
+                </tr>
+            </table></td>
+          </tr>
+        </table></td>
+      </tr>
+ </table>
+ </body>
+</html>

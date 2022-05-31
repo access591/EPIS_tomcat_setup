@@ -1,0 +1,136 @@
+delete from EPIS_ACCESSCODES_MT;
+delete from EPIS_SUBMODULES;
+delete from EPIS_PROFILE_OPTIONS_MAPPING;
+delete from EPIS_PROFILE_OPTIONS;
+delete from EPIS_ROLE;
+delete from EPIS_MODULES;
+delete from epis_user;
+
+insert into EPIS_MODULES (CODE, NAME, CREATEDON)values ('AM', 'Admin', sysdate);
+insert into EPIS_MODULES (CODE, NAME, CREATEDON)values ('RC', 'RPFC', sysdate);
+insert into EPIS_MODULES (CODE, NAME, CREATEDON)values ('LA', 'Loans & Advances', sysdate);
+insert into EPIS_MODULES (CODE, NAME, CREATEDON)values ('CB', 'Cash Book', sysdate);
+insert into EPIS_MODULES (CODE, NAME, CREATEDON)values ('IT', 'Investment', sysdate);
+insert into EPIS_MODULES (CODE, NAME, CREATEDON)values ('FA', 'Fund Accounting', sysdate);
+commit;
+insert into EPIS_ROLE (ROLECD, ROLENAME, DESCRIPTION, CREATEDON, MODULES)
+values ('00001', 'Super Admin', 'Super Admin', sysdate, 'AM,RC,LA,CB,IT,FA');
+insert into EPIS_USER (USERNAME, USERID, EMPLOYEENO, EMAILID, PASSWORD, UNITCD, MODULES, USERTYPE, EXPIREDATE, CREATEDON, GRIDLENGTH, DELETEFLAG, PASSWORDCHANGEFLAG, STATUS, PROFILE, PENSIONNO, ROLECD)values ('EPISSuperUser', 1, '00000', '', 'B8BDE5238D9D41A2D9881B611C928698', 'VIDP', 'AM,RC,LA,CB,IT,FA', 'U',sysdate+3600 , sysdate, '10', 'N', 'Y', 'Y', 'S', '', '00001');
+insert into EPIS_USER (USERNAME, USERID, EMPLOYEENO, EMAILID, PASSWORD, UNITCD, MODULES, USERTYPE, EXPIREDATE, CREATEDON, GRIDLENGTH, DELETEFLAG, PASSWORDCHANGEFLAG, STATUS, PROFILE, PENSIONNO, ROLECD)values ('Admin', 2, '16591', '', 'B8BDE5238D9D41A2D9881B611C928698', 'OPOFFICE', 'AM,RC,LA,CB,IT,FA', 'U', sysdate+3600,sysdate, '10', 'N', 'N', 'Y', 'A', '', '00001');
+commit;
+
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP012', 'Transfer of PF to Other Organizations', 'Transfer of PF to Other Organizations', 'jsp/profiles/member/TransferOfPF.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP013', 'Opening Balance Entry -Financial Year wise', 'Opening Balance Entry -Financial Year wise', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP014', 'Opening Balance Entry-Report', 'Opening Balance Entry-Report', '', 'R');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP015', 'Adjustment in Opening Balance Entry-Financial Year wise', 'Adjustment in Opening Balance Entry-Financial Year wise', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP016', 'Adjustments in Opening Balance entry-Report', 'Adjustments in Opening Balance entry-Report', '', 'R');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP017', 'Transfer In/Out cases,New Joined,Retired,Resigned and Death Cases', 'Transfer In/Out cases,New Joined,Retired,Resigned and Death Cases', 'jsp/profiles/unit/NewJoinessInfo.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP018', 'Sanction of Advance/PFW', 'Sanction of Advance/PFW', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP019', 'Disbursement of Advance/PFW/Final Settlement', 'Disbursement of Advance/PFW/Final Settlement', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP023', 'Missing / New employees deviation statement (w.r.t previous month data)', 'Missing / New employees deviation statement (w.r.t previous month data)', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP024', 'Report on monthly data upload statistics', 'Report on monthly data upload statistics', '', 'R');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP025', 'Error reports during data uploading', 'Error reports during data uploading', '', 'R');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP026', 'Reports on Transfer In/ Out,New joiners, retired, resigned and death cases w r t previous months data', 'Reports on Transfer In/ Out,New joiners, retired, resigned and death cases w r t previous months data', '', 'R');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP027', 'Pension Contribution', 'Pension Contribution', 'reportservlet?method=loadFinContri', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP020', 'Processing/recommendation of Final settlement cases', 'Processing/recommendation of Final settlement cases', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP002', 'Upload Monthly CPF Recoveries Information', 'Upload Monthly CPF Recoveries Information', 'jsp/profiles/unit/CPFRecoveriesUpload.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP003', 'Upload Supplementary Data', 'Upload Supplementary Data', 'jsp/profiles/unit/SupplementaryDataUpload.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP004', 'PF Card', 'PF Card', 'reportservlet?method=loadpfcardInput', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP005', 'Form-2', 'Form-2', 'searchservlet?method=pensionEdit&flag=true', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP006', 'Form-9', 'Form-9', 'jsp/profiles/member/GenerateForm9.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP007', 'Form-10C', 'Form-10C', 'jsp/profiles/member/GenerateForm10C.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP008', 'Form-10D', 'Form-10D', 'jsp/profiles/member/GenerateForm10D.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP009', 'Advances', 'Advances', 'advanceSearch.do?method=loadAdvanceSearchForm&frm_name=advances', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP010', 'PFW', 'PFW', 'advanceSearch.do?method=loadAdvanceSearchForm&frm_name=pfw', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP011', 'Final Settlement', 'Final Settlement', 'jsp/profiles/unit/FinalSettlement.jsp', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP021', 'CPF Recovery Schedule - Journal', 'CPF Recovery Schedule - Journal', '', 'S');
+insert into EPIS_PROFILE_OPTIONS (OPTIONCODE, OPTIONNAME, DESCRIPTION, PATH, OPTIONTYPE)values ('OP022', 'Advances/PFW Journal', 'Advances/PFW Journal', '', 'S');
+
+commit;
+
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP027', 'Y', 'N', 'N', 'N');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP002', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP003', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP004', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP005', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP006', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP007', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP008', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP009', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP010', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP011', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP012', 'Y', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP013', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP014', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP015', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP016', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP017', 'N', 'Y', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP018', 'N', 'N', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP019', 'N', 'N', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP020', 'N', 'N', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP021', 'N', 'N', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP022', 'N', 'N', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP023', 'N', 'N', 'Y', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP024', 'N', 'N', 'N', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP025', 'N', 'N', 'N', 'Y');
+insert into EPIS_PROFILE_OPTIONS_MAPPING (OPTIONCODE, MEMBER, UNIT, REGION, CHQ)values ('OP026', 'N', 'N', 'N', 'Y');
+commit;
+
+
+
+
+----------Modules & Sub Modules --------------
+
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('AM', 'AM01', 'Masters',sysdate);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('IT', 'IT02', 'Investment Procedure',sysdate);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('IT', 'IT01', 'Masters', sysdate);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('CB', 'CB02', 'Vouchers', sysdate);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('CB', 'CB01', 'Masters', sysdate);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('CB', 'CB03', 'Reports', sysdate);
+insert into EPIS_SUBMODULES (MODULECODE, SUBMODULECD, SUBMODNAME, CREATEDON)values ('IT', 'IT03', 'Reports', sysdate);
+commit;
+
+
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0103', 'Arrangers', 'IT01', '/searchArrangers.do?method=searchArrangers', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0104', 'Investment Ratio', 'IT01', '/searchRatio.do?method=searchRatio', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0201', 'Initial Praposal', 'IT02', '/searchProposal.do?method=searchInvestProposal', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0202', 'Resquest for Quotation', 'IT02', '/searchQuotationRequests.do?method=searchQuotationRequests',sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0203', 'Submit Quotation', 'IT02', '/searchQuotation.do?method=searchQuotation', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0204', 'YTM Verification', 'IT02', '/actionYTM.do?method=searchYTM', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0205', 'Comparative Statement', 'IT02', '/searchcomparative.do?method=searchComparative', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0101', 'Region', 'AM01', '/searchRegion.do?method=searchRegion', sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0102', 'Security Category', 'IT01', '/searchSCategory.do?method=searchSCategory', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0104', 'User', 'AM01', '/userSearch.do?method=search', sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0102', 'Unit', 'AM01', '/searchUnit.do?method=searchUnit', sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0103', 'Role', 'AM01', '/searchRole.do?method=searchRole',sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0105', 'Access Rights', 'AM01', '/accessRights.do?method=fwdtoAccessRights',sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0106', 'Reset / Change Password', 'AM01', '/resetPassword.do?method=showResetPassword',sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('AM0107', 'Profile', 'AM01', '/showProfileOptions.do?method=showProfileOptions', sysdate, 'AM');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0207', 'Investment Approval', 'IT02', '/searchinvestapproval.do?method=searchInvestApproval',sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('CB0101', 'Accounting Code Type', 'CB01', 'jsp/cashbook/AccountingCodeType/AccountingCodeTypeSearch.jsp', sysdate, 'CB');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0101', 'Trust Type', 'IT01', '/searchTrustType.do?method=searchTrustType', sysdate, 'IT');
+insert into EPIS_ACCESSCODES_MT (SCREENCODE, SCREENNAME, SUBMODULECD, PATH, CREATEDON, MODULECODE)
+values ('IT0206', 'Shortlisting Arrangers', 'IT02', '/searchshortlist.do?method=searchShortlist', sysdate, 'IT');
+commit;
+
+drop sequence seq_userid;
+CREATE SEQUENCE seq_userid INCREMENT BY 1 START WITH 3;
+insert into epis_user (username,userid,password,usertype,expiredate,createdon,GRIDLENGTH, DELETEFLAG, PASSWORDCHANGEFLAG, STATUS, PROFILE ,  PENSIONNO) select pensionno,seq_userid.nextval,encrypt( to_char(nvl(p.dateofjoining,to_date('01/Jan/2011')),'ddmmyyyy')),'U' usertype,sysdate+720,sysdate,'10' grodlength,'N' delflag,'N' pwdchangeflag,'A' status,'M' profile,pensionno   from employee_personal_info p

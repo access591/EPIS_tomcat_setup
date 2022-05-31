@@ -1,0 +1,1122 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE struts-config PUBLIC  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"     "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is a blank Struts configuration file with an example
+     welcome action/page and other commented sample elements.
+
+     Struts Validator is configured using the factory defaults
+     and is ready-to-use.
+
+     NOTE: If you have a generator tool to create the corresponding Java classes
+     for you, you could include the details in the "form-bean" declarations.
+     Otherwise, you would only define the "form-bean" element itself, with the
+     corresponding "name" and "type" attributes, as shown here.
+-->
+
+
+<struts-config>
+
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    <!-- sample form bean descriptor for an ActionForm
+        <form-bean
+            name="inputForm"
+            type="app.InputForm"/>
+    end sample -->
+
+    <!-- Advance Action-->
+        <form-bean
+            name="advanceForm"
+            type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="soremarks"	type="java.lang.String" />
+             <form-property name="city"	type="java.lang.String" /> 
+             <form-property name="paymentinfo"	type="java.lang.String" /> 
+             <form-property name="arreartype"	type="java.lang.String" />
+             <form-property name="arreardate"	type="java.lang.String" />
+             <form-property name="fromfinyear"	type="java.lang.String" />
+             <form-property name="tofinyear"	type="java.lang.String" />
+             <form-property name="interestratefrom"	type="java.lang.String" />
+             <form-property name="interestrateto"	type="java.lang.String" /> 
+             <form-property name="resignationreason"	type="java.lang.String" />
+             <form-property name="organizationname"	type="java.lang.String" />
+             <form-property name="organizationaddress"	type="java.lang.String" />
+             <form-property name="appointmentdate"	type="java.lang.String" />
+             <form-property name="postedas"	type="java.lang.String" />
+             <form-property name="workingplace"	type="java.lang.String" />
+             <form-property name="bankpaymentmode"	type="java.lang.String" /> 
+             <form-property name="permenentaddress"	type="java.lang.String" />
+             <form-property name="presentaddress"	type="java.lang.String" />
+             <form-property name="phoneno"	type="java.lang.String" />
+             <form-property name="authorizedsts"	type="java.lang.String" />
+            <form-property name="placeofposting"	type="java.lang.String" />
+            <form-property name="wthdrwlist"	type="java.lang.String" />
+             <form-property name="adhocamt"	type="java.lang.String" />
+             <form-property name="seperationfavour"	type="java.lang.String" />
+             <form-property name="seperationremarks"	type="java.lang.String" />
+             <form-property name="hbawthdrwlpurpose"  type="java.lang.String" />  
+   			 <form-property name="hbawthdrwlamount"  type="java.lang.String" />
+   			 <form-property name="hbawthdrwladdress"  type="java.lang.String" />  
+   			 <form-property name="marriagedate"  type="java.lang.String" />   
+             <form-property name="nssanctionno"	type="java.lang.String" />
+           	 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="pensionNo"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />
+			 <form-property name="designation"	type="java.lang.String" />
+			 <form-property name="department"	type="java.lang.String" />
+			 <form-property name="dateOfMembership"	type="java.lang.String" />
+			 <form-property name="dateOfJoining"	type="java.lang.String" />
+			 <form-property name="dateOfBirth"	type="java.lang.String" />
+			 <form-property name="employeeNo"	type="java.lang.String" /> 
+			 <form-property name="cpfaccno"		type="java.lang.String" /> 
+			 <form-property name="region"		type="java.lang.String" /> 
+			 <form-property name="transMnthYear"	type="java.lang.String" /> 
+			 <form-property name="fhName"		type="java.lang.String" /> 
+			 <form-property name="wetherOption"	type="java.lang.String" /> 
+			 <form-property name="emoluments"	type="java.lang.String" /> 
+			 <form-property name="pfStatury"	type="java.lang.String" /> 
+          	 <form-property name="advanceType"	type="java.lang.String" /> 
+          	 <form-property name="pfwPurpose"	type="java.lang.String" /> 
+          	 <form-property name="advPurpose"	type="java.lang.String" /> 
+          	 <form-property name="pfwPurMarriage"	type="java.lang.String" initial="Marriage"/> 
+          	 <form-property name="pfwPurHBA"	type="java.lang.String" initial="HBA"/> 
+          	 <form-property name="pfwPurHE"	type="java.lang.String" initial="HE"/> 
+          	 <form-property name="pfwPurLIC"	type="java.lang.String" initial="LIC"/>
+          	 <form-property name="pfwPurSuperannuation"	type="java.lang.String" initial="SUPERANNUATION"/> 
+          	 <form-property name="cpfAdvCOP"	type="java.lang.String" initial="cost"/> 
+          	 <form-property name="cpfAdvOE"	type="java.lang.String" initial="obligatory"/> 
+          	 <form-property name="cpfAdvOEMarriage"	type="java.lang.String" initial="obMarriage"/> 
+          	 <form-property name="cpfAdvIE"	type="java.lang.String" initial="illness"/> 
+          	 <form-property name="cpfAdvEducation"	type="java.lang.String" initial="education"/> 
+          	 <form-property name="cpfAdvDefence"	type="java.lang.String" initial="defence"/> 
+             <form-property name="cpfAdvOther"	type="java.lang.String" initial="others"/> 
+             <form-property name="purposeType"	type="java.lang.String" />  
+             <form-property name="advReasonText"	type="java.lang.String" />  
+             <form-property name="hbapurposetype"	type="java.lang.String" />  
+              <form-property name="station"	type="java.lang.String" />  
+              <form-property name="trust"	type="java.lang.String" />
+          	  <form-property name="hbarepaymenttype"	type="java.lang.String" />  
+			  <form-property name="hbaloanname"	type="java.lang.String" />  
+			  <form-property name="hbaloanaddress"	type="java.lang.String" />  
+			  <form-property name="osamountwithinterest"	type="java.lang.String" />  
+			  <form-property name="hbaownername" type="java.lang.String" />  
+			  <form-property name="hbaowneraddress"	type="java.lang.String" />  
+			  <form-property name="hbaownerarea"  type="java.lang.String" />  
+			  <form-property name="hbaownerplotno" type="java.lang.String" />  
+			  <form-property name="hbaownerlocality"	type="java.lang.String" />  
+			  <form-property name="hbaownermuncipality"  type="java.lang.String" />  
+			  <form-property name="hbaownercity"  type="java.lang.String" />  
+			  <form-property name="hbadrwnfrmaai"  type="java.lang.String" />  
+		      <form-property name="hbapermissionaai"  type="java.lang.String" />  
+		      <form-property name="chkwthdrwlinfo"  type="java.lang.String" />  
+   		 	  <form-property name="wthdrwlAmount"  type="java.lang.String" />  
+      		  <form-property name="wthDrwlTrnsdt"  type="java.lang.String" />
+		      <form-property name="wthdrwlpurpose"  type="java.lang.String" />   
+              <form-property name="advReqAmnt"	type="java.lang.String" />  
+              <form-property name="message"	type="java.lang.String" />  
+              <form-property name="chkbankinfo"	type="java.lang.String" /> 
+              <form-property name="bankempname"  type="java.lang.String" />  
+		      <form-property name="bankempaddrs"  type="java.lang.String" />  
+		      <form-property name="bankname"  type="java.lang.String" />  
+   		      <form-property name="branchaddress"  type="java.lang.String" />  
+		      <form-property name="banksavingaccno"  type="java.lang.String" />  
+              <form-property name="bankemprtgsneftcode"	type="java.lang.String" />  
+              <form-property name="bankempmicrono"	type="java.lang.String" /> 
+              <form-property name="empmailid"	type="java.lang.String" /> 
+              <form-property name="modeofpartyname"	type="java.lang.String" /> 
+              <form-property name="modeofpartyaddrs"	type="java.lang.String" /> 
+              <form-property name="pfwhetype"	type="java.lang.String" />  
+              <form-property name="nmcourse"	type="java.lang.String" /> 
+              <form-property name="nminstitue"	type="java.lang.String" /> 
+              <form-property name="addrsinstitue"	type="java.lang.String" /> 
+              <form-property name="curseduration"	type="java.lang.String" /> 
+              <form-property name="helastexaminfo"	type="java.lang.String" /> 
+              <form-property name="empfmlydtls"	type="java.lang.String" />  
+              <form-property name="fmlyempname"	type="java.lang.String" /> 
+              <form-property name="fmlydob"	type="java.lang.String" /> 
+              <form-property name="fmlyage"	type="java.lang.String" /> 
+              <form-property name="brthcertprove"	type="java.lang.String" /> 
+              <form-property name="advancecostexp"	type="java.lang.String" /> 
+              <form-property name="advanceobligexp"	type="java.lang.String" /> 
+              <form-property name="herecog"	type="java.lang.String" /> 
+              <form-property name="cpfmarriageexp"	type="java.lang.String" /> 
+              <form-property name="oblcermoney"	type="java.lang.String" /> 
+           	  <form-property name="cpftotalinstall"	type="java.lang.String" /> 
+           	  <form-property name="empage"	type="java.lang.String" />
+              <form-property name="PFWrule"	type="java.lang.String" />
+              <form-property name="CPFFund"	type="java.lang.String" />
+              <form-property name="subscriptionAmt"	type="java.lang.String" />
+              <form-property name="bankdetail"	type="java.lang.String" />
+              <form-property name="propertyaddress"	type="java.lang.String" />
+		      <form-property name="actualcost"	type="java.lang.String" />
+		      <form-property name="takenloan"	type="java.lang.String" />
+         	 <form-property name="amntRecommended"	type="java.lang.String" /> 
+             <form-property name="seperationreason"	type="java.lang.String" /> 
+			 <form-property name="seperationdate"	type="java.lang.String" />
+			 <form-property name="nomineename"	type="java.lang.String" />
+			 <form-property name="amtadmtdate"	type="java.lang.String" />
+			 <form-property name="emplshare"	type="java.lang.String" />
+			 <form-property name="emplrshare"	type="java.lang.String" />
+			 <form-property name="pensioncontribution"	type="java.lang.String" />
+			 <form-property name="netcontribution"	type="java.lang.String" />
+			 <form-property name="sanctionno"	type="java.lang.String" />
+			 <form-property name="sanctiondt"	type="java.lang.String" />  
+			 <form-property name="serialNo"	type="java.lang.String" />
+			 <form-property name="nomineeDOB"	type="java.lang.String" />
+			 <form-property name="nomineeaddress"	type="java.lang.String" />
+			 <form-property name="nomineerelation"	type="java.lang.String" />
+			 <form-property name="gardianname"	type="java.lang.String" />
+			 <form-property name="gardianaddress"	type="java.lang.String" />
+			 <form-property name="totalshare"	type="java.lang.String" />
+			 <form-property name="detailsdata"	type="java.lang.String[]" />
+			 <form-property name="nomineeflag"	type="java.lang.String" />
+			 <form-property name="nomineeRow"	type="java.lang.String" />
+			 <form-property name="advncerqddepend"	type="java.lang.String" />
+			 <form-property name="utlisiedamntdrwn"	type="java.lang.String" />
+			 <form-property name="paymentdt"	type="java.lang.String" />
+             <form-property name="remarks"	type="java.lang.String" />
+             <form-property name="frmName"	type="java.lang.String" />
+             <form-property name="firstInsSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="firstInsConrtiAmnt"	type="java.lang.String" />
+			 <form-property name="recEmpSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="recEmpConrtiAmnt"	type="java.lang.String" />  
+			 <form-property name="pfwReqAmnt" type="java.lang.String" />
+             
+       </form-bean>
+       <form-bean
+            name="advanceCPFForm2"
+            type="org.apache.struts.validator.DynaValidatorForm">
+             <form-property name="interestinstallments"	type="java.lang.String" />
+             <form-property name="verifiedby"	type="java.lang.String" />       
+			 <form-property name="intinstallmentamt"	type="java.lang.String" />
+			 <form-property name="interestRate"	type="java.lang.String" />
+             <form-property name="empnamewthblk"	type="java.lang.String" />
+             <form-property name="mthinstallmentamt"	type="java.lang.String" />
+             <form-property name="fhName"	type="java.lang.String" />
+           	 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="pensionNo"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />
+			 <form-property name="designation"	type="java.lang.String" />
+			 <form-property name="department"	type="java.lang.String" />
+			 <form-property name="dateOfMembership"	type="java.lang.String" />
+			 <form-property name="dateOfJoining"	type="java.lang.String" />
+			 <form-property name="dateOfBirth"	type="java.lang.String" />
+			 <form-property name="employeeNo"	type="java.lang.String" /> 
+			 <form-property name="emoluments"	type="java.lang.String" /> 
+			 <form-property name="advntrnsid"	type="java.lang.String" />
+			 <form-property name="advntrnsdt"	type="java.lang.String" /> 			 
+			 <form-property name="totalInst"	type="java.lang.String" /> 
+			 <form-property name="prpsecvrdclse"	type="java.lang.String" /> 
+			 <form-property name="amntapprvdrs"	type="java.lang.String" /> 
+			 <form-property name="amntrcdedrs"	type="java.lang.String" />
+			 <form-property name="advnceapplid"	type="java.lang.String" />
+			 <form-property name="empshare"	type="java.lang.String" />
+			 <form-property name="mnthsemoluments"	type="java.lang.String" />
+			 <form-property name="outstndamount"	type="java.lang.String" />
+			 <form-property name="authorizedrmrks"	type="java.lang.String" />
+			 <form-property name="authorizedsts"	type="java.lang.String" />
+			 <form-property name="purposeType"	type="java.lang.String" /> 
+             <form-property name="advanceType"	type="java.lang.String" />  
+             <form-property name="region"	type="java.lang.String" />
+             <form-property name="advanceTransIDDec"	type="java.lang.String" />
+             <form-property name="paymentinfo"	type="java.lang.String" /> 
+             <form-property name="bankdetail"	type="java.lang.String" />	       	  
+	       	 <form-property name="chkbankinfo"	type="java.lang.String" /> 	        
+             <form-property name="bankempname"  type="java.lang.String" /> 		       
+		     <form-property name="bankname"  type="java.lang.String" />     		      
+		     <form-property name="banksavingaccno"  type="java.lang.String" />  
+             <form-property name="bankemprtgsneftcode"	type="java.lang.String" />        
+             <form-property name="partyName"	type="java.lang.String" />               
+             <form-property name="partyAddress"	type="java.lang.String" />
+             <form-property name="lastmthinstallmentamt"	type="java.lang.String" />
+             <form-property name="userTransMnthEmolunts"	type="java.lang.String" /> 
+              <form-property name="firstInsSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="firstInsConrtiAmnt"	type="java.lang.String" />
+			 <form-property name="recEmpSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="recEmpConrtiAmnt"	type="java.lang.String" />  
+			 <form-property name="firstInsTotAmnt"	type="java.lang.String" /> 
+             
+             
+	   </form-bean>
+	   <form-bean
+            name="advancePFWForm4"
+            type="org.apache.struts.validator.DynaValidatorForm">
+             <form-property name="subscriptionAmt50percent"	type="java.lang.String" />
+             <form-property name="narration"	type="java.lang.String" />
+             <form-property name="verifiedby"   type="java.lang.String" />
+             <form-property name="partyname"	type="java.lang.String" />
+             <form-property name="approvedsubamt"	type="java.lang.String" />
+    		 <form-property name="approvedconamt"	type="java.lang.String" />
+             <form-property name="contributionAmtCurr"	type="java.lang.String" />
+             <form-property name="emolumentsLabel"	type="java.lang.String" />
+	 		 <form-property name="paymentinfo"	type="java.lang.String" />
+             <form-property name="CPFFund"	type="java.lang.String" />
+             <form-property name="sanctiondate"	type="java.lang.String" />
+             <form-property name="fhName"	type="java.lang.String" />
+           	 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="pensionNo"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />
+			 <form-property name="designation"	type="java.lang.String" />
+			 <form-property name="department"	type="java.lang.String" />
+			 <form-property name="dateOfMembership"	type="java.lang.String" />
+			 <form-property name="dateOfJoining"	type="java.lang.String" />
+			 <form-property name="dateOfBirth"	type="java.lang.String" />
+			 <form-property name="employeeNo"	type="java.lang.String" /> 
+			 <form-property name="emoluments"	type="java.lang.String" /> 
+			 <form-property name="advntrnsid"	type="java.lang.String" />
+			 <form-property name="advntrnsdt"	type="java.lang.String" /> 			 
+			 <form-property name="totalInst"	type="java.lang.String" /> 
+			 <form-property name="prpsecvrdclse"	type="java.lang.String" /> 
+			 <form-property name="amntapprvdrs"	type="java.lang.String" /> 
+			 <form-property name="amntrcdedrs"	type="java.lang.String" />
+			 <form-property name="advnceapplid"	type="java.lang.String" />
+			 <form-property name="empshare"	type="java.lang.String" />
+			 <form-property name="mnthsemoluments"	type="java.lang.String" />
+			 <form-property name="outstndamount"	type="java.lang.String" />
+			 <form-property name="authorizedrmrks"	type="java.lang.String" />
+			 <form-property name="authorizedsts"	type="java.lang.String" />
+			 <form-property name="purposeType"	type="java.lang.String" /> 
+			 <form-property name="purposeFlag"	type="java.lang.String" /> 			 
+             <form-property name="advanceType"	type="java.lang.String" />  
+             <form-property name="subscriptionAmt"	type="java.lang.String" /> 
+         	 <form-property name="contributionAmt"	type="java.lang.String" />
+         	 <form-property name="region"	type="java.lang.String" />
+         	 <form-property name="placeofposting"	type="java.lang.String" />
+         	 <form-property name="purposeOptionType"	type="java.lang.String" />
+         	 <form-property name="purposeOptionTypeDesr"	type="java.lang.String" />
+         	 <form-property name="amntRecommended"	type="java.lang.String" />
+         	 <form-property name="advanceTransIDDec"	type="java.lang.String" />
+         	 <form-property name="hbadrwnfrmaai"  type="java.lang.String" />  
+         	 <form-property name="chkwthdrwlinfo"  type="java.lang.String" />  
+         	 <form-property name="lodInfo"	type="java.lang.String" />
+	       	 <form-property name="chkwthdrwlflag"	type="java.lang.String" />
+	       	 <form-property name="empnamewthblk"	type="java.lang.String" />
+         	 <form-property name="bankdetail"	type="java.lang.String" />	       	  
+	       	 <form-property name="chkbankinfo"	type="java.lang.String" /> 	        
+             <form-property name="bankempname"  type="java.lang.String" /> 		       
+		     <form-property name="bankname"  type="java.lang.String" />     		      
+		     <form-property name="banksavingaccno"  type="java.lang.String" />  
+             <form-property name="bankemprtgsneftcode"	type="java.lang.String" />        
+             <form-property name="partyName"	type="java.lang.String" />               
+             <form-property name="partyAddress"	type="java.lang.String" /> 
+             <form-property name="userTransMnthEmolunts"	type="java.lang.String" /> 
+             <form-property name="firstInsSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="firstInsConrtiAmnt"	type="java.lang.String" />
+			 <form-property name="recEmpSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="recEmpConrtiAmnt"	type="java.lang.String" /> 
+			 <form-property name="firstInsTotAmnt"	type="java.lang.String" />
+			 <form-property name="rateOfInterest"	type="java.lang.String" />
+			 <form-property name="transMnthYear"	type="java.lang.String" /> 
+			  
+	   </form-bean>
+       <form-bean
+            name="advanceMaster"
+            type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="pfwSanctionOrderNo"	type="java.lang.String" /> 
+             <form-property name="transactionStatus"	type="java.lang.String" />
+            <form-property name="mthinstallmentamt"	type="java.lang.String" />
+             <form-property name="advanceTransID"	type="java.lang.String" />
+             <form-property name="advanceTransStatus"	type="java.lang.String" />
+             <form-property name="paymentdt"	type="java.lang.String" />
+ 			 <form-property name="seperationreason"	type="java.lang.String" />
+           	 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="pensionNo"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />
+			 <form-property name="dateOfMembership"		type="java.lang.String" />
+			 <form-property name="dateOfBirth"	type="java.lang.String" />
+			 <form-property name="outstndamount"	type="java.lang.String" />
+			 <form-property name="prpsecvrdclse"	type="java.lang.String" />
+			 <form-property name="advanceTransyear"	type="java.lang.String" /> 
+          	 <form-property name="advanceType"	type="java.lang.String" /> 
+             <form-property name="purposeType"	type="java.lang.String" />  
+        	 <form-property name="totalInst"	type="java.lang.String" />
+			 <form-property name="mnthsemoluments"	type="java.lang.String" />
+			 <form-property name="empshare"	type="java.lang.String" /> 
+          	 <form-property name="advnceapplid"	type="java.lang.String" /> 
+             <form-property name="amntrcdedrs"	type="java.lang.String" />
+             <form-property name="amntapprvdrs"	type="java.lang.String" />
+             <form-property name="authorizedrmrks"	type="java.lang.String" />
+             <form-property name="authorizedsts"	type="java.lang.String" />
+             <form-property name="advntrnsid"	type="java.lang.String" />
+             <form-property name="takenloan"	type="java.lang.String" />
+             <form-property name="region"	type="java.lang.String" />
+             <form-property name="screenTitle"	type="java.lang.String" />
+             <form-property name="frmName"	type="java.lang.String" />
+             <form-property name="paymentinfo"	type="java.lang.String" /> 
+             <form-property name="bankdetail"	type="java.lang.String" />	       	  
+	       	 <form-property name="chkbankinfo"	type="java.lang.String" /> 
+             <form-property name="bankempname"  type="java.lang.String" /> 	 
+			 <form-property name="bankname"  type="java.lang.String" />     		      
+		     <form-property name="banksavingaccno"  type="java.lang.String" />  
+             <form-property name="bankemprtgsneftcode"	type="java.lang.String" /> 
+             <form-property name="partyName"	type="java.lang.String" />              
+             <form-property name="partyAddress"	type="java.lang.String" /> 
+             <form-property name="checkListStatus"	type="java.lang.String" /> 
+             <form-property name="propertyaddress"	type="java.lang.String" />
+             <form-property name="narration"	type="java.lang.String" />
+             <form-property name="revverifiedby"	type="java.lang.String" />
+             <form-property name="revAdvanceTransID"	type="java.lang.String" />
+             <form-property name="firstInsSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="firstInsConrtiAmnt"	type="java.lang.String" />
+			 <form-property name="recEmpSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="recEmpConrtiAmnt"	type="java.lang.String" /> 
+          
+       </form-bean>
+       <form-bean
+            name="advanceEditForm"
+            type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="soremarks"	type="java.lang.String" />
+             <form-property name="createdDate"	type="java.lang.String" />
+             <form-property name="bankpaymentmode"	type="java.lang.String" /> 
+             <form-property name="wthdrwid"	type="java.lang.String" />
+             <form-property name="wthdrwlist"	type="java.lang.String" />
+             <form-property name="seperationfavour"	type="java.lang.String" />
+             <form-property name="seperationremarks"	type="java.lang.String" />
+             <form-property name="hbawthdrwlpurpose"  type="java.lang.String" />  
+   			 <form-property name="hbawthdrwlamount"  type="java.lang.String" />
+   			 <form-property name="hbawthdrwladdress"  type="java.lang.String" />  
+   			 <form-property name="marriagedate"  type="java.lang.String" />   
+             <form-property name="nssanctionno"	type="java.lang.String" />
+           	 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="pensionNo"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />
+			 <form-property name="designation"	type="java.lang.String" />
+			 <form-property name="department"	type="java.lang.String" />
+			 <form-property name="dateOfMembership"	type="java.lang.String" />
+			 <form-property name="dateOfJoining"	type="java.lang.String" />
+			 <form-property name="dateOfBirth"	type="java.lang.String" />
+			 <form-property name="employeeNo"	type="java.lang.String" /> 
+			 <form-property name="cpfaccno"		type="java.lang.String" /> 
+			 <form-property name="region"		type="java.lang.String" /> 
+			 <form-property name="transMnthYear"	type="java.lang.String" /> 
+			 <form-property name="fhName"		type="java.lang.String" /> 
+			 <form-property name="wetherOption"	type="java.lang.String" /> 
+			 <form-property name="emoluments"	type="java.lang.String" /> 
+			 <form-property name="pfStatury"	type="java.lang.String" /> 
+          	 <form-property name="advanceType"	type="java.lang.String" /> 
+          	 <form-property name="pfwPurpose"	type="java.lang.String" /> 
+          	 <form-property name="advPurpose"	type="java.lang.String" /> 
+          	 <form-property name="pfwPurMarriage"	type="java.lang.String" initial="MARRIAGE"/> 
+          	 <form-property name="pfwPurHBA"	type="java.lang.String" initial="HBA"/> 
+          	 <form-property name="pfwPurHE"	type="java.lang.String" initial="HE"/> 
+          	 <form-property name="pfwPurSuperannuation"	type="java.lang.String" initial="SUPERANNUATION"/> 
+          	 <form-property name="pfwPurLIC"	type="java.lang.String" initial="LIC"/> 
+          	 <form-property name="cpfAdvCOP"	type="java.lang.String" initial="COST"/> 
+          	 <form-property name="cpfAdvOE"	type="java.lang.String" initial="OBLIGATORY"/> 
+          	 <form-property name="cpfAdvOEMarriage"	type="java.lang.String" initial="OBMARRIAGE"/> 
+          	 <form-property name="cpfAdvIE"	type="java.lang.String" initial="ILLNESS"/> 
+          	 <form-property name="cpfAdvEducation"	type="java.lang.String" initial="EDUCATION"/> 
+          	 <form-property name="cpfAdvDefence"	type="java.lang.String" initial="DEFENCE"/> 
+             <form-property name="cpfAdvOther"	type="java.lang.String" initial="OTHERS"/> 
+             <form-property name="purposeType"	type="java.lang.String" />  
+             <form-property name="advReasonText"	type="java.lang.String" />  
+             <form-property name="hbapurposetype"	type="java.lang.String" />  
+              <form-property name="station"	type="java.lang.String" />  
+              <form-property name="trust"	type="java.lang.String" />
+          	  <form-property name="hbarepaymenttype"	type="java.lang.String" />  
+			  <form-property name="hbaloanname"	type="java.lang.String" />  
+			  <form-property name="hbaloanaddress"	type="java.lang.String" />  
+			  <form-property name="osamountwithinterest"	type="java.lang.String" />  
+			  <form-property name="hbaownername" type="java.lang.String" />  
+			  <form-property name="hbaowneraddress"	type="java.lang.String" />  
+			  <form-property name="hbaownerarea"  type="java.lang.String" />  
+			  <form-property name="hbaownerplotno" type="java.lang.String" />  
+			  <form-property name="hbaownerlocality"	type="java.lang.String" />  
+			  <form-property name="hbaownermuncipal"  type="java.lang.String" />  
+			  <form-property name="hbaownercity"  type="java.lang.String" />  
+			  <form-property name="hbadrwnfrmaai"  type="java.lang.String" />  
+		      <form-property name="hbapermissionaai"  type="java.lang.String" />  
+		      <form-property name="chkwthdrwlinfo"  type="java.lang.String" />  
+   		      <form-property name="wthdrwlAmount"  type="java.lang.String" />  
+		      <form-property name="wthDrwlTrnsdt"  type="java.lang.String" />
+		      <form-property name="wthdrwlpurpose"  type="java.lang.String" />   
+              <form-property name="advReqAmnt"	type="java.lang.String" />  
+              <form-property name="message"	type="java.lang.String" />  
+              <form-property name="chkbankinfo"	type="java.lang.String" /> 
+              <form-property name="bankempname"  type="java.lang.String" />  
+		      <form-property name="bankempaddrs"  type="java.lang.String" />  
+		      <form-property name="bankname"  type="java.lang.String" />  
+   		      <form-property name="branchaddress"  type="java.lang.String" />  
+		      <form-property name="banksavingaccno"  type="java.lang.String" />  
+              <form-property name="bankemprtgsneftcode"	type="java.lang.String" />  
+              <form-property name="bankempmicrono"	type="java.lang.String" /> 
+              <form-property name="empmailid"	type="java.lang.String" /> 
+              <form-property name="modeofpartyname"	type="java.lang.String" /> 
+              <form-property name="modeofpartyaddrs"	type="java.lang.String" /> 
+              <form-property name="pfwHEType"	type="java.lang.String" />  
+              <form-property name="nmCourse"	type="java.lang.String" /> 
+              <form-property name="nmInstitue"	type="java.lang.String" /> 
+              <form-property name="addrInstitue"	type="java.lang.String" /> 
+              <form-property name="curseDuration"	type="java.lang.String" /> 
+              <form-property name="heLastExaminfo"	type="java.lang.String" /> 
+              <form-property name="empfmlydtls"	type="java.lang.String" />  
+              <form-property name="fmlyEmpName"	type="java.lang.String" /> 
+              <form-property name="fmlyDOB"	type="java.lang.String" /> 
+              <form-property name="fmlyAge"	type="java.lang.String" /> 
+              <form-property name="brthCertProve"	type="java.lang.String" /> 
+              <form-property name="advancecostexp"	type="java.lang.String" /> 
+              <form-property name="advanceobligexp"	type="java.lang.String" /> 
+              <form-property name="heRecog"	type="java.lang.String" /> 
+              <form-property name="cpfmarriageexp"	type="java.lang.String" /> 
+              <form-property name="oblCermoney"	type="java.lang.String" /> 
+           	  <form-property name="cpftotalinstall"	type="java.lang.String" /> 
+           	  <form-property name="empage"	type="java.lang.String" />
+              <form-property name="PFWrule"	type="java.lang.String" />
+              <form-property name="CPFFund"	type="java.lang.String" />
+              <form-property name="subscriptionAmt"	type="java.lang.String" />
+              <form-property name="bankdetail"	type="java.lang.String" />
+              <form-property name="propertyaddress"	type="java.lang.String" />
+		      <form-property name="actualcost"	type="java.lang.String" />
+		      <form-property name="takenloan"	type="java.lang.String" />
+         	 <form-property name="amntRecommended"	type="java.lang.String" /> 
+             <form-property name="seperationreason"	type="java.lang.String" /> 
+			 <form-property name="seperationdate"	type="java.lang.String" />
+			 <form-property name="nomineename"	type="java.lang.String" />
+			 <form-property name="amtadmtdate"	type="java.lang.String" />
+			 <form-property name="emplshare"	type="java.lang.String" />
+			 <form-property name="emplrshare"	type="java.lang.String" />
+			 <form-property name="pensioncontribution"	type="java.lang.String" />
+			 <form-property name="netcontribution"	type="java.lang.String" />
+			 <form-property name="sanctionno"	type="java.lang.String" />
+			 <form-property name="sanctiondt"	type="java.lang.String" />  
+			 <form-property name="serialNo"	type="java.lang.String" />
+			 <form-property name="nomineeDOB"	type="java.lang.String" />
+			 <form-property name="nomineeaddress"	type="java.lang.String" />
+			 <form-property name="nomineerelation"	type="java.lang.String" />
+			 <form-property name="gardianname"	type="java.lang.String" />
+			 <form-property name="gardianaddress"	type="java.lang.String" />
+			 <form-property name="totalshare"	type="java.lang.String" />
+			 <form-property name="detailsdata"	type="java.lang.String[]" />
+			 <form-property name="nomineeflag"	type="java.lang.String" />
+			 <form-property name="nomineeRow"	type="java.lang.String" />
+			 <form-property name="advncerqddepend"	type="java.lang.String" />
+			 <form-property name="utlisiedamntdrwn"	type="java.lang.String" />
+			 <form-property name="paymentdt"	type="java.lang.String" />
+             <form-property name="remarks"	type="java.lang.String" />
+             <form-property name="firstInsSubAmnt"	type="java.lang.String" />
+			 <form-property name="firstInsConrtiAmnt"	type="java.lang.String" />
+			 <form-property name="recEmpSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="recEmpConrtiAmnt"	type="java.lang.String" /> 
+			  <form-property name="pfwReqAmnt"	type="java.lang.String" />
+             
+             
+             
+             <form-property name="advanceTransID"	type="java.lang.String" />
+             <form-property name="paymentinfo"	type="java.lang.String" />
+             <form-property name="lodInfo"	type="java.lang.String" />
+             <form-property name="purposeOptionType"	type="java.lang.String" />
+             <form-property name="placeofposting"	type="java.lang.String" />
+           
+             
+       </form-bean>
+       <form-bean
+            name="NoteSheetForm"
+            type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="sanctionOrderNo"	type="java.lang.String" /> 
+            <form-property name="remarksFlag"	type="java.lang.String" /> 
+            <form-property name="transremarks"	type="java.lang.String" /> 
+            <form-property name="soremarks"	type="java.lang.String" />
+            <form-property name="dpfromfinyear"	type="java.lang.String" /> 
+            <form-property name="dptofinyear"	type="java.lang.String" /> 
+             <form-property name="equalshare"	type="java.lang.String" /> 
+             <form-property name="resignationreason"	type="java.lang.String" />
+             <form-property name="organizationname"	type="java.lang.String" />
+             <form-property name="organizationaddress"	type="java.lang.String" />
+             <form-property name="appointmentdate"	type="java.lang.String" />
+             <form-property name="postedas"	type="java.lang.String" />
+             <form-property name="workingplace"	type="java.lang.String" />
+             <form-property name="arreartype"	type="java.lang.String" />
+             <form-property name="arreardate"	type="java.lang.String" />
+             <form-property name="fromfinyear"	type="java.lang.String" />
+             <form-property name="tofinyear"	type="java.lang.String" />
+             <form-property name="interestratefrom"	type="java.lang.String" />
+             <form-property name="interestrateto"	type="java.lang.String" /> 
+             <form-property name="bankpaymentmode"	type="java.lang.String" /> 
+             <form-property name="deathplace"	type="java.lang.String" />
+             <form-property name="city"	type="java.lang.String" /> 
+             <form-property name="paymentinfo"	type="java.lang.String" /> 
+        	 <form-property name="lodInfo"	type="java.lang.String" />
+           	 <form-property name="empage"	type="java.lang.String" /> 
+             <form-property name="maritalstatus"	type="java.lang.String" /> 
+             <form-property name="emprelation"	type="java.lang.String" /> 
+             <form-property name="empaddress"	type="java.lang.String" /> 
+             <form-property name="quarterallotment"	type="java.lang.String" /> 
+             <form-property name="quarterno"	type="java.lang.String" /> 
+             <form-property name="colonyname"	type="java.lang.String" /> 
+             <form-property name="empstation"	type="java.lang.String" /> 
+             <form-property name="permenentaddress"	type="java.lang.String" />
+             <form-property name="presentaddress"	type="java.lang.String" />
+             <form-property name="phoneno"	type="java.lang.String" />
+             <form-property name="empmailid"	type="java.lang.String" />
+             <form-property name="chkbankinfo"	type="java.lang.String" />
+             <form-property name="bankdetail"	type="java.lang.String" />
+             <form-property name="bankempname"  type="java.lang.String" />  
+		     <form-property name="bankempaddrs"  type="java.lang.String" />  
+		     <form-property name="bankname"  type="java.lang.String" />  
+   		     <form-property name="branchaddress"  type="java.lang.String" />  
+		     <form-property name="banksavingaccno"  type="java.lang.String" />  
+             <form-property name="bankemprtgsneftcode"	type="java.lang.String" /> 
+             <form-property name="bankempmicrono"	type="java.lang.String" />  
+             <form-property name="authorizedsts"	type="java.lang.String" /> 
+           	 <form-property name="adhocamt"	type="java.lang.String" />
+             <form-property name="seperationfavour"	type="java.lang.String" />
+             <form-property name="seperationremarks"	type="java.lang.String" />
+             <form-property name="nssanctionno"	type="java.lang.String" />
+           	 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="pensionNo"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />
+			 <form-property name="designation"	type="java.lang.String" />
+			 <form-property name="department"	type="java.lang.String" />
+			 <form-property name="dateOfMembership"	type="java.lang.String" />
+			 <form-property name="dateOfJoining"	type="java.lang.String" />
+			 <form-property name="dateOfBirth"	type="java.lang.String" />
+			 <form-property name="employeeNo"	type="java.lang.String" /> 
+			 <form-property name="cpfaccno"		type="java.lang.String" /> 
+			 <form-property name="region"		type="java.lang.String" /> 
+			 <form-property name="station"		type="java.lang.String" /> 
+			 <form-property name="transMnthYear"	type="java.lang.String" /> 
+			 <form-property name="fhName"		type="java.lang.String" /> 
+			 <form-property name="wetherOption"	type="java.lang.String" /> 
+			 <form-property name="emoluments"	type="java.lang.String" /> 
+			 <form-property name="seperationreason"	type="java.lang.String" /> 
+			 <form-property name="seperationdate"	type="java.lang.String" />
+			 <form-property name="nomineename"	type="java.lang.String" />
+			 <form-property name="amtadmtdate"	type="java.lang.String" />
+			 <form-property name="emplshare"	type="java.lang.String" />
+			 <form-property name="emplrshare"	type="java.lang.String" />
+			 <form-property name="pensioncontribution"	type="java.lang.String" />
+			 <form-property name="netcontribution"	type="java.lang.String" />
+			 <form-property name="sanctionno"	type="java.lang.String" />
+			 <form-property name="sanctiondt"	type="java.lang.String" />    
+			 <form-property name="advReqAmnt"	type="java.lang.String" />
+			 <form-property name="firstInsSubAmnt"	type="java.lang.String" />
+			 <form-property name="firstInsConrtiAmnt"	type="java.lang.String" />
+			 <form-property name="recEmpSubAmnt"	type="java.lang.String" /> 
+			 <form-property name="recEmpConrtiAmnt"	type="java.lang.String" /> 
+			  <form-property name="pfwReqAmnt"	type="java.lang.String" />
+			<form-property name="advReasonText"	type="java.lang.String" />     
+			 <form-property name="subscriptionAmt"	type="java.lang.String" />
+			 <form-property name="serialNo"	type="java.lang.String" />
+			 <form-property name="nomineeflag"	type="java.lang.String" />
+			 <form-property name="nomineeDOB"	type="java.lang.String" />
+			 <form-property name="nomineeaddress"	type="java.lang.String" />
+			 <form-property name="nomineerelation"	type="java.lang.String" />
+			 <form-property name="gardianname"	type="java.lang.String" />
+			 <form-property name="gardianaddress"	type="java.lang.String" />
+			 <form-property name="totalshare"	type="java.lang.String" />
+			 <form-property name="detailsdata"	type="java.lang.String[]" />
+             <form-property name="nomineeRow"	type="java.lang.String" />
+             <form-property name="paymentdt"	type="java.lang.String" />
+             <form-property name="remarks"	type="java.lang.String" />
+             <form-property name="trust"	type="java.lang.String" />
+             <form-property name="postingdetails"	type="java.lang.String" /> 
+             <form-property name="transdt"	type="java.lang.String" /> 
+             <form-property name="rateOfInterest"	type="java.lang.String" /> 
+              <form-property name="postingFlag"	type="java.lang.String" /> 
+              <form-property name="advanceTransID"	type="java.lang.String" />
+              
+       </form-bean>
+       
+       <form-bean
+            name="noteSheetMaster"
+            type="org.apache.struts.validator.DynaValidatorForm">
+          	<form-property name="paymentdt"	type="java.lang.String" />
+		     <form-property name="seperationreason"	type="java.lang.String" />
+			 <form-property name="pfid"		type="java.lang.String" />		
+			 <form-property name="nssanctionno"	type="java.lang.String" />	
+             <form-property name="sanctionno"	type="java.lang.String" />
+             <form-property name="sanctiondt"	type="java.lang.String" />
+             <form-property name="emplshare"	type="java.lang.String" />
+			 <form-property name="emplrshare"	type="java.lang.String" />
+			 <form-property name="pensioncontribution"	type="java.lang.String" />
+			 <form-property name="netcontribution"	type="java.lang.String" />
+			 <form-property name="employeeName"	type="java.lang.String" />
+			 <form-property name="trust"	type="java.lang.String" />
+			 <form-property name="station"	type="java.lang.String" />
+			 <form-property name="arreartype"	type="java.lang.String" />
+			 <form-property name="requestType"	type="java.lang.String" />  
+			 <form-property name="advanceTransID"	type="java.lang.String" />
+			 <form-property name="purposeType"	type="java.lang.String" />
+			 <form-property name="fsType"	type="java.lang.String" />
+			  
+       </form-bean>
+       <form-bean
+            name="advancereport"
+            type="org.apache.struts.validator.DynaValidatorForm">
+             <form-property name="airportlabel"	type="java.lang.String" />
+          	 <form-property name="region"	type="java.lang.String" />
+		     <form-property name="year"	type="java.lang.String" />
+			 <form-property name="month"		type="java.lang.String" />			
+             <form-property name="formtype"	type="java.lang.String" />
+     		<form-property name="seperationreason"	type="java.lang.String" />
+       </form-bean>
+   <!--  end Advance Action -->
+   
+    <!-- Notifications  -->
+				<form-bean name="Notifications" type="org.apache.struts.validator.DynaValidatorActionForm">	 	
+			 		<form-property name="keyno" type="java.lang.String" />	
+			 		<form-property name="advanceType"	type="java.lang.String" />	
+			 		<form-property name="advanceTransID"	type="java.lang.String" />		
+			 		<form-property name="transactionId"	type="java.lang.String" />	
+			 		<form-property name="pensionNo"	type="java.lang.String" />	
+			 		<form-property name="purposeType"	type="java.lang.String" />			
+			 	</form-bean>
+		<!-- End of Notifications  -->	
+    </form-beans>
+
+
+<!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+
+<!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <!-- Default forward to "Welcome" action -->
+        <!-- Demonstrates using index.jsp to forward -->
+        <forward name="failureMessage" path="/jsp/advances/FailureReportMessage.jsp" redirect="false"/>
+        
+       
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+            <!-- Default "Welcome" action -->
+            <!-- Forwards to Welcome.jsp -->
+        <action
+            path="/Welcome"
+            forward="/pages/Welcome.jsp"/>
+
+    <!-- sample input and input submit actions
+
+        <action
+            path="/Input"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/pages/Input.jsp"/>
+   end samples -->
+         <action
+            path="/advanceSearch"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advanceMaster"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="searchAdvances" path="/jsp/advances/AdvanceMaster.jsp"/>
+            <forward name="success" path="/jsp/advances/AdvanceMaster.jsp"/>
+            
+       </action>
+        <action
+            path="/checklist"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advancePFWForm4"
+            scope="request"
+            validate="false"
+            parameter="method"
+            >
+           
+           <forward name="loadPFWCheckListForm" path="/jsp/advances/PFWCheckListApprovalForm.jsp"/>
+           <forward name="loadCPFCheckListForm" path="/jsp/advances/CPFCheckListApprovalForm.jsp"/>
+           <forward name="loadPFWCheckListReport" path="/jsp/advances/PFWCheckListReport.jsp"/>
+           <forward name="success" path="/jsp/advances/PFWCheckListSearch.jsp"/>
+           <forward name="CPFCheckListSuccess" path="/jsp/advances/CPFCheckListSearch.jsp"/>
+           <forward name="loadNotifications" path="/lanotifications.do?method=getNotifications" redirect="true"/>
+         
+       </action>
+       <action
+            path="/advanceForm2"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advanceCPFForm2"
+            scope="request"
+            validate="false"
+             parameter="method">
+         	 <forward name="CPFverificationreport" path="/jsp/advances/CPFVerificationReport.jsp"/>
+  			 <forward name="loadCPFverificationform" path="/jsp/advances/CPFVerificationForm.jsp"/>
+  			 <forward name="CPFForm2Success" path="/jsp/advances/CPFVerificationSearch.jsp"/>  
+         	 <forward name="cpfform2report" path="/jsp/advances/AdvanceCPFForm2Report.jsp"/>
+             <forward name="loadform2" path="/jsp/advances/AdvanceCPFForm2.jsp"/>
+             <forward name="success" path="/jsp/advances/AdvanceMaster.jsp"/>
+             <forward name="successcpfform2" path="/jsp/advances/AdvanceCPFFormMaster.jsp"/>
+             <forward name="loadNotifications" path="/lanotifications.do?method=getNotifications" redirect="true"/>
+             
+       </action>
+        <action
+            path="/loadAdvanceEdit"
+            type="com.epis.action.advances.AdvancesEditAction"
+            name="advanceEditForm"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+            
+            <forward name="loadWthdrwlDetails" path="/jsp/advances/LoadWithDrawalDetails.jsp"/>
+            <forward name="editAdvances" path="/jsp/advances/AdvancesEdit.jsp" redirect="false"/>
+            <forward name="updatesuccess" path="/advanceSearch.do?method=searchAdvances"  redirect="false"/>
+            <forward name="updatecontinue" path="/jsp/advances/AdvancesEditNext.jsp" redirect="false"/>
+            <forward name="loadAdvanceEditForm" path="/jsp/advances/AdvancesEdit.jsp" redirect="false"/>
+       
+       </action>
+        <action
+            path="/loadAdvance"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advanceForm"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+            <forward name="loadWthdrwlDetails" path="/jsp/advances/LoadWithDrawalDetails.jsp"/>
+            <forward name="loadFinalSettlementArrear" path="/jsp/advances/NoteSheetArrearForm.jsp"/>
+            <forward name="loadFinalSettlement" path="/jsp/advances/NoteSheetApplicationForm.jsp"/>
+            <forward name="loadAdvanceForm" path="/jsp/advances/AdvanceInformation.jsp" redirect="false"/>
+          <!--   <forward name="success" path="/view/advances/AdvanceMaster.jsp"/> -->
+            <forward name="success" path="/advanceSearch.do?method=searchAdvances"  redirect="true"/>
+            <forward name="loadPersonalForm" path="/jsp/common/PersonalInfoLookUp.jsp"/>
+            <forward name="contWthAdvOpt" path="/jsp/advances/AdvanceInformationNext.jsp"/>
+            <forward name="viewPFWReport" path="/jsp/advances/AdvanceReport.jsp" redirect="false"/>
+            <forward name="viewCPFReport" path="/jsp/advances/AdvanceCPFReport.jsp"  redirect="false"/>
+            <forward name="viewForm2Report" path="/jsp/advances/AdvancePFWForm2.jsp"  redirect="false"/>
+            <forward name="viewForm3Report" path="/jsp/advances/AdvancePFWForm3.jsp"  redirect="false"/>
+            <forward name="loadNoteSheetForm" path="/jsp/advances/NoteSheetMaster.jsp"/>
+            <forward name="loadWthdrwlForm" path="/jsp/advances/WithDrawalDetails.jsp"/>
+       </action>
+		<action
+            path="/loadNoteSheet"
+            type="com.epis.action.advances.AdvancesAction"
+            name="NoteSheetForm"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+            <forward name="nsterminationreport" path="/jsp/advances/NoteSheetTerminationReport.jsp"/>
+            <forward name="searchrecordssuccess" path="/noteSheetSearch.do?method=searchRecordsToDelete"  redirect="true"/>
+            <forward name="editFinalSettlementArrear" path="/jsp/advances/NoteSheetArrearApplicationEdit.jsp"/>
+            <forward name="processsearchsuccess" path="/noteSheetSearch.do?method=searchFinalSettlementArrearProcess"  redirect="true"/>
+            <forward name="loadFinalSettlementArrear" path="/jsp/advances/NoteSheetArrearForm.jsp"/>
+            <forward name="arrearsuccess" path="/jsp/advances/NoteSheetArrearSearch.jsp"/>
+			<forward name="finalsettlementarrearsuccess" path="/noteSheetSearch.do?method=searchFinalSettlementArrear"  redirect="true"/>
+			<forward name="loadFSArrearReport" path="/jsp/advances/NoteSheetArrearReport.jsp"/>
+			<forward name="editNoteSheetArrear" path="/jsp/advances/NoteSheetArrearEdit.jsp" redirect="false"/> 
+			<forward name="editNoteSheetArrearRecommendation" path="/jsp/advances/NoteSheetArrearRecommendationForm.jsp" redirect="false"/> 
+			<forward name="editNoteSheetArrearVerification" path="/jsp/advances/NoteSheetArrearVerificationForm.jsp" redirect="false"/> 
+			<forward name="editNoteSheetArrearApproval" path="/jsp/advances/NoteSheetArrearApprovalForm.jsp" redirect="false"/> 
+			<forward name="viewArrearSanctionOrder" path="/jsp/advances/ArrearSanctionOrder.jsp" redirect="false"/>
+            <forward name="viewArrearSanctionOrderOldFormat" path="/jsp/advances/ArrearSanctionOrderOldFormat.jsp" redirect="false"/>
+            <forward name="loadFSAppResignationReport" path="/jsp/advances/NoteSheetApplicationResignationReport.jsp"/>
+			<forward name="loadFSResigPersonalVerificaitonReport" path="/jsp/advances/NoteSheetResigPersonalVerificationReport.jsp"/>
+            <forward name="loadFSAppRetirementReport" path="/jsp/advances/NoteSheetApplicationRetirementReport.jsp"/>
+			<forward name="loadFSAppDeathReport" path="/jsp/advances/NoteSheetApplicationDeathReport.jsp"/>
+            <forward name="addPostingDetails" path="/jsp/advances/PostingDetails.jsp"/>
+			<forward name="editPostingDetails" path="/jsp/advances/PostingDetailsEdit.jsp"/>
+            <forward name="editFinalSettlement" path="/jsp/advances/NoteSheetApplicationEdit.jsp"/>
+			<forward name="contFinalSettlement" path="/jsp/advances/NoteSheetApplicationEditNext.jsp"/>
+			<forward name="loadFinalSettlementAppEditForm" path="/jsp/advances/NoteSheetApplicationEdit.jsp"/>
+            <forward name="editFSApproval" path="/jsp/advances/NoteSheetApprovalForm.jsp" redirect="false"/> 
+            <forward name="loadNoteSheet" path="/jsp/advances/NoteSheetMaster.jsp"/>
+            <forward name="editNoteSheet" path="/jsp/advances/NoteSheetEdit.jsp" redirect="false"/> 
+            <forward name="success" path="/noteSheetSearch.do?method=searchNoteSheet"  redirect="true"/> 
+            <forward name="viewNoteSheetReport" path="/jsp/advances/NoteSheetReport.jsp" redirect="false"/>
+            <forward name="viewNoteSheetReportOldFormat" path="/jsp/advances/NoteSheetReportOldFormat.jsp" redirect="false"/>
+            <forward name="viewSanctionOrder" path="/jsp/advances/SanctionOrder.jsp" redirect="false"/>
+            <forward name="viewSanctionOrderOldFormat" path="/jsp/advances/SanctionOrderOldFormat.jsp" redirect="false"/>
+            <forward name="viewNoteSheetResignationReport" path="/jsp/advances/NoteSheetResignationReport.jsp" redirect="false"/>         
+	        <forward name="viewNoteSheetResignationReportOldFormat" path="/jsp/advances/NoteSheetResignationReportOldFormat.jsp" redirect="false"/>           
+            <forward name="nsdeathreport" path="/jsp/advances/NoteSheetDeathReport.jsp" redirect="false"/>  
+	        <forward name="nsdeathreportOldFormat" path="/jsp/advances/NoteSheetDeathReportOldFormat.jsp" redirect="false"/>                  
+            <forward name="viewRetirementSanctionOrder" path="/jsp/advances/RetirementSanctionOrder.jsp" redirect="false"/>
+            <forward name="viewRetirementSanctionOrderOldFormat" path="/jsp/advances/RetirementSanctionOrderOldFormat.jsp" redirect="false"/>
+ 			<forward name="viewDeathSanctionOrder" path="/jsp/advances/DeathSanctionOrder.jsp" redirect="false"/>
+ 			<forward name="viewDeathSanctionOrderOldFormat" path="/jsp/advances/DeathSanctionOrderOldFormat.jsp" redirect="false"/>
+ 			<forward name="loadFinalSettlement" path="/jsp/advances/NoteSheetApplicationForm.jsp"/>
+ 			<forward name="contNoteSheet" path="/jsp/advances/NoteSheetApplicationFormNext.jsp"/>
+ 			<forward name="finalsettlementsuccess" path="/noteSheetSearch.do?method=searchFinalSettlement"  redirect="true"/>
+ 			<forward name="loadFSVerificationForm" path="/jsp/advances/NoteSheetVerificationForm.jsp"/>
+ 			<forward name="finalsettlementverificationsuccess" path="/noteSheetSearch.do?method=searchFinalSettlementVerification"  redirect="true"/>
+ 			<forward name="editFSVerificationIII" path="/jsp/advances/NoteSheetRecommendationFormIII.jsp" redirect="false"/> 
+ 			<forward name="editFSVerificationIV" path="/jsp/advances/NoteSheetRecommendationFormIV.jsp" redirect="false"/> 
+			<forward name="loadFSAppReport" path="/jsp/advances/NoteSheetApplicationReport.jsp"/>
+			<forward name="loadPostingDetails" path="/jsp/advances/PostingDetails.jsp"/>
+			<forward name="nsarreardeathreport" path="/jsp/advances/NoteSheetArrearDeathReport.jsp"/>
+			<forward name="nsarreardeathreportOldFormat" path="/jsp/advances/NoteSheetArrearDeathReportOldFormat.jsp"/>
+			  
+              
+       </action>
+       
+       <action
+            path="/noteSheetSearch"
+            type="com.epis.action.advances.AdvancesAction"
+            name="noteSheetMaster"
+            scope="request"
+            validate="false"
+             parameter="method">
+		    <forward name="loadsearchtodeleterecords" path="/jsp/advances/SearchToDeleteRecord.jsp"/>            
+            <forward name="searchrecordssuccess" path="/jsp/advances/SearchToDeleteRecord.jsp"/>  
+            <forward name="loadsearchtodeleterecords" path="/jsp/advances/SearchToDeleteRecord.jsp"/>  
+            <forward name="searchFinalSettlementArrear" path="/jsp/advances/NoteSheetArrearSearch.jsp"/>
+            <forward name="finalsettlementarrearsuccess" path="/jsp/advances/NoteSheetArrearSearch.jsp"/>
+            <forward name="searchFinalSettltementArrearProcess" path="/jsp/advances/NoteSheetProcessArrearSearch.jsp"/>
+            <forward name="processsearchsuccess" path="/jsp/advances/NoteSheetProcessArrearSearch.jsp"/>
+            <forward name="searchNoteSheet" path="/jsp/advances/NoteSheetSearch.jsp"/>
+            <forward name="success" path="/jsp/advances/NoteSheetSearch.jsp"/>
+            <forward name="searchFinalSettlement" path="/jsp/advances/NoteSheetApplicationSearch.jsp"/>
+			<forward name="finalsettlementsuccess" path="/jsp/advances/NoteSheetApplicationSearch.jsp"/>
+			<forward name="searchFinalSettlementVerification" path="/jsp/advances/NoteSheetVerificationSearch.jsp"/>			
+			<forward name="fsverificationsearchsuccess" path="/jsp/advances/NoteSheetVerificationSearch.jsp"/>
+			<forward name="loadPrintSanctionOrder" path="/jsp/advances/Reports/SettlementSanctionOrderParams.jsp"/>
+            <forward name="printSanctionOrder" path="/jsp/advances/Reports/SettlementSanctionOrderParams.jsp"/>
+            
+       </action>
+        <action
+            path="/form4AdvanceVerification"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advancePFWForm4"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+        
+           <forward name="loadPFWForm4ApprovalForm" path="/jsp/advances/AdvancePFWForm4Verification.jsp"/>
+           <forward name="viewForm4Report" path="/jsp/advances/AdvancePFWForm4VerificationReport.jsp"/>
+           <forward name="success"  path="/jsp/advances/PFWForm4ApprovalSearch.jsp"/>  
+           
+       </action>
+        <action
+            path="/loadApproval"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advanceMaster"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+            <forward name="loadPFWForm2Approvals" path="/jsp/advances/PFWForm2ApprovalSearch.jsp"/> 
+            <forward name="loadPFWForm3Approvals" path="/jsp/advances/PFWForm3ApprovalSearch.jsp"/>  
+            <forward name="Form2success" path="/jsp/advances/PFWForm2ApprovalSearch.jsp"/>  
+            <forward name="Form3success" path="/jsp/advances/PFWForm3ApprovalSearch.jsp"/>              
+            <forward name="cpfform2report" path="/jsp/advances/AdvanceCPFForm2Report.jsp"/>
+            <forward name="loadPFWApprovalForm" path="/jsp/advances/AdvancePFWForm2.jsp"/>
+            <forward name="viewForm2Report" path="/jsp/advances/AdvancePFWForm2Report.jsp"/> 
+            <forward name="saveForm2" path="/jsp/advances/PFWForm2ApprovalSearch.jsp"/> 
+            <forward name="loadCPFVerification" path="/jsp/advances/CPFVerificationSearch.jsp"/>   
+ 			<forward name="CPFForm2Success" path="/jsp/advances/CPFVerificationSearch.jsp"/>  
+ 			<forward name="loadPFWForm4Approvals" path="/jsp/advances/PFWForm4ApprovalSearch.jsp"/>  
+			<forward name="Form4success" path="/jsp/advances/PFWForm4ApprovalSearch.jsp"/>   
+			<forward name="loadPFWCheckListSearch" path="/jsp/advances/PFWCheckListSearch.jsp"/> 
+			<forward name="loadCPFCheckListSearch" path="/jsp/advances/CPFCheckListSearch.jsp"/>
+			<forward name="loadPFWRevisedSearch" path="/jsp/advances/PFWRevisedSearch.jsp"/>
+			<forward name="loadPFWRevisedVerificationForm" path="/jsp/advances/PFWSORevisedVerificationForm.jsp"/>
+			<forward name="loadPFWRevisedRecommendationForm" path="/jsp/advances/PFWSORevisedRecommendationForm.jsp"/>
+			<forward name="loadPFWRevisedApprovalForm" path="/jsp/advances/PFWSORevisedApprovalForm.jsp"/>
+               
+       </action>
+		<action
+            path="/advanceparamreport"
+            type="com.epis.action.advances.AdvanceReportAction"
+            name="advancereport"
+            scope="request"
+            validate="false"
+             parameter="method">
+              <forward name="AreearReportParam" path="/jsp/advances/Reports/ArrearSanctionOrderInputParms.jsp"/> 
+	          <forward name="MISReportParam" path="/jsp/advances/Reports/MISReportInputParms.jsp"/>
+			  <forward name="viewPFWMISReport" path="/jsp/advances/Reports/PFWMISReport.jsp"/>
+	          <forward name="advreportparams" path="/jsp/advances/Reports/SanctionOrderInputParms.jsp"/> 
+	          <forward name="pfwsmaryreportParam" path="/jsp/advances/Reports/PFWSummaryReportInputParms.jsp"/> 
+	          <forward name="advanceReportParam" path="/jsp/advances/Reports/AdvancesReportInputParms.jsp"/>
+	          <forward name="summarizedadvanceReportParam" path="/jsp/advances/Reports/SummarizedAdvancesReportInputParams.jsp"/> 
+	          <forward name="viewSummarizedCPFAdvanceReport" path="/jsp/advances/Reports/SummarizedCPFAdvancesReport.jsp"/> 	          
+	          <forward name="viewSanctionOrder" path="/jsp/advances/Reports/ConsolidatedSanctionOrder.jsp" redirect="false"/>
+	          <forward name="viewAdvanceReport" path="/jsp/advances/Reports/AdvancesReport.jsp"/>
+              <forward name="finalPaymentRegister" path="/jsp/advances/Reports/FinalPaymentRegisterReportInputParms.jsp"/>  
+ 			  <forward name="viewFinalPaymentRegister" path="/jsp/advances/Reports/FinalPaymentRegisterReport.jsp"/>
+ 			  <forward name="viewCHQNADSanctionOrder" path="/jsp/advances/Reports/CHQNADSanctionOrder.jsp" redirect="false"/>
+ 			  <forward name="viewCHQNADDeathSanctionOrder" path="/jsp/advances/Reports/CHQNADDeathSanctionOrder.jsp" redirect="false"/>
+ 			  <forward name="viewPFWAdvanceReport" path="/jsp/advances/Reports/PFWAdvancesReport.jsp"/>
+    		  <forward name="viewCPFAdvanceReport" path="/jsp/advances/Reports/CPFAdvancesReport.jsp"/>
+    		  <forward name="viewPFWSummaryReport" path="/jsp/advances/Reports/PFWSummaryReport.jsp"/>
+			  <forward name="viewCHQNADResigSanctionOrder" path="/jsp/advances/Reports/CHQNADResigSanctionOrder.jsp" redirect="false"/>
+			  <forward name="rejectedCPFReportParam" path="/jsp/advances/Reports/AdvancesRejectedReportInputParams.jsp" redirect="false"/>
+			  <forward name="viewRejectedCPFReport" path="/jsp/advances/Reports/AdvancesRejectedReport.jsp" redirect="false"/>
+       </action>
+		<action
+            path="/loadAdvanceForm4"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advanceMaster"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >           
+            <forward name="loadform4app"  path="/jsp/advances/AdvancePFWForm4Master.jsp"/> 
+            <forward name="loadPFWPrintSanctionOrder" path="/jsp/advances/Reports/PFWSanctionOrderInputParams.jsp"/>
+			<forward name="printPFWSanctionOrder" path="/jsp/advances/Reports/PFWSanctionOrderInputParams.jsp"/> 
+           
+                                 
+</action>
+		<action
+            path="/loadAdvanceCPFForm"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advanceMaster"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >           
+           <forward name="loadcpfsearch" path="/jsp/advances/AdvanceCPFFormMaster.jsp"/>
+                                     
+</action>
+
+		  <action
+            path="/form3Advance"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advancePFWForm4"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+           <forward name="viewForm3"  path="/jsp/advances/AdvancePFWForm3.jsp"/>  
+           <forward name="loadPFWForm3ApprovalForm" path="/jsp/advances/AdvancePFWForm3.jsp"/>
+           <forward name="viewForm3Report" path="/jsp/advances/AdvancePFWForm3Report.jsp"/>
+           <forward name="success"  path="/jsp/advances/PFWForm3ApprovalSearch.jsp"/>  
+       </action>
+        <action
+            path="/form4Advance"
+            type="com.epis.action.advances.AdvancesAction"
+            name="advancePFWForm4"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >
+           <forward name="viewPFWSanctionOrderReport"  path="/jsp/advances/AdvancePFWSanctionOrderReport.jsp"/> 
+           <forward name="viewForm4"  path="/jsp/advances/AdvancePFWForm4.jsp"/>  
+            <forward name="viewForm4Report"  path="/jsp/advances/AdvancePFWForm4Report.jsp"/>  
+            <forward name="success"  path="/jsp/advances/AdvancePFWForm4Master.jsp"/>  
+           <forward name="viewPFWSanctionOrderRevReport"  path="/jsp/advances/AdvancePFWSanctionOrderRevReport.jsp"/> 
+           <forward name="viewPFWSORevNoteSheetReport"  path="/jsp/advances/AdvancePFWRevisedReport.jsp"/> 
+       </action>
+ 
+ <action
+            path="/editNoteSheet"
+            input="/view/advances/NoteSheetEdit.jsp"
+            type="com.epis.action.advances.AdvancesAction"
+            name="NoteSheetForm"
+            scope="request"
+            validate="false"
+             parameter="method"
+            >           
+            <forward name="addnomineebankdetails" path="/jsp/advances/AddNomineeBankDetails.jsp"/>   
+            <forward name="processsearchsuccess" path="/noteSheetSearch.do?method=searchFinalSettlementArrearProcess"  redirect="true"/>
+            <forward name="success" path="/noteSheetSearch.do?method=searchNoteSheet"  redirect="true"/>  
+            <forward name="nomineesucess" path="/editNoteSheet.do?method=updateNoteSheet"  redirect="true"/> 
+            <forward name="arrearnomineesucess" path="/editNoteSheet.do?method=updateNoteSheetArrear"  redirect="true"/>  
+            <forward name="loadnomineebankdetails" path="/jsp/advances/AddNomineeBankDetails.jsp"/>   
+            <forward name="addnomineebankdetailsfrmnewscreen" path="/editNoteSheet.do?method=loadNomineeBankDetails"  redirect="true"/>  
+            <forward name="loademployeepostingdetails" path="/jsp/advances/AddEmployeePostingDetails.jsp"/>    
+            <forward name="addpostingdetailssuccess" path="/editNoteSheet.do?method=loadEmployeePostingDetails"  redirect="true"/>                    
+</action>
+
+<action path="/lanotifications" 		
+	    			name="Notifications"		
+					parameter="method" 
+					scope="request" 
+					type="com.epis.action.advances.Notifications" 
+					validate="false">
+					<forward name="notifications" path="/jsp/advances/notifications/Notifications.jsp" />
+					<forward name="loadNotifications" path="/lanotifications.do?method=getNotifications" redirect="false"/>
+				</action>
+ <action
+            path="/getdetails"
+            type="com.epis.action.advances.AdvanceReportAction"
+            name="advancereport"
+            scope="request"
+            validate="false"
+             parameter="method">
+           
+            
+       </action>
+            <action
+                path="/edit*"
+                type="app.Edit{1}Action"
+                name="inputForm"
+                scope="request"
+                validate="true"
+                input="/pages/Edit{1}.jsp"/>
+
+ 
+    </action-mappings>
+
+
+<!-- ======================================== Message Resources Definitions -->
+
+
+
+<!-- =============================================== Plug Ins Configuration -->
+
+  <!-- ======================================================= Tiles plugin -->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from
+	 web.xml, thenoverload them with parameters defined here. All parameters
+	 are optional.
+     The plugin should be declared in each struts-config file.
+       - definitions-config: (optional)
+            Specify configuration file names. There can be several comma
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1)
+            Specify if the Tiles definition factory is module aware. If true
+            (default), there will be one factory for each Struts module.
+			If false, there will be one common factory for all module. In this
+            later case, it is still needed to declare one plugin per module.
+            The factory will be initialized with parameters found in the first
+            initialized plugin (generally the one associated with the default
+            module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header (default)
+			  false : no validation
+
+	  Paths found in Tiles definitions are relative to the main context.
+
+      To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+      directory then uncomment the plugin definition below.
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+      <set-property property="definitions-config"
+                       value="/WEB-INF/tiles-defs.xml" />
+      <set-property property="moduleAware" value="true" />
+    </plug-in>
+  -->  
+
+
+  <!-- =================================================== Validator plugin -->
+
+
+<message-resources parameter="com.epis.resource.ApplicationResources" key="common" null="false" />
+</struts-config>
+

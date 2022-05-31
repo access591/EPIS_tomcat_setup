@@ -1,0 +1,82 @@
+<style type="text/css">
+.glossymenu {
+	margin: 5px 0;
+	padding: 0;
+	width: 170px; /*width of menu*/
+	border: 1px solid #9A9A9A;
+	border-bottom-width: 0;
+}
+
+.glossymenu a.menuitem {
+	color: #003366;
+	display: block;
+	position: relative; /*To help in the anchoring of the ".statusicon" icon image*/
+	width: auto;
+	padding: 4px 0;
+	padding-left: 15px;
+	text-decoration: none;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	background-color: #BCE0F5;
+	border-bottom-width: 1px;
+	border-bottom-color: #FFFFFF;
+	border-bottom-style: solid;
+}
+
+
+.glossymenu a.menuitem:visited, .glossymenu .menuitem:active {
+	color: #003366;
+}
+
+.glossymenu a.menuitem .statusicon { /*CSS for icon image that gets dynamically added to headers*/
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	border: none;
+}
+
+.glossymenu a.menuitem:hover {
+	background-color: #C4E4F7;
+}
+
+.glossymenu div.submenu { /*DIV that contains each sub menu*/
+	background-color: #DFF0FB;
+}
+
+.glossymenu div.submenu ul { /*UL of each sub menu*/
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.glossymenu div.submenu ul li {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #FFFFFF;
+	background-image: url(../images/bullet.gif);
+	background-repeat: no-repeat;
+	background-position: 160px 8px;
+}
+
+.glossymenu div.submenu ul li a {
+	display: block;
+	color: #666666;
+	text-decoration: none;
+	padding: 2px 0;
+	padding-left: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	background-image: url(../images/bullet.gif);
+	background-repeat: no-repeat;
+	background-position: 160px 8px;
+}
+
+.glossymenu div.submenu ul li a:hover {
+	colorz: white;
+	background-color: #EEF7FD;
+}
+</style>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Queries>	
+	<!-- Queries For Accounting Code Type -->
+	<Query-Details code="accType.search">
+		<Query>
+			<![CDATA[select code,accountcodetype,description from 
+			Cb_AccountCodeType_INFO where upper(trim(accountcodetype)) like 
+			upper(trim(?)) and upper(Nvl(trim(description),' ')) like upper(trim(?))]]>
+		</Query>		
+	</Query-Details>	
+	<Query-Details code="accType.exists">
+		<Query>
+			<![CDATA[select count(*) from Cb_AccountCodeType_INFO where 
+			upper(trim(accountcodetype))= upper(trim(?))]]>
+		</Query>	
+	</Query-Details>
+	<Query-Details code="accType.insert">
+		<Query>
+			<![CDATA[insert into Cb_AccountCodeType_INFO (code,accountcodetype,
+			description,ENTEREDBY,UNITCODE) values ((select lpad(nvl(
+			max(nvl(code,0)),0)+1,5,0) from cb_AccountCodeType_INFO),?,?,?,?)]]>
+		</Query>	
+	</Query-Details>
+	<Query-Details code="accType.edit">
+		<Query>
+			<![CDATA[select accountcodetype,description from
+			Cb_AccountCodeType_INFO where upper(trim(code))= upper(trim(?))]]>
+		</Query>	
+	</Query-Details>
+	<Query-Details code="accType.update">
+		<Query>
+			<![CDATA[update Cb_AccountCodeType_INFO set ACCOUNTCODETYPE = ? ,
+			description=?,editedby=?,editedDt=sysdate where  upper(trim(code))= upper(trim(?))]]>
+		</Query>	
+	</Query-Details>
+	<Query-Details code="accType.delete">
+		<Query>
+			<![CDATA[delete Cb_AccountCodeType_INFO Where INSTR(upper(?),upper(code)) >= 0]]>
+		</Query>	
+	</Query-Details>
+	<!-- End of Queries For Accounting Code Type -->
+</Queries>

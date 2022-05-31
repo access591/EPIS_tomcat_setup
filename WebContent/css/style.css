@@ -1,0 +1,412 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #FFFFFF;
+}
+.userID {
+	font: bold 12px/20px Arial, Helvetica, sans-serif;
+	color: #000;
+}
+
+A.menu {
+	font: bold 12px Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	text-decoration:none;
+}
+A.menu:hover {
+	color: #FFCC00;
+	font: bold 12px Arial, Helvetica, sans-serif;
+	text-decoration:none;
+}
+.line {
+	border-top-width: 3px;
+	border-top-style: solid;
+	border-top-color: #0099FF;
+}
+.crv_lineT {
+	background-color: #367ABD;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	padding-left: 10px;
+}
+.crv_TL {
+	background-image: url(../images/crv_tl.gif);
+	background-repeat: no-repeat;
+	height: 24px;
+}
+.crv_TR {
+	background-image: url(../images/crv_tr.gif);
+	background-repeat: no-repeat;
+}
+.crv_BL {
+	background-image: url(../images/crv_bl.gif);
+	background-repeat: no-repeat;
+}
+.crv_BR {
+	background-image: url(../images/crv_br.gif);
+	background-repeat: no-repeat;
+}
+.crv_lineR {
+	border-right-width: 1px;
+	border-right-style: solid;
+	border-right-color: #708AB9;
+	background-color: #E8F6FD;
+}
+.crv_lineB {
+	background-color: #E8F6FD;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #708AB9;
+}
+.crv_lineL {
+	background-color: #E8F6FD;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #708AB9;
+}
+.crv_M {
+	background-color: #E8F6FD;
+	padding: 10px;
+}
+.crv_L {
+	background-image: url(../images/crv_L.gif);
+	background-repeat: no-repeat;
+}
+.crv_lineTop {
+	background-image: url(../images/crv_lineTop.gif);
+	background-repeat: repeat-x;
+}
+.crv_R {
+	background-image: url(../images/crv_R.gif);
+	background-repeat: no-repeat;
+}
+.tableText {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color:#003366;
+}
+.tableTextBold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color:#003366;
+	text-align: right;
+}
+.TextField {
+	border: 1px solid #7F9DB9;
+	width: 120px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding: 2px;
+}
+.TextFieldFont {
+	border: 1px solid #7F9DB9;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding: 2px;
+}
+.ListField{
+	border: 1px solid #7F9DB9;
+	width: 200px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #333333;
+	padding: 2px;
+}
+.menuhead {
+	background-image: url(../images/head_menubg.gif);
+	background-repeat: repeat-x;
+	height: 24px;
+	border: 1px solid #367ABD;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-align: left;
+	padding-left: 15px;
+	line-height: 20px;
+}
+.menuhead span {
+	background-image: url(../images/bullet1.gif);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 17px;
+}
+
+
+/**********Grid Css Starts Here**********/
+
+.GridBorder {
+	border: 1px solid #7F9DC5;
+}
+.GridHBg {
+	background-color:#85BDEC;
+	height:30px;
+	
+}
+.GridFooterBg {
+	background-color:#85BDEC;
+	padding-right: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.GridLTHCells {
+	border-left: 1px solid #7F9DC5;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	text-indent:2px;
+	color:#003366;
+	
+}
+.GridLTHCells1 {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:11px;
+	font-weight:bold;
+	text-indent:2px;
+	color:#003366;
+	
+}
+.GridLTCells {
+	border-left: 1px solid #7F9DC5;
+	border-top: 1px solid #7F9DC5;
+	text-indent:2px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color:#003366;
+}
+.GridLCells {
+	border-top: 1px solid #7F9DC5;
+	font: Arial, Helvetica, sans-serif 11px #003366;
+}
+.GridRowBg1 {
+	background-color:#CEEBFF;
+	height:20px;
+}
+.GridRowBg1:hover {
+	background-color:#DEF0FD;
+	height:20px;
+}
+.GridRowBg2 {
+	background-color:#F0FAFF;
+	height:20px;
+}
+.GridRowBg2:hover {
+	background-color:#DEF0FD;
+	height:20px;
+}
+.GridPaging {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#003366;
+	text-decoration:none;
+	font-weight: normal;
+	vertical-align: middle;
+}
+.GridPaging:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#FFFFFF;
+	text-decoration:none;
+	font-weight: normal;
+}
+.GridExport {
+	background-color:#85BDEC;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color:#003366;
+	font-weight:normal;
+	padding-left: 10px;
+	border-left: 1px solid #7F9DC5;
+	border-bottom: 1px solid #7F9DC5;
+	height: 20px;
+	
+	
+}
+.NavigationBttn {
+	background-color:#85BDEC;		
+	padding-right: 10px;
+	border-right: 1px solid #7F9DC5;
+	border-bottom: 1px solid #7F9DC5;
+	height: 20px;
+}
+.norecords {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color:#003366;
+	font-weight: bold;
+}
+/**********for submit/reset button**********/
+.btn {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration:none;
+	color:#003366;
+	background-image: url(../images/btn_bg.gif);
+	background-repeat: repeat-x;
+	border: 1px solid #7DB5DE;
+	height:22px;
+	padding-left:2px;
+	padding-right:2px;
+	cursor:hand;
+}
+.btn:hover {
+	background-image: url(../images/btn_bg-h.gif);
+	background-repeat: repeat-x;
+}
+
+/**********for submit/reset button**********/
+.butt {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-decoration:none;
+	color:#003366;
+	background-image: url(../images/butt_bg.gif);
+	background-repeat: repeat-x;
+	border: 1px solid #7DB5DE;
+	height:22px;
+	padding-left:2px;
+	padding-right:2px;
+	cursor:hand;
+}
+.butt:hover {
+	background-image: url(../images/butt_bg-h.gif);
+	background-repeat: repeat-x;
+}
+/**********Grid Css Ends Here**********/
+/****************Table**********************/
+.TableBorder{
+	border-width: 1px;
+	border-spacing:;
+	padding: 2px;
+	border-style: solid;
+	border-color: #7F9DC5;
+	border-collapse: collapse;
+	background-color: ;
+}
+
+table.TableBorder th {
+	border-width: 1px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #7F9DC5;
+	background-color: ;
+	-moz-border-radius: ;
+}
+table.TableBorder td {
+	border-width: 1px;
+	padding: 2px;
+	border-style: solid;
+	border-color: #7F9DC5;
+	background-color: ;
+	-moz-border-radius: ;
+}
+/****************Table Ends Here**********************/
+
+.tableSideTextBold {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	color:#003366;
+}
+.tableSideText {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	color:#003366;
+}
+
+.HighlightData{
+	color: blue;
+	Text-Decoration: none; 
+	Font-Family: Helvetica; 
+	Font-Size: 9pt; 
+	font-weight: bold;
+}
+.label{
+	COLOR: #000000;
+	Font-Family: Helvetica; 
+	Font-Size: 8pt; 
+	Font-Weight: bold; 
+
+}
+.Data{
+	Color: #000000; 
+	Text-Decoration: none; 
+	Font-Family: Helvetica; 
+	Font-Size: 9pt; 
+	Font-Weight: none 
+}
+.NumData{
+	Color: #000000; 
+	Text-Decoration: none;
+	text-align:right;
+	Font-Family: Helvetica; 
+	Font-Size: 9pt; 
+	Font-Weight: none 
+}
+.GridLTMFCells {
+	border-left: 1px solid #7F9DC5;
+	border-top: 1px solid #7F9DC5;
+	text-indent:2px;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8px;
+	font-weight: normal;
+	color:#003366;
+}
+.reportContentdata{
+	Color: #000000; 
+	Text-Decoration: none; 
+	Font-Family: Times New Roman, Verdana, Helvetica, sans-serif;
+	Font-Size: 12pt; 
+	Font-Weight: none 
+
+}
+.reportContentlabel{
+	Color: #000000; 
+	Text-Decoration: none; 
+	Font-Family: Times New Roman, Verdana, Helvetica, sans-serif;
+	Font-Size: 12pt; 
+	Font-Weight: bold; 
+
+}
+.reportContentsublabel{
+	Color: #000000; 
+	Text-Decoration: none; 
+	Font-Family: Times New Roman, Verdana, Helvetica, sans-serif;
+	Font-Size: 12pt; 
+	Font-Weight: none 
+
+}
+
+.reportlabel{
+	COLOR: #000000;
+	Font-Family: Arial, Verdana, Helvetica, sans-serif;
+	Font-Size: 13pt; 
+	Font-Weight: bold; 
+
+}
+.reportsublabel{
+	COLOR: #000000;
+	Font-Family: Arial, Verdana, Helvetica, sans-serif;
+	Font-Size: 10pt; 
+	 Font-Weight: bold;
+
+}
+.reportdata{
+	Color: #000000; 
+	Text-Decoration: none; 
+	Font-Family: Arial, Verdana, Helvetica, sans-serif;
+	Font-Size: 9pt; 
+	Font-Weight: none              
+}

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE struts-config PUBLIC  "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"     "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is a blank Struts configuration file with an example
+     welcome action/page and other commented sample elements.
+
+     Struts Validator is configured using the factory defaults
+     and is ready-to-use.
+
+     NOTE: If you have a generator tool to create the corresponding Java classes
+     for you, you could include the details in the "form-bean" declarations.
+     Otherwise, you would only define the "form-bean" element itself, with the
+     corresponding "name" and "type" attributes, as shown here.
+-->
+
+
+<struts-config>
+
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    <!-- sample form bean descriptor for an ActionForm
+        <form-bean
+            name="inputForm"
+            type="app.InputForm"/>
+    end sample -->
+
+    
+        <form-bean
+            name="rpfcForm"
+            type="org.apache.struts.validator.DynaValidatorForm">
+              <form-property name="equalshare"	type="java.lang.String" /> 
+               <form-property name="type"	type="java.lang.String" /> 
+              <form-property name="moduleName"	type="java.lang.String" /> 
+              <form-property name="moduleCode"	type="java.lang.String" /> 
+              <form-property name="screenName"	type="java.lang.String" />
+              <form-property name="screenCode"	type="java.lang.String" />
+              <form-property name="userID"	type="java.lang.String" />  
+              <form-property name="userName"	type="java.lang.String" />
+              <form-property name="fromDate"	type="java.lang.String" />
+              <form-property name="toDate"	type="java.lang.String" />
+              <form-property name="dispMgrName"	type="java.lang.String" />
+              <form-property name="station"	type="java.lang.String" />
+              <form-property name="desgNRemarks"	type="java.lang.String" />  
+              <form-property name="signatureName"	type="java.lang.String" />  
+              <form-property name="activity"	type="java.lang.String" />                           
+              <form-property name="signature" type="org.apache.struts.upload.FormFile" />
+              <form-property name="screenPermissionInfo" type="java.lang.String[]" />	
+       </form-bean>
+           <form-bean
+            name="uploadDwnloadForm"
+            type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="uploadfile"	type="org.apache.struts.upload.FormFile" /> 
+       </form-bean>
+  
+    </form-beans>
+
+
+<!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+
+<!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <!-- Default forward to "Welcome" action -->
+        <!-- Demonstrates using index.jsp to forward -->
+       
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+            <!-- Default "Welcome" action -->
+            <!-- Forwards to Welcome.jsp -->
+        <action
+            path="/Welcome"
+            forward="/pages/Welcome.jsp"/>
+
+    <!-- sample input and input submit actions
+
+        <action
+            path="/Input"
+            type="org.apache.struts.actions.ForwardAction"
+            parameter="/pages/Input.jsp"/>
+   end samples -->
+         <action
+            path="/reportservlet"
+            type="com.epis.action.rpfc.ReportAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadpcsummaryreport" path="/jsp/rpfc/pcsummary/PCReportInputParms.jsp"/>
+            <forward name="loadtransferinoutparams" path="/jsp/rpfc/deviationstatement/TransferInTransferOutInputParams.jsp"/>
+            <forward name="transferinoutreport" path="/jsp/rpfc/deviationstatement/TransferInOutRegionReport.jsp"/> 
+            <forward name="ndpcsummaryreport" path="/jsp/rpfc/pcsummary/SummaryPCReport.jsp"/>
+            <forward name="loadpfcardInput" path="/jsp/rpfc/pfcard/PFCardInputParams.jsp"/>
+            <forward name="pfcardInput" path="/jsp/rpfc/pfcard/PensionEPFReportCard.jsp"/>
+            <forward name="pfcardlog" path="/jsp/rpfc/pfcard/Emolumentslog.jsp"/>
+            
+            <forward name="loadpcreportInput" path="/jsp/rpfc/pcreport/PensionContributionInputParams.jsp"/>
+         	<forward name="getpcreport" path="/jsp/rpfc/pcreport/PensionContributionReport.jsp"/>
+            <forward name="getpcscreen" path="/jsp/rpfc/pcreport/PensionContributionScreen.jsp"/>
+            <forward name="loadform6Comp" path="/jsp/rpfc/rpfcforms/form6Comp/PensionReportForm-6CompresiveInputParams.jsp"/>
+            <forward name="form61995Comp" path="/jsp/rpfc/rpfcforms/form6Comp/PensionReportForm-6Comp1995.jsp"/>
+          	<forward name="loadstatmentpcwagesInput" path="/jsp/rpfc/deviationstatement/StatementWagesPensionInputParams.jsp"/> 
+         	<forward name="statementpcwagesreport" path="/jsp/rpfc/deviationstatement/StatementWagesPensionReport.jsp"/>
+            <forward name="form6Comp" path="/jsp/rpfc/rpfcforms/form6Comp/PensionReportForm-6Comp.jsp"/>
+            <forward name="commonPersSearch" path="/jsp/rpfc/common/RPFCPersonalSearch.jsp"/>
+            <forward name="succcommonPersSearch" path="/jsp/rpfc/common/RPFCMessage.jsp"/>
+       </action>
+       <action
+            path="/aaiepfreportservlet"
+            type="com.epis.action.rpfc.AAIEPFFormsReportAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadobreport" path="/jsp/rpfc/aaiepfreports/AAIEPF-1InputParams.jsp"/>
+            <forward name="loadnodalepfforms" path="/jsp/rpfc/aaiepfreports/AAIEPFFormsNodalOffices.jsp"/>
+            
+            <forward name="showobreport" path="/jsp/rpfc/aaiepfreports/AAIEPF-1Report.jsp"/>
+            <forward name="loadadjobreport" path="/jsp/rpfc/aaiepfreports/AAIEPF-2InputParams.jsp"/>
+         	<forward name="showadjobreport" path="/jsp/rpfc/aaiepfreports/AAIEPF-2Report.jsp"/>
+         	<forward name="loadepf3report" path="/jsp/rpfc/aaiepfreports/AAIEPF-3InputParams.jsp"/>
+         	<forward name="loadepf5report" path="/jsp/rpfc/aaiepfreports/AAIEPF-5InputParams.jsp"/>
+         	<forward name="loadepf6report" path="/jsp/rpfc/aaiepfreports/AAIEPF-6InputParams.jsp"/>
+         	<forward name="loadepf7report" path="/jsp/rpfc/aaiepfreports/AAIEPF-7InputParams.jsp"/>
+         	<forward name="loadepf8report" path="/jsp/rpfc/aaiepfreports/AAIEPF-8ReportInputParams.jsp"/>
+         	<forward name="loadepf11report" path="/jsp/rpfc/aaiepfreports/AAIEPF-11ReportInputParams.jsp"/>
+         	<forward name="loadepf12report" path="/jsp/rpfc/aaiepfreports/AAIEPF-12ReportInputParams.jsp"/>
+         	<forward name="showepf3report" path="/jsp/rpfc/aaiepfreports/AAIEPF-3Report.jsp"/>
+         	<forward name="showepf6report" path="/jsp/rpfc/aaiepfreports/AAIEPF-6Report.jsp"/>
+         	<forward name="showepf7report" path="/jsp/rpfc/aaiepfreports/AAIEPF-7Report.jsp"/>
+         	<forward name="showepf8report" path="/jsp/rpfc/aaiepfreports/AAIEPF-8Report.jsp"/>
+         	<forward name="showepf5report" path="/jsp/rpfc/aaiepfreports/AAIEPF-5Report.jsp"/>
+         	<forward name="showepf11report" path="/jsp/rpfc/aaiepfreports/AAIEPF-11Report.jsp"/>
+         	<forward name="showepf12report" path="/jsp/rpfc/aaiepfreports/AAIEPF-12Report.jsp"/>
+       </action>
+       <action
+            path="/signaturemapping"
+            type="com.epis.action.rpfc.PersonalFormAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+             <forward name="searchsignaturemapping" path="/jsp/rpfc/signaturemapping/SearchSignatureMapping.jsp"/>
+             <forward name="loadsignaturemapping" path="/jsp/rpfc/signaturemapping/SignatureMapping.jsp"/>
+             <forward name="eidtsignaturemapping" path="/jsp/rpfc/signaturemapping/EditSignatureMapping.jsp"/>
+           
+       </action>
+        <action
+            path="/importuploadaction"
+            type="com.epis.action.rpfc.ImportUploadProcessingAction"
+            name="uploadDwnloadForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadimportform" path="/jsp/rpfc/importupload/PensionImportData.jsp"/>
+            <forward name="loadsuppimportform" path="/jsp/rpfc/importupload/PensionImportData.jsp"/>
+           
+       </action>
+        <action
+            path="/pfinance"
+            type="com.epis.action.rpfc.FinanceReportAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadtransferdevform" path="/jsp/rpfc/deviationstatement/TransferSearch.jsp"/>
+            <forward name="loadtransferdevupdateform" path="/jsp/rpfc/deviationstatement/TransferDetailsUpdation.jsp"/>
+            <forward name="loadsuppimportform" path="/jsp/rpfc/importupload/PensionImportData.jsp"/>
+            <forward name="loadcpfdevform" path="/jsp/rpfc/deviationstatement/CPFDeviationSearch.jsp"/>
+            <forward name="successtransferdata" path="/jsp/rpfc/common/RPFCMessage.jsp"/>
+             <forward name="successtransferdata" path="/jsp/rpfc/common/AdjCpfRecoveries.jsp"/>
+            <forward name="loadAdj" path="/jsp/rpfc/recoveries/AdjCpfRecoveries.jsp"/>
+             
+       </action>
+        <action
+            path="/form10Daction"
+            type="com.epis.action.rpfc.PersonalFormAction"
+            name="uploadDwnloadForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadform10D" path="/jsp/rpfc/form10D/Form10DSubmissionForm.jsp"/>
+            <forward name="loadform10DSearch" path="/jsp/rpfc/form10D/Form-10DSearch.jsp"/>
+            <forward name="successform10D" path="/jsp/rpfc/common/RPFCMessage.jsp"/>
+            <forward name="form10DReport" path="/jsp/rpfc/form10D/Form10DMainPageReport.jsp"/>
+            <forward name="loadsuppimportform" path="/jsp/rpfc/importupload/PensionImportData.jsp"/>
+           
+           
+          
+       </action>
+        <action
+            path="/personalForm"
+            type="com.epis.action.rpfc.PersonalFormAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadPersonalSearch" path="/jsp/rpfc/personal/EmployeePersonalMaster.jsp"/>
+          	<forward name="loadAddPersonalAdd" path="/personalForm.do?method=loadAdd"/>
+            <forward name="rpfcpersonalAdd" path="/jsp/rpfc/personal/EmployeePersonalAdd.jsp"/>
+            <forward name="chkPersonalSearch" path="/jsp/rpfc/personal/CheckEmployeePersonalAddInfo.jsp"/>
+            <forward name="personalMaster" path="/jsp/rpfc/personal/EmployeePersonalMaster.jsp"/>
+    		<forward name="editPFCard" path="/jsp/rpfc/personal/EmpPfcardEdit.jsp"/>
+    		<forward name="personalMasterView" path="/jsp/rpfc/personal/EmployeePersonalMasterView.jsp"/>
+            <forward name="personalMasterEdit" path="/jsp/rpfc/personal/EmployeePersonalMasterEdit.jsp"/>
+            <forward name="viewForm2Report" path="/jsp/rpfc/personal/EmployeeForm2Report.jsp"/>
+            <forward name="viewForm9Report" path="/jsp/rpfc/personal/EmployeeRPFCForm9Report.jsp"/>
+            <forward name="forFailCase" path="/personalForm.do?method=personalEdit"/>
+            <forward name="gotodatamapping" path="/jsp/rpfc/datamapping/FinanceDataMapping.jsp"/>
+            <forward name="verificationPCReport" path="/jsp/rpfc/datamapping/VerificationofPCReport.jsp"/>
+            <forward name="financeDataMappingReport" path="/jsp/rpfc/datamapping/FinanceDataMappingReport.jsp"/>
+            <forward name="financeDataMapping" path="/jsp/rpfc/datamapping/FinanceDataMapping.jsp"/>
+            <forward name="gotopersonalsearch" path="/personalForm.do?method=searchPersonal"/>
+           
+       </action>
+       <action
+            path="/validatefinance"
+            type="com.epis.action.rpfc.FinanceReportAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadfinanceedit" path="/jsp/rpfc/FinanceDataEdit.jsp"/>
+            <forward name="successfinanceEdit" path="/jsp/rpfc/common/RPFCMessage.jsp"/>
+          	<forward name="loadcpfdevdata" path="/jsp/rpfc/deviationstatement/CPFDeviationSearch.jsp"/>
+            <forward name="loadfinancdatasearch" path="/jsp/rpfc/FinanceDataSearch.jsp"/>
+            <forward name="loadcpfinputparamsform" path="/jsp/rpfc/deviationstatement/CPFDeviationInputParms.jsp"/>
+            <forward name="loadcpfformreport" path="/jsp/rpfc/deviationstatement/CPFDeviationReport.jsp"/>
+            <forward name="loadarrearfindatamapping" path="/jsp/rpfc/datamapping/UniquePensionNumberSearch.jsp"/>
+            <forward name="arrearprocesslist" path="/jsp/rpfc/datamapping/UniquePensionNumberProcessList.jsp"/>
+       </action>
+       <action
+            path="/arrearfinance"
+            type="com.epis.action.rpfc.FinanceReportAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadarrearinfo" path="/jsp/rpfc/arrears/ArrearsScreen.jsp"/>
+             <forward name="loadarrearseditscreen" path="/jsp/rpfc/arrears/ArrearsTransactionScreen.jsp"/>
+             <forward name="nodataeditSearch" path="/jsp/rpfc/common/RPFCMessage.jsp"/>
+             <forward name="processingarrears" path="/arrearfinance.do?method=getArrearsTransactionData"/>
+           <forward name="arrearstransreport" path="/jsp/rpfc/arrears/ArrearsTransactionScreenReport.jsp"/>
+       </action>
+       <action
+            path="/rpfcforms"
+            type="com.epis.action.rpfc.RPFSFormsReportAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadform3inputparams" path="/jsp/rpfc/rpfcforms/form3/Form3ReportInputParms.jsp"/>
+            <forward name="form3all" path="/jsp/rpfc/rpfcforms/form3/PensionForm3ReportPSAll.jsp"/>
+            <forward name="loadform3form" path="/jsp/rpfc/rpfcforms/form3/PensionForm3Report.jsp"/>
+            <forward name="loadform3psform" path="/jsp/rpfc/rpfcforms/form3/PensionForm3PSReport.jsp"/>
+            <forward name="loadform3dupform" path="/jsp/rpfc/rpfcforms/form3/PensionForm3DuplicateDataReport.jsp"/>
+            <forward name="loadform3pfidform" path="/jsp/rpfc/rpfcforms/form3/PensionForm3ByPFIDReport.jsp"/>
+            <forward name="loadform3pfidpsform" path="/jsp/rpfc/rpfcforms/form3/PensionForm3PSByPFIDReport.jsp"/>
+            <forward name="loadrpfcform5inputparams" path="/jsp/rpfc/rpfcforms/form5/RPFCForm5InputParams.jsp"/>
+            <forward name="loadrpfcform4inputparams" path="/jsp/rpfc/rpfcforms/form4/RPFCForm4InputParams.jsp"/>
+            <forward name="rpfcform4" path="/jsp/rpfc/rpfcforms/form4/RPFCForm4Report.jsp"/>
+            <forward name="rpfcform5" path="/jsp/rpfc/rpfcforms/form5/RPFCForm5Report.jsp"/>
+            <forward name="loadpersonalreport" path="/jsp/rpfc/rpfcforms/PersonalReportInputParams.jsp"/>
+            <forward name="personalreportform" path="/jsp/rpfc/rpfcforms/PersonalReportByPFID.jsp"/>
+            <forward name="loadrpfcform6inputparams" path="/jsp/rpfc/rpfcforms/form6A/RPFCForm6AInputParams.jsp"/>
+            <forward name="loadrpfcform6form" path="/jsp/rpfc/rpfcforms/form6A/RPFCForm6AReport.jsp"/>
+            <forward name="loadform7Inputparams" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSInputParams.jsp"/>
+            <forward name="form7MultiYearsform" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSPFIDReport.jsp"/>
+            <forward name="form7MultiYearsSummaryform" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSPFIDSummaryReport.jsp"/>
+            <forward name="form7form" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSReport.jsp"/>
+            <forward name="form7reportzero" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSReport.jsp"/>
+            <forward name="form7IndexReport" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSIndexPageReport.jsp"/>
+            <forward name="form7revised" path="/jsp/rpfc/rpfcforms/form7/PensionForm7PSRevisedReport.jsp"/>
+            <forward name="loadform8Inputparams" path="/jsp/rpfc/rpfcforms/form8/Form8ReportInputParms.jsp"/>  
+            <forward name="form8Report" path="/jsp/rpfc/rpfcforms/form8/PensionForm8Report.jsp"/>  
+            <forward name="form8PSReport" path="/jsp/rpfc/rpfcforms/form8/PensionForm8PSReport.jsp"/>  
+            <forward name="form8PSPFIDReport" path="/jsp/rpfc/rpfcforms/form8/PensionForm8PSPFIDReport.jsp"/>  
+            <forward name="loadtrustpcInput" path="/jsp/rpfc/rpfcforms/trustwisepcreport/TrustWisePensionInputParams.jsp"/>  
+            <forward name="trustpcform" path="/jsp/rpfc/rpfcforms/trustwisepcreport/TrustWisePCReport.jsp"/>  
+            
+       </action>
+       <action
+            path="/nomineesearchservlet"
+            type="com.epis.action.rpfc.PersonalFormAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+            <forward name="loadNomineeRequest" path="/jsp/rpfc/personal/NomineeRequestApproval.jsp"/>
+            <forward name="loadregionalEdit" path="/jsp/rpfc/personal/RegionEmployeePersonalMasterEdit.jsp"/>
+            <forward name="loadmemberEdit" path="/jsp/rpfc/personal/NomineeRequestUpdate.jsp"/>
+            <forward name="success" path="/jsp/common/mleftbody.jsp"/>
+       </action>
+               <action
+            path="/psearch"
+            type="com.epis.action.rpfc.RPFCLookupAction"
+            name="rpfcForm"
+            scope="request"
+            validate="false"
+             parameter="method">
+          
+           
+       </action>
+ 
+    </action-mappings>
+
+
+<!-- ======================================== Message Resources Definitions -->
+
+
+
+<!-- =============================================== Plug Ins Configuration -->
+
+  <!-- ======================================================= Tiles plugin -->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from
+	 web.xml, thenoverload them with parameters defined here. All parameters
+	 are optional.
+     The plugin should be declared in each struts-config file.
+       - definitions-config: (optional)
+            Specify configuration file names. There can be several comma
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1)
+            Specify if the Tiles definition factory is module aware. If true
+            (default), there will be one factory for each Struts module.
+			If false, there will be one common factory for all module. In this
+            later case, it is still needed to declare one plugin per module.
+            The factory will be initialized with parameters found in the first
+            initialized plugin (generally the one associated with the default
+            module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header (default)
+			  false : no validation
+
+	  Paths found in Tiles definitions are relative to the main context.
+
+      To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+      directory then uncomment the plugin definition below.
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+      <set-property property="definitions-config"
+                       value="/WEB-INF/tiles-defs.xml" />
+      <set-property property="moduleAware" value="true" />
+    </plug-in>
+  -->  
+
+
+  <!-- =================================================== Validator plugin -->
+
+
+<message-resources parameter="com.epis.resource.ApplicationResources" key="rpfccommon" null="false" />
+</struts-config>
+

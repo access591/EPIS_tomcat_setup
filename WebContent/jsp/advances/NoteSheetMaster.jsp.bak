@@ -1,0 +1,925 @@
+<!--
+/*
+  * File       : NoteSheetMaster.jsp
+  * Date       : 15/10/2009
+  * Author     : Suneetha V
+  * Description: 
+  * Copyright (2009) by the Navayuga Infotech, all rights reserved.
+  */
+-->
+<%@ page language="java" import="java.util.*,com.aims.common.CommonUtil" pageEncoding="UTF-8"%>
+
+<%
+StringBuffer basePathBuf = new StringBuffer(request.getScheme());
+			 basePathBuf.append("://").append(request.getServerName()).append(":");
+			 basePathBuf.append(request.getServerPort());
+			 basePathBuf.append( request.getContextPath()).append("/");
+			 
+String basePath = basePathBuf.toString()+"view/";
+String basePathWoView = basePathBuf.toString();
+%>
+<%
+    String reg="";
+  	CommonUtil common=new CommonUtil();    
+
+   	HashMap hashmap=new HashMap();
+	hashmap=common.getRegion();
+
+	Set keys = hashmap.keySet();
+	System.out.println(".............keys................"+keys);
+
+	Iterator it = keys.iterator();
+	
+
+  %>
+<!doctype html public "-//w3c//dtd xhtml 1.0 transitional//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-transitional.dtd">
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+<%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
+
+<html>
+	<head>
+		<base href="<%=basePath%>" />
+
+		<title>AAI</title>
+
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache" />
+		<meta http-equiv="expires" content="0" />
+		<meta http-equiv="keywords" content="keyword1,keyword2,keyword3" />
+		<meta http-equiv="description" content="this is my page" />
+		<link rel="stylesheet" href="<%=basePath%>css/aai.css" type="text/css" />
+		<script type="text/javascript" src="<%=basePath%>scripts/calendar.js"></script>
+		<script type="text/javascript" src="<%=basePath%>scripts/commonfunctions.js"></script>
+		<script type="text/javascript" src="<%=basePath%>scripts/datetime.js"></script>
+		<script type="text/javascript" src="<%=basePath%>scripts/prototype.js"></script>
+		<script type="text/javascript">		
+		var detailArray = new Array();
+		var srno,nomineename,nomineeaddress,nomineeDOB,nomineerelation,gardianname,gardianaddress,totalshare,nomineeflag;
+		var i;
+		var emplshare=0,emplrshare=0,pensioncontribution=0;
+		
+		var ex=/^[0-9]+$/;
+		function hide(focusFlag) {
+			
+		   	if(focusFlag!='true'){
+		   		document.forms[0].pfid.focus();
+		   	}else{
+		   	    document.forms[0].seperationreason.focus();
+		   	}		  
+		}					
+		function popupWindow(windowname){		
+			var pensionNo;
+			pensionNo=document.forms[0].pfid.value;
+			var LeftPosition = (screen.width) ? (screen.width-850)/2 : 0;
+			var TopPosition = (screen.height) ? (screen.height-500)/2 : 0;
+			if (! window.focus)return true;
+			var href;
+	   		href="loadAdvance.do?method=loadLookupPFID&frm_pensionno="+pensionNo;
+			progress=window.open(href, "NOTESHEETPFID", 'width=850,height=500,top='+TopPosition+',left='+LeftPosition+',statusbar=yes,scrollbars=yes,resizable=yes');
+			return true;	
+		}
+		function retrivedPersonalInfo(){
+			var pensionNo,url,flag,trust;
+			pensionNo=document.forms[0].pfid.value;
+			if(pensionNo==''){
+				if(document.forms[0].employeeName.value=='' && document.forms[0].employeeNo.value==''){
+					alert('PF ID should be enter value');
+					document.forms[0].pfid.focus();
+					return false;
+				}
+			}
+			
+			trust=document.forms[0].trust.value;
+			//alert('-----trust-------'+trust);
+			
+				flag="notesheet";
+				
+	   			url="<%=basePathWoView%>loadAdvance.do?method=lookupPFID&frm_pensionno="+pensionNo+"&goFlag="+flag+"&frm_trust="+trust;
+	   		    document.forms[0].action=url;
+			    document.forms[0].method="post";
+				document.forms[0].submit();
+				
+		}		
+	function test(pfids,empcode,empname,designation,fname,department,dojaai,dojcpf,dob,emolument,pensionNo,region,emppfstatuary,cpfaccno,airportcode){	   
+	   	    document.forms[0].pfid.value=pfids;
+			document.forms[0].employeeNo.value=empcode;
+			document.forms[0].employeeName.value=empname;
+		    document.forms[0].designation.value=designation;
+		    document.forms[0].fhName.value=fname;
+		    document.forms[0].pensionNo.value=pensionNo;
+	 		document.forms[0].cpfaccno.value=cpfaccno;	
+		    document.forms[0].dateOfJoining.value=dojaai;	
+		    document.forms[0].dateOfBirth.value=dob;		
+		     document.forms[0].station.value=airportcode;		
+		    document.forms[0].region.value=region;		
+		    
+	}		
+	function frmPrsnlReset(){
+			 hide('false');
+			url="<%=basePathWoView%>loadNoteSheet.do?method=loadNoteSheet";
+	   		    document.forms[0].action=url;
+			    document.forms[0].method="post";
+				document.forms[0].submit();
+	} 		
+	function submitData(){
+		 	var ex=/^[0-9]+$/;
+			var bool=false,advanceDtl="",pfwPurpose="",advPurpose="",pensionNo="",totalInstall="";
+			var ndob=document.getElementsByName("nomineeDOB");
+			for(var i=0;i<(ndob.length);i++){
+				if(ndob[i].value!='')
+				{
+					if (!convert_date(ndob[i]))
+				    {
+						ndob[i].focus();
+						return false;
+					}
+				}			
+			}		
+			if(document.forms[0].pfid.value==''){
+				alert('PF ID Is Required');
+				document.forms[0].pfid.focus();
+				return false;
+			}
+								
+			//if (!convert_date(document.forms[0].dateOfBirth))
+			///{
+		//		document.forms[0].dateOfBirth.focus();
+		//		return false;
+		//	}			
+			if(document.forms[0].seperationreason.value!=''){
+			    if(document.forms[0].seperationdate.value==''){
+			        alert('Seperation Date Is Required');
+					document.forms[0].seperationdate.focus();
+					return false;
+			    }
+			}
+			if(document.forms[0].seperationdate.value!=''){
+			    if(document.forms[0].seperationreason.value==''){
+			        alert('Seperation Reason Is Required');
+					document.forms[0].seperationreason.focus();
+					return false;
+			    }
+			}			
+			if (!convert_date(document.forms[0].seperationdate))
+			{
+				document.forms[0].seperationdate.focus();
+				return false;
+			}
+			if(document.forms[0].amtadmtdate.value==''){
+				alert('Amount Admitted for Payment by CPF(Hqrs)with interest up to Is Required ');
+				document.forms[0].amtadmtdate.focus();
+				return false;
+			}
+			if (!convert_date(document.forms[0].amtadmtdate))
+			{
+				document.forms[0].amtadmtdate.focus();
+				return false;
+			}
+			if(document.forms[0].emplshare.value==''){
+				alert('Employee Share (Subscription)(A) Is Required');
+				document.forms[0].emplshare.focus();
+				return false;
+			}
+			if (!ex.test(document.forms[0].emplshare.value) && document.forms[0].emplshare.value!="")
+		    {
+				alert("Employee Share (Subscription)(A) shoud be Numeric");
+				document.forms[0].emplshare.select();
+				return false;
+		    }
+			if(document.forms[0].emplrshare.value==''){
+				alert('Employer Share ( Contribution)(B) Is Required');
+				document.forms[0].emplrshare.focus();
+				return false;
+			}
+			if (!ex.test(document.forms[0].emplrshare.value) && document.forms[0].emplrshare.value!="")
+		    {
+				alert("Employer Share (Contribution)(B) shoud be Numeric");
+				document.forms[0].emplrshare.select();
+				return false;
+		    }
+			if(document.forms[0].pensioncontribution.value==''){
+				alert('Less pension contribution(C) Is Required');
+				document.forms[0].pensioncontribution.focus();
+				return false;
+			}			
+			if (!ex.test(document.forms[0].pensioncontribution.value) && document.forms[0].pensioncontribution.value!="")
+		    {
+				alert("Less pension contribution(C) shoud be Numeric");
+				document.forms[0].pensioncontribution.select();
+				return false;
+		    }
+			
+			if(document.forms[0].sanctiondt.value!=''){
+				if (!convert_date(document.forms[0].sanctiondt))
+				{
+				document.forms[0].sanctiondt.focus();
+				return false;
+				}
+			}
+			if (!convert_date(document.forms[0].sanctiondt))
+			{
+				document.forms[0].sanctiondt.focus();
+				return false;
+			}		
+			if(document.forms[0].paymentdt.value!=''){
+				if (!convert_date(document.forms[0].paymentdt))
+				{
+				document.forms[0].paymentdt.focus();
+				return false;
+				}	
+			}
+						
+			/*if((document.forms[0].sanctiondt.value!='') && (document.forms[0].paymentdt.value!='')){
+				if(compareDates(document.getElementById('paymentdt').value,document.getElementById('sanctiondt').value)=='larger'){
+					alert("Sanction Date should be Greater than or Equal to Payment Date");		
+					document.forms[0].sanctiondt.focus();
+					return false;
+				}		
+			}*/
+			
+				
+			var station;
+			
+			if((document.forms[0].region.value=='RAUSAP') ||  (document.forms[0].trust.value=='IAAI')){			
+			station=document.forms[0].station[document.forms[0].station.options.selectedIndex].text;	
+			}else{
+			station=document.forms[0].station.value;			
+			}
+			
+			//alert('-----station------'+station);
+				
+			var url ="<%=basePathWoView%>loadNoteSheet.do?method=saveNoteSheet&frm_station="+station;
+			document.forms[0].action=url;
+			document.forms[0].method="post";
+			document.forms[0].submit();		
+   }
+    var count1 =0,slno=0;
+   
+    
+   function callNominee(){         
+	  	 divNominee2.innerHTML+=divNominee1.innerHTML;
+	  	 var i=document.getElementsByName("nomineename");
+	  	 i[i.length-1].value="";	  	 
+	  	 var j=document.getElementsByName("nomineeaddress");
+	  	 j[j.length-1].value="";	  	 	 
+	  		  	
+	  	 var k=document.getElementsByName("nomineeDOB");	  	 
+	  	 count1 = k.length-1;	    
+	  	 k[k.length-1].value="";
+	  	 k[k.length-1].id ="nomineeDOB"+count1;	  	  	  	 
+	  	 k = document.getElementsByName("cal1");	  	  	
+	  	 k[k.length-1].onclick=function(){call_calender("forms[0].nomineeDOB"+count1)};	 	 
+	 	 
+	  	var l=document.getElementsByName("nomineerelation");	  
+	  	l[l.length-1].value="";	  	
+	  	var m=document.getElementsByName("gardianname");
+	    m[m.length-1].value="";
+	    var g=document.getElementsByName("gardianaddress");
+	    g[g.length-1].value="";
+	  	var n=document.getElementsByName("totalshare");
+	  	n[n.length-1].value="";	  	 	
+	  	
+	  	var s=document.getElementsByName("serialNo");	  
+	  	s[s.length-1].value="";	 
+	  	
+  		var f=document.getElementsByName("nomineeflag");	  
+	  	f[f.length-1].value="";	  
+	          
+  }  	 
+  	 
+  function call_calender(dobValue){       	
+  	  show_calendar(dobValue);
+  }  
+     
+  function numsDotOnly()
+  {
+       if(((event.keyCode>=48)&&(event.keyCode<=57))||(event.keyCode==46))
+	   {
+	      event.keyCode=event.keyCode;
+	   }
+       else
+	   {
+	      event.keyCode=0;
+       }
+ } 
+ 
+ function calNetContribution(){ 
+    if(document.forms[0].emplshare.value!="" || document.forms[0].emplrshare.value!="" || document.forms[0].pensioncontribution.value!=""){
+   
+    if(document.forms[0].emplshare.value!=""){    
+    emplshare=parseInt(document.forms[0].emplshare.value);
+    }else{
+    emplshare=0;
+    }        
+    if(document.forms[0].emplrshare.value!=""){    
+    emplrshare=parseInt(document.forms[0].emplrshare.value);
+    }else{
+    emplrshare=0;
+    }       
+    if(document.forms[0].pensioncontribution.value!=""){    
+    pensioncontribution=parseInt(document.forms[0].pensioncontribution.value);
+    }else{
+    pensioncontribution=0;
+    }     
+    document.forms[0].netcontribution.value=(emplshare+emplrshare)-pensioncontribution;   
+    }
+ }		
+ 
+ function displayNominee(){
+     if(document.forms[0].seperationreason.value=='Death'){
+     	document.getElementById("nomineelabel").style.display="block";
+     	document.getElementById("dispnominee").style.display="block";
+     	//document.getElementById("remarks").style.display="none";
+     }else{
+        document.getElementById("nomineelabel").style.display="none";
+     	document.getElementById("dispnominee").style.display="none";
+     }
+     
+     if(document.forms[0].seperationreason.value=='Resignation'){
+     	document.getElementById("resignationdata").style.display="block";
+     	document.getElementById("remarks").style.display="none";
+     }else{
+        document.getElementById("resignationdata").style.display="none";
+     	document.getElementById("remarks").style.display="block";
+     }
+ }
+ 
+ function deleteNominee(){
+   alert('-----deleteNominee()------'+deleteNominee());
+ }
+ 
+ function getStations(){ 
+   
+      var url = "/editNoteSheet.do?method=loadStations";
+	
+	  var index=document.forms[0].region.selectedIndex.value;
+       var selectedIndex=document.forms[0].region.options.selectedIndex;
+	   var searchregion=document.forms[0].region[selectedIndex].value;  
+	 
+	  
+    var ajaxRequest = new Ajax.Request(url, {
+	    method:       'get', 
+	    parameters: {region: searchregion},
+	    asynchronous: true,
+	    onSuccess:   showResponse
+	});    
+
+ 
+ }
+ 
+ function getNodeValue(obj,tag){    
+  if(obj.getElementsByTagName(tag)[0].firstChild) {
+		return unescape(obj.getElementsByTagName(tag)[0].firstChild.nodeValue);
+	}else{
+	  return "";
+	}
+ }
+  function showResponse(xmlHttpRequest) {  	 
+	 var obj1 = document.getElementById("station");
+	obj1.options.length = 0;
+	 
+	 
+	  var xm = xmlHttpRequest.responseXML;    
+     var stype = xmlHttpRequest.responseXML.getElementsByTagName('Detail');
+     
+   
+       if(stype.length>=1){
+	       for(var i=0;i<stype.length;i++){	      
+	         var val = getNodeValue(stype[i],'Station');	      
+	 		var nm = getNodeValue(stype[i],'Station'); 	 		
+	 		obj1.options[obj1.options.length] = new Option(nm,val);
+	       }
+       }else{
+       obj1.options[obj1.options.length] = new Option("---No Stations--","");
+       }
+	  
+}
+ </script>
+
+	</head>
+
+	
+<body class="bodybackground" onload="hide('<%=request.getAttribute("focusFlag")%>');">
+		<html:form method="post" action="loadAdvance.do?method=loadAdvanceForm">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+						<jsp:include page="PensionMenu.jsp"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<table width="80%" border="0" align="center" cellpadding="0" cellspacing="0" class="tbborder">
+							<tr>
+								<td height="5%" colspan="2" align="center" class="ScreenMasterHeading">
+									Final Settlement Master Form &nbsp;&nbsp;<font color="red"> </font>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									&nbsp;
+								</td>
+							</tr>
+
+							<tr>
+								<td height="15%">
+									<table align="center" border="0">
+									  
+										<tr>
+											<td class="screenlabel">
+												PF ID:&nbsp;
+											</td>
+											<td>
+												<html:hidden property="pensionNo" />
+
+												
+
+												<html:text property="pfid" maxlength="15" tabindex="1" />
+
+
+												<img src="<%=basePath%>/images/search1.gif" onclick="popupWindow('AdvanceFormInfo');" alt="Click The Icon to Select Details" />
+												<input type="button" value="GO" onclick="retrivedPersonalInfo();" tabindex="3" />
+											</td>
+											<td>
+												&nbsp;
+											</td>
+											<td>
+												&nbsp;
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Employee Code:&nbsp;
+											</td>
+											<td>
+												<html:text property="employeeNo" tabindex="4" readonly="true" />
+											</td>
+											<td class="screenlabel">
+												Old CPF A/C No:&nbsp;
+											</td>
+											<td>
+												<html:text property="cpfaccno" tabindex="5" readonly="true" />
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Name:&nbsp;
+											</td>
+											<td>
+												<html:text property="employeeName" tabindex="6" readonly="true" />
+											</td>
+											<td class="screenlabel">
+												Father's Name:&nbsp;
+											</td>
+											<td>
+												<html:text property="fhName" tabindex="7" readonly="true" />
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Date of Birth:&nbsp;
+											</td>
+											<td>
+												<html:text property="dateOfBirth" tabindex="8" readonly="true" />
+											</td>
+											<td class="screenlabel">
+												Date of Joining in AAI:&nbsp;
+											</td>
+											<td>
+												<html:text property="dateOfJoining" tabindex="9" readonly="true" />
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Designation:&nbsp;
+											</td>
+											<td>
+												<html:hidden property="empmailid" />
+												<html:text property="designation" tabindex="10"/>
+											</td>
+											<td>
+												&nbsp;
+											</td>
+											<td>
+												&nbsp;
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Reason For Seperation:&nbsp;
+											</td>
+											<td>
+												<html:select property="seperationreason" style="width:131px" tabindex="11" onchange="displayNominee()">
+													<html:option value="">Select One</html:option>
+													<html:option value="Retirement">Retirement</html:option>
+													<html:option value="Death">Death</html:option>
+													<html:option value="Resignation">Resignation</html:option>
+													<html:option value="Termination">Termination</html:option>
+													<html:option value="EarlyPensions">Option for Early Pensions</html:option>
+													<html:option value="Others">Others</html:option>
+												</html:select>
+											</td>
+											<td class="screenlabel">
+												Date Of Seperation:&nbsp;
+											</td>
+											<td>
+												<html:text property="seperationdate" maxlength="12" tabindex="12" />
+												<a href="javascript:show_calendar('forms[0].seperationdate');"><img src="<%=basePath%>/images/calendar.gif" border="no" alt="" /></a>
+
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Region:&nbsp;
+											</td>
+											
+											<td>		
+								          
+								             
+								             <select name="region" style="width:130px" onchange="getStations();">
+								             
+								             <%
+									while(it.hasNext()){			
+									 boolean exist = false;
+									  reg=hashmap.get(it.next()).toString();  										
+									  %>		
+
+									   <logic:equal property="region" name="advanceForm" value="<%=reg%>">
+									   <%
+										  exist = true; 
+									   %>
+									    </logic:equal>
+									  <%
+										 									  
+									  	if (exist) {
+									  
+								   %>
+								     <option value="<bean:write property="region" name="advanceForm"/>" <% out.println("selected");%>><bean:write property="region" name="advanceForm"/></option>								
+								   <% }else{
+								     
+								   %>
+								     <option value="<%=reg%>"><%=reg%></option>
+								
+								<%} }%>	
+								             
+								             </select>
+								           
+								          
+								           </td>
+								           
+											<td class="screenlabel">
+												Station:&nbsp;
+											</td>										
+										
+										    <td>									 
+											
+											<logic:present name="airportsList">
+										   
+										   <html:select property="station" name="advanceForm"  style="width:131px" tabindex="11">
+										    <logic:iterate name="airportsList" id="st">								      
+										      	
+										      	<bean:define id="station" property="station" name="st"></bean:define>
+												<html:option value="<%=String.valueOf(station)%>"><bean:write name="st" property="station"/></html:option>																								
+																								
+										    </logic:iterate>
+										   </html:select>
+										    </logic:present>
+										     										    										     
+											</td>					
+										</tr>
+
+										<tr>
+											<td class="screenlabel">
+												Amount Admitted for Payment by
+												<br>
+												CPF(Hqrs)with interest up to <font color="red">&nbsp;*</font>:&nbsp;
+											</td>
+											<td>
+												<html:text property="amtadmtdate" maxlength="12" tabindex="15" />
+												<a href="javascript:show_calendar('forms[0].amtadmtdate');"><img src="<%=basePath%>/images/calendar.gif" border="no" alt="" /></a>
+											</td>
+											<td>
+												&nbsp;
+											</td>
+											<td>
+												&nbsp;
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Employee Share (Subscription)(A)<font color="red">&nbsp;*</font>:&nbsp;
+											</td>
+											<td>
+												<html:text property="emplshare" maxlength="13" tabindex="16" />
+											</td>
+											<td class="screenlabel">
+												Employer Share ( Contribution)(B)<font color="red">&nbsp;*</font>:&nbsp;
+											</td>
+											<td>
+												<html:text property="emplrshare" maxlength="13" tabindex="17" />
+											</td>
+										</tr>
+										<tr>
+											<td class="screenlabel">
+												Less pension contribution(C)<font color="red">&nbsp;*</font>:&nbsp;
+											</td>
+											<td>
+												<html:text property="pensioncontribution" maxlength="13" tabindex="18" onblur="calNetContribution()" />
+											</td>
+											<td class="screenlabel">
+												Net contribution(A+B-C) :&nbsp;
+											</td>
+											<td>
+												<html:text property="netcontribution" tabindex="19" readonly="true" maxlength="13" />
+											</td>
+										</tr>
+										<tr>											
+											<td class="screenlabel">
+												Sanction Date:&nbsp;
+											</td>
+											<td>
+												<html:text property="sanctiondt" tabindex="21" maxlength="12" />
+												<a href="javascript:show_calendar('forms[0].sanctiondt');"><img src="<%=basePath%>/images/calendar.gif" border="no" alt="" /></a>
+											</td>
+											<td class="screenlabel">
+												Payment Date:&nbsp;
+											</td>
+											<td>
+												<html:text property="paymentdt" tabindex="22" maxlength="12" />
+												<a href="javascript:show_calendar('forms[0].paymentdt');"><img src="<%=basePath%>/images/calendar.gif" border="no" alt="" /></a>
+											</td>
+										</tr>
+									
+										<tr id="nomineelabel" style="display:none">
+										<td colspan="4" >
+											<table align="center" border="0">
+												<tr>
+													<td class="label" align="center">
+														Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</td>
+													<td class="label" align="center">
+														Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</td>
+													<td class="label" align="center">
+														Dateof Birth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													</td>
+													<td class="label" align="center">
+														Relation with Member&nbsp;&nbsp;
+													</td>
+													<td class="label" align="center">
+														Name of Guardian&nbsp;&nbsp;&nbsp;
+													</td>
+													<td class="label" align="center">
+														Address of Guardian&nbsp;&nbsp;&nbsp;
+													</td>
+													<td class="label" align="center">
+														Total Share
+														<BR>
+														payable in %
+													</td>
+													<td>
+													&nbsp;<b><img alt="" src="<%=basePath%>/images/addIcon.gif" onclick="callNominee();" ></b>
+													</td>
+												</tr>	
+												<%int size = 0;%>
+												<logic:present name="nomineeList">										
+												<logic:iterate name="nomineeList" id="nominee" indexId="slno" >										
+												<%size++;%>
+											
+												<tr>
+			 												<td>
+																<html:text property="nomineename" name="nominee" maxlength="50" size="18" tabindex="24"></html:text>
+																&nbsp;
+																<html:hidden property="serialNo" name="nominee" />
+																<html:hidden property="nomineeflag" name="nominee" />
+																<input type="hidden" name="empOldNname" value="">
+															</td>
+
+															<td align="center" valign="top">
+																&nbsp;
+																<html:text property="nomineeaddress" name="nominee" size="16" maxlength="150" tabindex="25"></html:text>
+															</td>
+															<td align="center" valign="top" nowrap="nowrap">
+																&nbsp;&nbsp;
+
+																<input type="text" name="nomineeDOB" tabindex="26" id="nomineeDOB<%=slno.intValue()%>" value='<bean:write property="nomineeDOB" name="nominee" />' size="12" maxlength="12" />
+																<img src="<%=basePath%>/images/calendar.gif" border="no" name="cal1" onclick="javascript:call_calender('forms[0].nomineeDOB<%=slno.intValue()%>')" alt="" />
+
+															</td>
+															<td align="center" valign="top">
+																&nbsp;
+																<html:select property="nomineerelation" name="nominee" tabindex="27">
+																	<html:option value="">
+																[Select One]
+															</html:option>
+																	<html:option value='SPOUSE'>
+																SPOUSE
+															</html:option>
+																	<html:option value='SON'>
+																SON
+															</html:option>
+																	<html:option value='DAUGHTER'>
+																DAUGHTER
+															</html:option>
+																	<html:option value='MOTHER'>
+																MOTHER
+															</html:option>
+																	<html:option value='FATHER'>
+																FATHER
+															</html:option>
+																	<html:option value='SONS WIDOW'>
+																SON'S WIDOW
+															</html:option>
+																	<html:option value='WIDOWS DAUGHTER'>
+																WIDOW'S DAUGHTER
+															</html:option>
+																	<html:option value='MOTHER-IN-LOW'>
+																MOTHER-IN-LOW
+															</html:option>
+																	<html:option value='FATHER-IN-LOW'>
+																FATHER-IN-LOW
+															</html:option>
+
+																</html:select>
+
+															</td>
+															<td align="center" valign="top">
+																&nbsp;&nbsp;&nbsp;&nbsp;
+																<html:text property="gardianname" name="nominee" size="16" maxlength="50"  tabindex="28"></html:text>
+
+															</td>
+															<td align="center" valign="top">
+																&nbsp;&nbsp;
+																<html:text property="gardianaddress" name="nominee" size="16" maxlength="150" tabindex="29"></html:text>
+																&nbsp;
+															</td>
+															<td align="center" valign="top">
+																&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+																<html:text property="totalshare" name="nominee" size="5" tabindex="30" maxlength="20" onkeypress="numsDotOnly()"></html:text>
+															</td>
+															<td align="center" valign="top">
+														&nbsp;<b><img alt="Delete" src="<%=basePath%>/images/cancelIcon.gif" onclick="deleteNomineeDetils('<bean:write property="cpfaccno"/>');" tabindex="27"></b>
+														</td>
+
+														</tr>
+														
+													</logic:iterate>
+												</logic:present>
+												
+											</table>
+											</td>
+											</tr>
+											<tr id="dispnominee" style="display:none">
+											<td  colspan="4" align="center">
+											<div id="divNominee1">
+												<table border="0" align="center">
+													<tr>
+														<td align="center" valign="top">															
+															<html:text property="nomineename" maxlength="50" size="18" tabindex="31"></html:text>
+															&nbsp;
+															<html:hidden property="serialNo" />
+															<html:hidden property="nomineeflag" />
+															<input type="hidden" name="empOldNname" value="">
+														</td>
+
+														<td align="center" valign="top">
+															&nbsp;
+															<html:text property="nomineeaddress" size="16" maxlength="150" tabindex="32"></html:text>
+														</td>
+														<td align="center" valign="top" nowrap="nowrap">
+															&nbsp;&nbsp;
+															<input type="text" name="nomineeDOB" id="nomineeDOB<%=size%>" size="12" maxlength="12" tabindex="33" />
+															<img src="<%=basePath%>/images/calendar.gif" border="no" name="cal1" onclick="javascript:call_calender('forms[0].nomineeDOB<%=size%>')" alt="" />
+
+														</td>
+														<td align="center" valign="top">
+															&nbsp;
+															<html:select property="nomineerelation" tabindex="34">
+																<html:option value="">
+																[Select One]
+															</html:option>
+																<html:option value='SPOUSE'>
+																SPOUSE
+															</html:option>
+																<html:option value='SON'>
+																SON
+															</html:option>
+																<html:option value='DAUGHTER'>
+																DAUGHTER
+															</html:option>
+																<html:option value='MOTHER'>
+																MOTHER
+															</html:option>
+																<html:option value='FATHER'>
+																FATHER
+															</html:option>
+																<html:option value='SONS WIDOW'>
+																SON'S WIDOW
+															</html:option>
+																<html:option value='WIDOWS DAUGHTER'>
+																WIDOW'S DAUGHTER
+															</html:option>
+																<html:option value='MOTHER-IN-LOW'>
+																MOTHER-IN-LOW
+															</html:option>
+																<html:option value='FATHER-IN-LOW'>
+																FATHER-IN-LOW
+															</html:option>
+
+															</html:select>
+
+														</td>
+														<td align="center" valign="top">
+															&nbsp;&nbsp;&nbsp;&nbsp;
+															<html:text property="gardianname" size="16" maxlength="50" tabindex="35"></html:text>
+
+														</td>
+														<td align="center" valign="top">
+															&nbsp;&nbsp;
+															<html:text property="gardianaddress" size="16" maxlength="150" tabindex="36"></html:text>
+															&nbsp;
+														</td>
+														<td align="center" valign="top">
+															&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<html:text property="totalshare" size="5" onkeypress="numsDotOnly()" maxlength="20" tabindex="37"></html:text>
+														</td>
+														<td align="center" valign="top">
+															&nbsp;&nbsp;&nbsp;
+														</td>
+
+													</tr>
+												</table>
+											</div>
+											
+											<div id="divNominee2">
+											</div>
+										</td>
+										</tr>
+										<tr id="resignationdata" style="display:none">
+										    <td class="screenlabel">
+												Payment to be made in favor of  : &nbsp;
+											</td>
+											<td>
+												<html:text property="seperationfavour" tabindex="38" maxlength="200" />
+											</td>
+											<td class="screenlabel">
+												Remarks  : &nbsp;
+											</td>
+											<td>
+												<html:textarea property="seperationremarks" tabindex="39" rows="5" cols="27" />
+											</td>
+										</tr>
+										
+										<tr id="remarks">
+											<td class="screenlabel">
+												Remarks : &nbsp;
+											</td>
+											<td>
+												<html:text property="remarks" tabindex="40" maxlength="200" />
+											</td>
+										
+										<td class="screenlabel">
+												Trust:&nbsp;
+											</td>
+											<td>												
+												<html:select property="trust" tabindex="23" >
+												<html:option value="NAA">NAA</html:option>
+												<html:option value="AAI">AAI</html:option>
+												<html:option value="IAAI">IAAI</html:option>
+												</html:select>
+											</td>
+										</tr>
+
+									</table>
+									<table align="center">
+
+										<tr>
+											<td align="left" id="submit">
+												<input type="button" class="btn" value="Submit" onclick="submitData();" />
+											</td>
+											<td align="right">
+
+												<input type="button" class="btn" value="Reset" onclick="javascript:frmPrsnlReset()" class="btn" />
+												<input type="button" class="btn" value="Cancel" onclick="javascript:history.back(-1)" class="btn" />
+											</td>
+										</tr>
+
+
+									</table>
+								</td>
+							</tr>
+						</table>
+
+					</td>
+				</tr>
+			</table>
+		</html:form>
+	</body>
+</html>
+

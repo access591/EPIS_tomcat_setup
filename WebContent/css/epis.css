@@ -1,0 +1,138 @@
+.epis {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px; font-weight: bold; 
+}
+.episdata {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10px;  
+}
+ /*BEGIN OF THE TOP LINKS */
+.toplinks {
+	font-family: Verdana; font-size: 10px; font-weight: normal; font-style: normal; color:#000000;
+}
+
+.toplinks:hover {
+	font-family: Verdana; font-size: 10px; font-weight: normal; font-style: normal; color:#FFFFFF;
+}
+/* END OF THE TOP LINKS */
+
+
+/* BEGIN OF THE LEFT LINKS */
+.leftlinks {
+	font-family: Verdana; font-size: 10px; font-weight: normal; font-style: normal; color:#000000;
+}
+.leftlinks:hover {
+	font-family: Verdana; font-size: 10px; font-weight: normal; font-style: normal; color:#010099;
+}
+ END OF THE LEFT LINKS 
+
+.listbox {
+	font-family: Verdana; font-size: 10px; font-weight: normal; font-style: normal; height: 20px; width: 100px; 
+}
+.whitetext {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+.text {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	font-style: normal;
+	color: #999999;
+}
+.textbold {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	font-style: normal;
+	color: #999999;
+}
+.aims {
+
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	font-style: normal;
+	color: #000000;
+}
+.Etasearh {
+
+
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	font-style: normal;
+	color: #000000;
+}
+.textbox {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	font-style: normal;
+	height: 20px;
+}
+.smalllistbox {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	font-style: normal;
+	height: 20px;
+	width: 50px;
+}
+.listbox {
+
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	font-style: normal;
+	height: 20px;
+	width: 70px;
+}
+.leftlinksvisited {
+
+	font-family: Verdana; font-size: 10px; font-weight: normal; font-style: normal; color:#010099;
+}
+.footertext {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	font-style: normal;
+	color: #000000;
+}
+/*
+.backgroundwhitecolor{
+ background-color: #FFFFFF;
+}
+*/
+.subsectionheadingbg{
+ background-color: #e7e7e7;
+}
+
+.subsectionheadingbgstart{
+ background-color: #010099;
+}
+
+.backgroundsilvercolor{
+ background-color: #cccccc;
+}
+
+.menubackground{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #010099;
+}
+
+LEGEND {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: bold;
+}

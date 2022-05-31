@@ -1,0 +1,24 @@
+Entering Default method with .html --- end
+Entering getRegValue with .html and  --- 
+Entering Default method with ChromeHTML\shell\open\command --- end
+Entering getRegValue with ChromeHTML\shell\open\command and  --- 
+Entering Default method with .html --- end
+Entering getRegValue with .html and  --- 
+Entering Default method with ChromeHTML\shell\open\command --- end
+Entering getRegValue with ChromeHTML\shell\open\command and  --- 
+Entering Default method with .html --- end
+Entering getRegValue with .html and  --- 
+Entering Default method with ChromeHTML\shell\open\command --- end
+Entering getRegValue with ChromeHTML\shell\open\command and  --- 
+Entering Default method with .html --- end
+Entering getRegValue with .html and  --- 
+Entering Default method with ChromeHTML\shell\open\command --- end
+Entering getRegValue with ChromeHTML\shell\open\command and  --- 
+Entering Default method with .html --- end
+Entering getRegValue with .html and  --- 
+Entering Default method with ChromeHTML\shell\open\command --- end
+Entering getRegValue with ChromeHTML\shell\open\command and  --- 
+Entering Default method with .html --- end
+Entering getRegValue with .html and  --- 
+Entering Default method with ChromeHTML\shell\open\command --- end
+Entering getRegValue with ChromeHTML\shell\open\command and  --- 

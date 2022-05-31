@@ -1,0 +1,38 @@
+/*.buttonwrapper{
+	overflow: hidden;
+	width: 100%;
+}*/
+a.buttons{
+	display: block;
+	float: left;
+	line-height: 16px;
+	height: 24px;
+	padding-left: 8px;
+	text-decoration: none;
+	background-color: transparent;
+	background-image: url(../images/buttL.gif);
+	background-repeat: no-repeat;
+	background-position: left top;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+}
+
+a.buttons span{
+	display: block;
+	padding: 4px 10px 4px 2px;
+	margin-right: 6px;
+	background-color: transparent;
+	background-image: url(../images/buttR.gif);
+	background-repeat: no-repeat;
+	background-position: right top;
+	color: #003399;
+	text-decoration: none;
+}
+a.buttons span:hover{
+	color: #000000;
+}
+
+  
+
